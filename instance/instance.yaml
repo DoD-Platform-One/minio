@@ -3,6 +3,7 @@ kind: Secret
 metadata:
   name: minio-creds-secret
 type: Opaque
+# srtm: IA-5(1)(c) cryptographically stored authenticator 
 data:
   accesskey: bWluaW8= # base 64 encoded "minio" (echo -n 'minio' | base64)
   secretkey: bWluaW8xMjM= # based 64 encoded "minio123" (echo -n 'minio123' | base64)
@@ -25,7 +26,8 @@ spec:
       prometheus.io/port: "9000"
       prometheus.io/scrape: "true"
   ## Registry location and Tag to download MinIO Server image
-  image: minio/minio:RELEASE.2020-01-03T19-12-21Z
+  image: registry.dsop.io/platform-one/apps/minio/instance:RELEASE.2020-01-03T19-12-21Z
+  #  Commented to pull from P1 reg - image: minio/minio:RELEASE.2020-01-03T19-12-21Z
   ## Secret with credentials to be used by MinIO instance.
   credsSecret:
     name: minio-creds-secret
