@@ -132,5 +132,5 @@ spec:
       serviceAccountName: minio-operator-sa
       containers:
         - name: minio-operator
-	  image: registry.dsop.io/platform-one/apps/minio/operator:1.0.7
+      	  image: registry.dsop.io/platform-one/apps/minio/operator:1.0.7
           imagePullPolicy: IfNotPresent
