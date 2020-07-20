@@ -7,16 +7,15 @@ MinIO is a high performance, distributed object storage system. It is software-d
 App Version: Operator 1.0.7, instance 1.0.7
 Plugins: 
 Additional docs for using  and its plugins can be found at $URL
-The containers being used are maintained in the public/apps/minio registry.  These containers ahve not been hardened, but have been retagged.  When available hardened containers will be implemented.
+The containers being used are maintained in the public/apps/minio registry.  These containers have not been hardened, but have been retagged.  When available hardened containers will be implemented.
 
-Minio instances mount a secret named by default as minio-creds-secret with "accesskey" and "secretkey"
-By default this is "minio" and "minio123" respectively and this should be changed for production deployments
+Minio instances mount a secret named by default as `minio-creds-secret` with `accesskey` and `secretkey`.
+By default this is `minio` and `minio123` respectively and this should be changed for production deployments
 
 ### Prerequisites
 
 * Kubernetes cluster deployed
 * kubectl configuration installed
-* Elasticsearch and Kibana deployed to Kubernetes namespace
 
 Install kubectl
 
@@ -57,7 +56,7 @@ The minio-operator pod runs the `minio-operator` container in the `minio-operato
 minio-* pods run inthe `minio` namespace. The number of replicas vary and the * is replaced by the instance number. The logs for this pod can be filtered with `kubernetes.pod_name`: `minio-<instanceid`
 
 
-Container Environment Variables
+## Container Environment Variables
 
 These variables are patched in via kustomize and may require modifications depending on your
 environment.
