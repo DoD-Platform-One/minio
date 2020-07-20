@@ -1,0 +1,24 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    prometheus: k8s
+  name: minio
+  namespace: minio
+spec:
+  selector:
+    matchLabels:
+      v1beta1.min.io/instance: minio
+  namespaceSelector:
+    matchNames:
+      - minio
+  endpoints:
+    - interval: 30s
+      path: /minio/prometheus/metrics
+      params:
+        format: 
+          - prometheus
+      targetPort: 9000
+      scheme: http
+      jobLabel: minio
+
