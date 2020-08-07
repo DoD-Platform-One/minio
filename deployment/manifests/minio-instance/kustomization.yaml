@@ -1,0 +1,9 @@
+namespace: minio
+
+resources:
+  - namespace.yaml
+  - upstream/minioinstance.yaml
+
+patchesStrategicMerge:
+  # use IronBank hardened image
+  - patches/image-patch.yaml
