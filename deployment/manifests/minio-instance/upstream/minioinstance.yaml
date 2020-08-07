@@ -3,12 +3,27 @@ kind: Secret
 metadata:
   name: minio-creds-secret
 type: Opaque
-# srtm: IA-5(1)(c) cryptographically stored authenticator 
 data:
   accesskey: bWluaW8= # base 64 encoded "minio" (echo -n 'minio' | base64)
   secretkey: bWluaW8xMjM= # based 64 encoded "minio123" (echo -n 'minio123' | base64)
 ---
-apiVersion: miniocontroller.min.io/v1beta1
+apiVersion: v1
+kind: Service
+metadata:
+  name: minio-service
+spec:
+  type: ClusterIP
+  ports:
+    - port: 9000
+      targetPort: 9000
+      protocol: TCP
+      # Optional field
+      # By default and for convenience, the Kubernetes control plane will allocate a port from a range (default: 30000-32767)
+      # nodePort: 30007
+  selector:
+    app: minio
+---
+apiVersion: operator.min.io/v1
 kind: MinIOInstance
 metadata:
   name: minio
@@ -17,8 +32,9 @@ metadata:
 # scheduler:
 #  name: my-custom-scheduler
 spec:
-  ## Add metadata to the pods created by the StatefulSet
+  ## Add metadata to the all pods created by the StatefulSet
   metadata:
+    ## Optionally pass labels to be applied to the statefulset pods
     labels:
       app: minio
     annotations:
@@ -26,31 +42,54 @@ spec:
       prometheus.io/port: "9000"
       prometheus.io/scrape: "true"
   ## Registry location and Tag to download MinIO Server image
-  image: registry.dsop.io/platform-one/apps/minio/instance:RELEASE.2020-01-03T19-12-21Z
-  #  Commented to pull from P1 reg - image: minio/minio:RELEASE.2020-01-03T19-12-21Z
+  image: minio/minio:RELEASE.2020-07-13T18-09-56Z
+  ## A ClusterIP Service will be created with the given name
+  serviceName: minio-internal-service
+  zones:
+    - name: "zone-0"
+      ## Number of MinIO servers/pods in this zone.
+      ## For standalone mode, supply 1. For distributed mode, supply 4 or more.
+      ## Note that the operator does not support upgrading from standalone to distributed mode.
+      servers: 4
+  ## Supply number of volumes to be mounted per MinIO server instance.
+  volumesPerServer: 4
+  ## Mount path where PV will be mounted inside container(s). Defaults to "/export".
+  mountPath: /export
+  ## Sub path inside Mount path where MinIO starts. Defaults to "".
+  # subPath: /data
+  ## This VolumeClaimTemplate is used across all the volumes provisioned for MinIO cluster.
+  ## Please do not change the volumeClaimTemplate field while expanding the cluster, this may
+  ## lead to unbound PVCs and missing data
+  volumeClaimTemplate:
+    metadata:
+      name: data
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 1Ti
   ## Secret with credentials to be used by MinIO instance.
   credsSecret:
     name: minio-creds-secret
-  ## Supply number of replicas.
-  ## For standalone mode, supply 1. For distributed mode, supply 4 or more (should be even).
-  ## Note that the operator does not support upgrading from standalone to distributed mode.
-  replicas: 4
   ## PodManagement policy for pods created by StatefulSet. Can be "OrderedReady" or "Parallel"
   ## Refer https://kubernetes.io/docs/tutorials/stateful-application/basic-stateful-set/#pod-management-policy
   ## for details. Defaults to "Parallel"
-  ## If set to "OrderedReady", then disable Readiness checks below. Readiness check will only
-  ## work if PodManagementPolicy is set to "Parallel".
   podManagementPolicy: Parallel
+  ## Secret with certificates to configure TLS for MinIO certs. Create secrets as explained
+  ## here: https://github.com/minio/minio/tree/master/docs/tls/kubernetes#2-create-kubernetes-secret
+  # externalCertSecret:
+  # name: tls-ssl-minio
   ## Enable Kubernetes based certificate generation and signing as explained in
   ## https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster
   requestAutoCert: false
   ## Used when "requestAutoCert" is set to true. Set CommonName for the auto-generated certificate.
   ## Internal DNS name for the pod will be used if CommonName is not provided.
+  ## DNS name format is minio-{0...3}.minio.default.svc.cluster.local
   certConfig:
     commonName: ""
     organizationName: []
     dnsNames: []
-
   ## Used to specify a toleration for a pod
   # tolerations:
   #  - effect: NoSchedule
@@ -58,36 +97,22 @@ spec:
   #    operator: Equal
   #    value: storage
   ## Add environment variables to be set in MinIO container (https://github.com/minio/minio/tree/master/docs/config)
-  env:
-    - name: MINIO_BROWSER
-      value: "on"
-    # - name: MINIO_STORAGE_CLASS_RRS
+  # env:
+    # - name: MINIO_BROWSER
+    #   value: "off" # to turn-off browser
+    # - name: MINIO_STORAGE_CLASS_STANDARD
     #   value: "EC:2"
   ## Configure resource requests and limits for MinIO containers
-  resources:
-    requests:
-      memory: 512Mi
-      cpu: 250m
+  # resources:
+    # requests:
+      # memory: 20Gi
   ## Liveness probe detects situations where MinIO server instance
   ## is not working properly and needs restart. Kubernetes automatically
   ## restarts the pods if liveness checks fail.
   liveness:
-    httpGet:
-      path: /minio/health/live
-      port: 9000
-    initialDelaySeconds: 120
-    periodSeconds: 20
-  ## Readiness probe detects situations when MinIO server instance
-  ## is not ready to accept traffic. Kubernetes doesn't forward
-  ## traffic to the pod while readiness checks fail.
-  ## Readiness check will only work if PodManagementPolicy is set to "Parallel".
-  ## Disable this check if you're setting PodManagementPolicy to "OrderedReady".
-  readiness:
-    httpGet:
-      path: /minio/health/ready
-      port: 9000
-    initialDelaySeconds: 120
-    periodSeconds: 20
+    initialDelaySeconds: 10
+    periodSeconds: 1
+    timeoutSeconds: 1
   ## nodeSelector parameters for MinIO Pods. It specifies a map of key-value pairs. For the pod to be
   ## eligible to run on a node, the node must have each of the
   ## indicated key-value pairs as labels.
@@ -97,20 +122,3 @@ spec:
   ## Affinity settings for MinIO pods. Read more about affinity
   ## here: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity.
   # affinity:
-  ## Secret with certificates to configure TLS for MinIO certs. Create secrets as explained
-  ## here: https://github.com/minio/minio/tree/master/docs/tls/kubernetes#2-create-kubernetes-secret
-  # externalCertSecret:
-  # name: tls-ssl-minio
-  ## Mountpath where PV will be mounted inside container(s). Defaults to "/export".
-  # mountPath: /export
-  ## Subpath inside Mountpath where MinIO starts. Defaults to "".
-  # subPath: /data
-  volumeClaimTemplate:
-    metadata:
-      name: data
-    spec:
-      accessModes:
-        - ReadWriteOnce
-      resources:
-        requests:
-          storage: 10Gi

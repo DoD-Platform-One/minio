@@ -1,4 +1,0 @@
-namespace: minio-operator
-
-resources:
-  - operator.yaml
