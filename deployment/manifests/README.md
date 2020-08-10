@@ -8,7 +8,8 @@ This is an older version but it must match the latest IronBank hardened image ve
 Minio is working with IronBank hardened images.
 
 ## Important deployment note
-The MinIO documentation does not clearly tell you that for distributed mode, the number of volumes per server must match the total number of servers.  If you have 3 servers there must be 3 volumes per server. 
+Refer to documentation for the minimum number of volumes per server versus the number of servers.  
+https://docs.min.io/docs/minio-server-limits-per-tenant.html 
 
 ## Quick Minio test
 https://docs.min.io/docs/minio-client-quickstart-guide  
