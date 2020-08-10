@@ -4,7 +4,8 @@ Project [here](https://github.com/minio/minio-operator).
 
 MinIO is a high performance, distributed object storage system. It is software-defined, runs on industry standard hardware and is 100% open source under the Apache V2 license.
 
-App Version: Operator 2.0.8, instance 2.0.8
+App Version: Operator 2.0.9, instance 2.0.9  
+
 Plugins: 
 Additional docs for using  and its plugins can be found at $URL
 The containers being used are maintained in the public/apps/minio registry.  These containers ahve not been hardened, but have been retagged.  When available hardened containers will be implemented.
