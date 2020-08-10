@@ -8,7 +8,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      v1beta1.min.io/instance: minio
+      v1.min.io/instance: minio
   namespaceSelector:
     matchNames:
       - minio
