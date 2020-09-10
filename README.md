@@ -1,3 +1,8 @@
+# Minio Helm Chart
+
+The minio-helm-core/ dir has the version of minio that is deployed on mission bootstrap with helm charts.
+
+
 # Minio Operator
 
 Project [here](https://github.com/minio/minio-operator).

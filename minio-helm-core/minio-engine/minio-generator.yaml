@@ -1,0 +1,8 @@
+apiVersion: p1.dsop.io/v1beta1
+kind: HelmGenerator
+metadata:
+  name: minioHelmGenerator
+releaseName: minio
+chartPath: .
+valueFiles:
+  - values.yaml

@@ -1,0 +1,10 @@
+commonLabels:
+  micro-svc: minio
+
+# Generator options
+generatorOptions:
+  disableNameSuffixHash: true
+
+
+generators:
+  - minio-generator.yaml
