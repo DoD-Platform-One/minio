@@ -59,3 +59,16 @@ git commit -m "Made a change for reasons"
 Push commits to upstream branch
 git push -u origin <branch>
 Create a new merge request
+
+# MINIO Operator 
+
+Minio Operator on Kubernetes Operator chart.
+
+
+## Deployment
+```
+git clone https://repo1.dsop.io/platform-one/big-bang/apps/application-utilities/minio.git
+cd minio
+helm install minio chart 
+```
+
