@@ -4,7 +4,7 @@ metadata:
   name: minio-operator
   namespace: {{ .Release.Namespace }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicas.count }}
   selector:
     matchLabels:
       name: minio-operator
@@ -16,10 +16,10 @@ spec:
       serviceAccountName: minio-operator
       containers:
         - name: minio-operator
-          image: minio/k8s-operator:2.0.6
-          imagePullPolicy: IfNotPresent
+          image: {{ .Values.image.name }}:{{ .Values.image.tag }}
+          imagePullPolicy: {{ .Values.image.imagePullPolicy }}
           env:
             - name: CLUSTER_DOMAIN
-              value: $(CLUSTER_DOMAIN)
+              value: {{ .Values.clusterDomain }}
             - name: WATCHED_NAMESPACE
-              value: $(WATCHED_NAMESPACE)
+              value: {{ .Values.watchedNamespace }}
