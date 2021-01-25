@@ -21,8 +21,8 @@ volumeClaimTemplate:
 
 ## set kubernetes cluster domain where minio is running
 ##
-clusterDomain: cluster.local
-watchedNamespace: default
+#clusterDomain: cluster.local
+#watchedNamespace:
 
 
 ######  New values below #####
