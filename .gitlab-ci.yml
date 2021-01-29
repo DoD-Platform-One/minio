@@ -2,3 +2,7 @@ include:
   - project: 'platform-one/big-bang/pipeline-templates/pipeline-templates'
     ref: master
     file: '/templates/package-tests.yml'
+dependencyname:
+  git: "https://repo1.dso.mil/platform-one/big-bang/apps/application-utilities/minio-operator.git"
+  branch: "bb-1233"
+  namespace: "minio-operator"
