@@ -1,4 +1,4 @@
-# Minio Operator
+# Minio Instances
 
 Project [here](https://github.com/minio/minio-operator).
 
