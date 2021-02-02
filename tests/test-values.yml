@@ -1,0 +1,20 @@
+# Configure number of MinIO Operator Deployment Replicas
+replicas:
+  count: 1
+
+# Configure repo and tag of MinIO Operator Image
+image:
+  name: registry1.dso.mil/ironbank/opensource/minio/minio
+  tag: RELEASE.2020-07-02T00-15-09Z
+  imagePullPolicy: IfNotPresent
+
+zones:
+  # refer to documentation for number of servers versus volumes per server
+  #  https://docs.min.io/docs/minio-server-limits-per-tenant.html
+  servers: 3       # scale to 3 for dev
+
+volumesPerServer: 2  # 2 is minimum volumes with 3 servers
+
+volumeClaimTemplate:
+  accessModes: ReadWriteOnce
+  storage: 1Gi  # scale down for dev
