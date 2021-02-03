@@ -18,3 +18,5 @@ volumesPerServer: 2  # 2 is minimum volumes with 3 servers
 volumeClaimTemplate:
   accessModes: ReadWriteOnce
   storage: 1Gi  # scale down for dev
+
+minioUICreds: default-minio-creds-secret

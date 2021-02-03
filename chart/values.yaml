@@ -19,3 +19,4 @@ volumeClaimTemplate:
   accessModes: ReadWriteOnce
   storage: 1Gi  # scale down for dev
 
+minioUICreds: default-minio-creds-secret
