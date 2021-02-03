@@ -1,9 +1,9 @@
 apiVersion: v2
 
-name: minio-operator
+name: minio-instance
 
 description: |-
-  A Helm chart for deploying the Minio operator: the official Kubernetes operator for deploying MINIO cluster.
+  A Helm chart for deploying the Minio instances based on use of the Minio operator
 
 #home: https://github.com/elastic/cloud-on-k8s
 
