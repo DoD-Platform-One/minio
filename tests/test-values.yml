@@ -20,3 +20,7 @@ volumeClaimTemplate:
   storage: 1Gi  # scale down for dev
 
 minioUICreds: default-minio-creds-secret
+
+imagePullSecrets:
+  - name: private-registry-mil
+
