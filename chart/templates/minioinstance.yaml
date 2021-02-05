@@ -22,7 +22,7 @@ spec:
   imagePullSecrets:
     {{- toYaml . | nindent 4}}
   {{- end }}
-
+  serviceAccountName: minio-service-account
   ## A ClusterIP Service will be created with the given name
   serviceName: minio-internal-service
   zones:

@@ -23,4 +23,3 @@ minioUICreds: default-minio-creds-secret
 
 imagePullSecrets:
   - name: private-registry-mil
-
