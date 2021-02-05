@@ -22,3 +22,5 @@ volumeClaimTemplate:
 minioUICreds: default-minio-creds-secret
 
 imagePullSecrets: [ ]
+
+serviceAccountName: minio-service-account

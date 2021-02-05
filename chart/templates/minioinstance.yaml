@@ -18,11 +18,7 @@ spec:
       prometheus.io/scrape: "true"
   ## Registry location and Tag to download MinIO Server image
   image: {{ .Values.image.name }}:{{ .Values.image.tag }}
-  {{- with .Values.imagePullSecrets }}
-  imagePullSecrets:
-    {{- toYaml . | nindent 4}}
-  {{- end }}
-  serviceAccountName: minio-service-account
+  serviceAccountName: {{ .Values.serviceAccountName }}
   ## A ClusterIP Service will be created with the given name
   serviceName: minio-internal-service
   zones:
