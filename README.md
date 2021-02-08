@@ -1,10 +1,11 @@
-# Minio Operator
+# Minio Instances
 
 Project [here](https://github.com/minio/minio-operator).
 
 MinIO is a high performance, distributed object storage system. It is software-defined, runs on industry standard hardware and is 100% open source under the Apache V2 license.
 
-App Version: Operator 2.0.9, instance 2.0.9  
+Operator version based on: 2.0.9
+Instance deployment version:  2.0.9  
 
 Plugins: 
 Additional docs for using  and its plugins can be found at $URL
@@ -59,3 +60,16 @@ git commit -m "Made a change for reasons"
 Push commits to upstream branch
 git push -u origin <branch>
 Create a new merge request
+
+# MINIO Operator 
+
+Minio Operator on Kubernetes Operator chart.
+
+
+## Deployment
+```
+git clone https://repo1.dsop.io/platform-one/big-bang/apps/application-utilities/minio.git
+cd minio
+helm install minio chart 
+```
+

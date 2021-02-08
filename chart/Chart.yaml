@@ -1,0 +1,30 @@
+apiVersion: v2
+
+name: minio-instance
+
+description: |-
+  A Helm chart for deploying the Minio instances based on use of the Minio operator
+
+#home: https://github.com/elastic/cloud-on-k8s
+
+type: application
+
+version: 1.0.0
+
+appVersion: 2.0.9
+
+kubeVersion: ">=1.12.0-0"
+
+keywords:
+  - Minio
+  - Instance
+
+maintainers:
+  - name: me
+    email:
+
+dependencies:
+#  - name: eck-operator-crds
+#    version: 1.3.0
+#    condition: installCRDs
+#    repository: "file://eck-operator-crds"
