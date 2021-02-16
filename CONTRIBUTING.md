@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for contributing to this repository!
+Thanks for contributing to this repository!helm dep up
 
 This repository follows the following conventions:
 
