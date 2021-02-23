@@ -14,7 +14,7 @@ spec:
       {{- include "minio.labels" . | nindent 6 }}
 #    labels:
 #      app: minio
-    {{- with .Values.serviceAccount.annotations }}
+    {{- with .Values.podAnnotations }}
     annotations:
       prometheus.io/path: /minio/prometheus/metrics
       prometheus.io/port: "9000"
