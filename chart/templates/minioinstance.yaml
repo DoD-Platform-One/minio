@@ -1,7 +1,7 @@
 apiVersion: operator.min.io/v1
 kind: MinIOInstance
 metadata:
-  name: minio
+  name: {{ include "minio.fullname" . }}
 ## If specified, MinIOInstance pods will be dispatched by specified scheduler.
 ## If not specified, the pod will be dispatched by default scheduler.
 # scheduler:
@@ -11,7 +11,9 @@ spec:
   metadata:
     ## Optionally pass labels to be applied to the statefulset pods
     labels:
-      app: minio
+      {{- include "minio.labels" . | nindent 6 }}
+#    labels:
+#      app: minio
     annotations:
       prometheus.io/path: /minio/prometheus/metrics
       prometheus.io/port: "9000"
