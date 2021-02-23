@@ -32,27 +32,32 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 
+service:
+  type: ClusterIP
+  port: 9000
 
-# Default values for minio instance creation.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-# Configure number of MinIO Operator Deployment Replicas
-replicas:
-  count: 1
 
-imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
-
-# Configure repo and tag of MinIO Operator Image
-image:
-  name: registry1.dso.mil/ironbank/opensource/minio/minio-operator
-  tag: 2.0.9
-  imagePullPolicy: IfNotPresent
-
-## set kubernetes cluster domain where minio is running
-##
-clusterDomain: cluster.local
-# watchedNamespace: set to blank to enable watching all namespaces
-watchedNamespace:
-
+#
+## Default values for minio instance creation.
+## This is a YAML-formatted file.
+## Declare variables to be passed into your templates.
+## Configure number of MinIO Operator Deployment Replicas
+#replicas:
+#  count: 1
+#
+#imagePullSecrets: []
+#nameOverride: ""
+#fullnameOverride: ""
+#
+## Configure repo and tag of MinIO Operator Image
+#image:
+#  name: registry1.dso.mil/ironbank/opensource/minio/minio-operator
+#  tag: 2.0.9
+#  imagePullPolicy: IfNotPresent
+#
+### set kubernetes cluster domain where minio is running
+###
+#clusterDomain: cluster.local
+## watchedNamespace: set to blank to enable watching all namespaces
+#watchedNamespace:
+#

@@ -1,15 +1,32 @@
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: minio-service
+#spec:
+#  type: ClusterIP
+#  ports:
+#    - port: 9000
+#      targetPort: 9000
+#      protocol: TCP
+#      # Optional field
+#      # By default and for convenience, the Kubernetes control plane will allocate a port from a range (default: 30000-32767)
+#      # nodePort: 30007
+#  selector:
+#    app: minio
+
+
 apiVersion: v1
 kind: Service
 metadata:
-  name: minio-service
+  name: {{ include "minio.fullname" . }}
+  labels:
+    {{- include "minio.labels" . | nindent 4 }}
 spec:
-  type: ClusterIP
+  type: {{ .Values.service.type }}
   ports:
-    - port: 9000
-      targetPort: 9000
+    - port: {{ .Values.service.port }}
+      targetPort: http
       protocol: TCP
-      # Optional field
-      # By default and for convenience, the Kubernetes control plane will allocate a port from a range (default: 30000-32767)
-      # nodePort: 30007
+      name: http
   selector:
-    app: minio
+    {{- include "minio.selectorLabels" . | nindent 4 }}
