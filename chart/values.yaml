@@ -23,4 +23,36 @@ minioUICreds: default-minio-creds-secret
 
 imagePullSecrets: [ ]
 
-serviceAccountName: minio-service-account
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+
+# Default values for minio instance creation.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+# Configure number of MinIO Operator Deployment Replicas
+replicas:
+  count: 1
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+# Configure repo and tag of MinIO Operator Image
+image:
+  name: registry1.dso.mil/ironbank/opensource/minio/minio-operator
+  tag: 2.0.9
+  imagePullPolicy: IfNotPresent
+
+## set kubernetes cluster domain where minio is running
+##
+clusterDomain: cluster.local
+# watchedNamespace: set to blank to enable watching all namespaces
+watchedNamespace:
+
