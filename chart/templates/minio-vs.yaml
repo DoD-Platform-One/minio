@@ -2,13 +2,13 @@
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: {{ template "minioinstance.fullname" . }}
+  name: {{ template "minio.fullname" . }}
   namespace: {{ .Release.Namespace }}
 spec:
   gateways:
     - istio-system/main
   hosts:
-    - {{ include "minioinstance.name" . }}.{{ .Values.hostname }}"
+    - {{ include "minio.name" . }}.{{ .Values.hostname }}"
   http:
     - route:
         - destination:
