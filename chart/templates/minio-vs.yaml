@@ -8,7 +8,7 @@ spec:
   gateways:
     - istio-system/main
   hosts:
-    - minio.{{ .Values.hostname }}
+    - {{ include "minio.fullname" . }}.{{ .Values.hostname }}
   http:
     - route:
         - destination:
