@@ -45,6 +45,6 @@ service:
 
 podAnnotations: {}
 
-veritualService:
+virtualService:
   enabled: true
 
