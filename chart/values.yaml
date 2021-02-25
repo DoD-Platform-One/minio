@@ -46,7 +46,7 @@ service:
 podAnnotations: {}
 
 istio:
-  enabled: false
+  enabled: true
   virtualService:
    enabled: true
 
