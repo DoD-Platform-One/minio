@@ -1,4 +1,4 @@
-{{- if and .Values.addons.minioinstance.enabled .Values.istio.enabled -}}
+{{- if and .Values.virtualService.enabled .Values.istio.enabled -}}
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
