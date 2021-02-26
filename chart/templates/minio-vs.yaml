@@ -8,7 +8,7 @@ spec:
   gateways:
     - istio-system/main
   hosts:
-    - {{ .Values.istio.virtualServce.name }}.{{ .Values.hostname }}
+    - {{ .Values.istio.virtualService.name }}.{{ .Values.hostname }}
   http:
     - route:
         - destination:
