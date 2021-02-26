@@ -48,7 +48,7 @@ podAnnotations: {}
 istio:
   enabled: true
   virtualService:
-   enabled: true
-   name: minio
+    enabled: true
+    name: minio
 
 
