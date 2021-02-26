@@ -1,6 +1,13 @@
-# Configure number of MinIO Operator Deployment Replicas
+#
+## Default values for minio instance creation.
+## This is a YAML-formatted file.
+## Declare variables to be passed into your templates.
+## Configure number of MinIO Operator Deployment Replicas
 replicas:
   count: 1
+
+nameOverride: ""
+fullnameOverride: ""
 
 # Configure repo and tag of MinIO Operator Image
 image:
@@ -23,4 +30,25 @@ minioUICreds: default-minio-creds-secret
 
 imagePullSecrets: [ ]
 
-serviceAccountName: minio-service-account
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+service:
+  type: ClusterIP
+  port: 9000
+
+podAnnotations: {}
+
+istio:
+  enabled: true
+  virtualService:
+    enabled: true
+    name: minio
+
+

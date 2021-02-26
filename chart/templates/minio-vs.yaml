@@ -1,0 +1,19 @@
+{{- if and .Values.istio.enabled .Values.istio.virtualService.enabled -}}
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: {{ template "minio.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  gateways:
+    - istio-system/main
+  hosts:
+    - {{ .Values.istio.virtualService.name }}.{{ .Values.hostname }}
+  http:
+    - route:
+        - destination:
+            host: {{ include "minio.fullname" . }}
+            port:
+              number: {{ .Values.service.port }}
+{{- end }}
+
