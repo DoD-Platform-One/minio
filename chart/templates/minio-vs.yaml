@@ -10,7 +10,23 @@ spec:
   hosts:
     - {{ .Values.istio.virtualService.name }}.{{ .Values.hostname }}
   http:
-    - route:
+    - match:
+        - uri:
+            prefix: /minio/prometheus/metrics
+      route:
+        - destination:
+            host: {{ include "minio.fullname" . }}
+            port:
+              number: {{ .Values.service.port }}
+      fault:
+        abort:
+          percentage:
+            value: 100
+          httpStatus: 403
+    - match:
+        - uri:
+            prefix: /
+      route:
         - destination:
             host: {{ include "minio.fullname" . }}
             port:

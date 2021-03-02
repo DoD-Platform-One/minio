@@ -78,7 +78,9 @@ spec:
   #    operator: Equal
   #    value: storage
   ## Add environment variables to be set in MinIO container (https://github.com/minio/minio/tree/master/docs/config)
-  # env:
+  env:
+    - name: MINIO_PROMETHEUS_AUTH_TYPE
+      value: "public"
     # - name: MINIO_BROWSER
     #   value: "off" # to turn-off browser
     # - name: MINIO_STORAGE_CLASS_STANDARD
