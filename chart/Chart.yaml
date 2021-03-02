@@ -9,11 +9,11 @@ description: |-
 
 type: application
 
-version: 2.0.9-bb.2
+version: 2.1.0-bb.1
 
-appVersion: 2.0.9
+appVersion: RELEASE.2020-11-19T23-48-16Z
 
-kubeVersion: ">=1.12.0-0"
+kubeVersion: ">=1.17.0-0"
 
 keywords:
   - Minio
@@ -24,7 +24,3 @@ maintainers:
     email:
 
 dependencies:
-#  - name: eck-operator-crds
-#    version: 1.3.0
-#    condition: installCRDs
-#    repository: "file://eck-operator-crds"
