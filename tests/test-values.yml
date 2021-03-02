@@ -23,3 +23,15 @@ minioUICreds: default-minio-creds-secret
 
 imagePullSecrets:
   - name: private-registry-mil
+
+hostname: bigbang.dev
+
+istio:
+  enabled: true
+  virtualService:
+    enabled: true
+    name: minio
+
+monitoring:
+  enabled: false
+  namespace: monitoring
