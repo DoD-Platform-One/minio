@@ -54,4 +54,6 @@ istio:
     enabled: true
     name: minio
 
-
+monitoring:
+  enabled: false
+  namespace: monitoring
