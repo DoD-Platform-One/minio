@@ -1,75 +1,51 @@
-# Minio Instances
-
-Project [here](https://github.com/minio/minio-operator).
+# Minio Instance Documentation
 
 MinIO is a high performance, distributed object storage system. It is software-defined, runs on industry standard hardware and is 100% open source under the Apache V2 license.
 
-Operator version based on: 2.0.9
-Instance deployment version:  2.0.9  
+* Operator version based on: 2.0.9
+* Instance deployment version:  RELEASE.2020-11-19T23-48-16Z
 
-Plugins: 
-Additional docs for using  and its plugins can be found at $URL
-The containers being used are maintained in the public/apps/minio registry.  These containers ahve not been hardened, but have been retagged.  When available hardened containers will be implemented.
+## Open Source Documentation
 
-secrets=minio-creds-secret
+The opensource documentation for Minio can be found at https://docs.min.io/docs/minio-quickstart-guide.html
 
-Usage
+The deployment of minio instance is based on the use of the minio Operator which is documented 
+[here](https://github.com/minio/minio-operator).
 
-Prerequisites
+## Prerequisites
+* Kubernetes Cluster deployed
+* Kubernetes config installed in `~/.kube/config`
+* Helm installed
 
-Kubernetes cluster deployed
-Kubernetes config installed in ~/.kube/config
+## Values Used for Deployment
 
+Most of the values used to deploy the minio instance are documented in the chart/values.yaml file.
+Most of these values are decribed in the opensource documentation listed above.  However, this section describes a 
+few of the values in more detail.
 
+### Root Credentials
+```
+minioRootCreds: default-minio-creds-secret
+```
+Th default root credentials are spcified in secret name in the above value.   The secret must contain 2 fields:  
+* accesskey:  effectively the username
+* secretkey:  effectively the password 
 
+This helm chart create a default secret that will be used if none is specified.
 
-Install kubectl
-brew install kubectl
-Install kustomize
-brew install kustomize
+### service name override
+Internal service name for minio instance.  This is the full name of the service used to connect to Minio from 
+within the cluster. If not specified, the service name will be the default full name of the minio instance.
 
-Deployment
-Clone repository
-git clone https://repo1.dsop.io/platform-one/apps/fluentd-elasticsearch.git
-cd fluentd-elasticsearch
-Apply kustomized manifest
-kubectl -k ./
-
-Operations
-By default, this application will use an index prefix name of logstash. To verify and configure the
-index, utilize Kibana Discover.
-The Fluentd inputs and outputs are defined in the ConfigMap resource, which sources from the conf files.
-
-Container Environment Variables
-These variables are patched in via kustomize and may require modifications depending on your
-environment.
-
-
-
-
-
-
-Contributing
-Clone repository
-git clone https://repo1.dsop.io/platform-one/apps/fluentd-elasticsearch.git
-Create a feature branch
-git checkout -b <branch>
-Stage and commit changes
-git add .
-git commit -m "Made a change for reasons"
-Push commits to upstream branch
-git push -u origin <branch>
-Create a new merge request
-
-# MINIO Operator 
-
-Minio Operator on Kubernetes Operator chart.
-
+```
+service:
+  nameOverride: ""
+```
 
 ## Deployment
 ```
-git clone https://repo1.dsop.io/platform-one/big-bang/apps/application-utilities/minio.git
-cd minio
-helm install minio chart 
+git clone https://repo1.dsop.io/platform-one/big-bang/apps/core/monitoring.git
+cd monitoring
+helm dependency update chart
+helm install minio chart --debug
 ```
-
