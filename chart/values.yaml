@@ -6,13 +6,16 @@
 replicas:
   count: 1
 
+
+
+
 nameOverride: ""
 fullnameOverride: ""
 
 # Configure repo and tag of MinIO Operator Image
 image:
   name: registry1.dso.mil/ironbank/opensource/minio/minio
-  tag: RELEASE.2020-07-02T00-15-09Z
+  tag: RELEASE.2020-11-19T23-48-16Z
   imagePullPolicy: IfNotPresent
 
 zones:
@@ -26,7 +29,7 @@ volumeClaimTemplate:
   accessModes: ReadWriteOnce
   storage: 1Gi  # scale down for dev
 
-minioUICreds: default-minio-creds-secret
+minioRootCreds: default-minio-creds-secret
 
 imagePullSecrets: [ ]
 
@@ -40,6 +43,9 @@ serviceAccount:
   name: ""
 
 service:
+  # Internal service name for minio instance.  This is the full name of the service used to connect to Minio from within the cluster.
+  # If not specified, the service name will be the default full name of the minio instance.
+  nameOverride: ""
   type: ClusterIP
   port: 9000
 
