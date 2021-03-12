@@ -60,3 +60,11 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Create the name of the service used to access the UI
+*/}}
+{{- define "minio.serviceName" -}}
+{{- default (include "minio.fullname" .) .Values.service.nameOverride }}
+{{- end }}
+
