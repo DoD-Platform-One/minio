@@ -15,7 +15,7 @@ spec:
             prefix: /minio/prometheus/metrics
       route:
         - destination:
-            host: {{ include "minio.fullname" . }}
+            host: {{ include "minio.serviceName" . }}
             port:
               number: {{ .Values.service.port }}
       fault:
@@ -28,7 +28,7 @@ spec:
             prefix: /
       route:
         - destination:
-            host: {{ include "minio.fullname" . }}
+            host: {{ include "minio.serviceName" . }}
             port:
               number: {{ .Values.service.port }}
 {{- end }}
