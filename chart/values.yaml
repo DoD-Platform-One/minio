@@ -52,7 +52,7 @@ service:
 podAnnotations: {}
 
 istio:
-  enabled: true
+  enabled: false
   virtualService:
     enabled: true
     name: minio

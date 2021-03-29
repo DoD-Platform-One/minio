@@ -1,5 +1,8 @@
 #minio
 
+2.0.9-bb.6
+Disabling istio toggle by default, will inherit settings from BigBang chart.
+
 2.0.9-bb.2
 Repository cleanup
 
