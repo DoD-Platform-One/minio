@@ -19,6 +19,14 @@ spec:
       prometheus.io/scrape: "true"
       {{- toYaml . | nindent 6 }}
     {{- end }}
+  {{- if .Values.affinity }}
+      affinity:
+{{ toYaml .Values.affinity | indent 8 }}
+{{- end }}
+    {{- if .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml .Values.nodeSelector | indent 8 }}
+      {{- end }}
 
   ## Registry location and Tag to download MinIO Server image
   image: {{ .Values.image.name }}:{{ .Values.image.tag }}
