@@ -6,9 +6,6 @@
 replicas:
   count: 1
 
-
-
-
 nameOverride: ""
 fullnameOverride: ""
 
@@ -60,3 +57,5 @@ istio:
 monitoring:
   enabled: false
   namespace: monitoring
+
+mcImage: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2021-03-23T05-46-11Z
