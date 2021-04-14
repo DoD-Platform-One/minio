@@ -6,6 +6,8 @@
 replicas:
   count: 1
 
+vsname: minio
+hostname: bigbang.dev
 nameOverride: ""
 fullnameOverride: ""
 
@@ -58,7 +60,7 @@ istio:
     gateways:
       - istio-system/main
     hosts:
-#      -  .Values.istio.virtualService.name }.{ .Values.hostname
+      -  minio.{{ .Values.hostname }}
     service: ""
     port: ""
     namespace: ""
