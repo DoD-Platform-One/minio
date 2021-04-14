@@ -6,7 +6,6 @@
 replicas:
   count: 1
 
-vsname: minio
 hostname: bigbang.dev
 nameOverride: ""
 fullnameOverride: ""
