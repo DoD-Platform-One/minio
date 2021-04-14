@@ -4,11 +4,25 @@ kind: VirtualService
 metadata:
   name: {{ template "minio.fullname" . }}
   namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ template "minio.fullname" . }}
+    {{- include "minio.labels" . | nindent 4 }}
+  {{- if .Values.istio.virtualService.labels }}
+    {{ toYaml .Values.istio.virtualservice.labels | indent 4 }}
+  {{- end }}
+  {{- if .Values.istio.virtualService.annotations }}
+  annotations:
+    {{ toYaml .Values.istio.virtualService.annotations | indent 2 }}
+  {{- end }}
 spec:
   gateways:
-    - istio-system/main
+  {{- range .Values.istio.virtualService.gateways }}
+  - {{ . }}
+  {{- end }}
   hosts:
-    - {{ .Values.istio.virtualService.name }}.{{ .Values.hostname }}
+  {{- range .Values.istio.virtualService.hosts }}
+  - {{ tpl . $}}
+  {{- end }}
   http:
     - match:
         - uri:
@@ -32,4 +46,3 @@ spec:
             port:
               number: {{ .Values.service.port }}
 {{- end }}
-
