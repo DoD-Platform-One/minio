@@ -32,7 +32,7 @@ Create chart name and version as used by the chart label.
 
 {{/*
 Common labels
-*/}}pushd ~
+*/}}
 {{- define "minio.labels" -}}
 helm.sh/chart: {{ include "minio.chart" . }}
 {{ include "minio.selectorLabels" . }}
