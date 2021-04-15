@@ -3,6 +3,9 @@
 2.0.9-bb.9
 Added Virtual Service Parameters
 
+2.0.9-bb.8
+Added security context for minio
+
 2.0.9-bb.7
 Added helm tests for mc and cypress
 
