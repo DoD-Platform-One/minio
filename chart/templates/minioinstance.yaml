@@ -113,3 +113,7 @@ spec:
   ## Affinity settings for MinIO pods. Read more about affinity
   ## here: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity.
   # affinity:
+  securityContext:
+    runAsUser: 1001
+    runAsGroup: 1001
+    fsGroup: 1001
