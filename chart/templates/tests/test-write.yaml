@@ -14,12 +14,12 @@ spec:
   containers:
     - name: {{ .Release.Name }}-credentials-test
       image: {{.Values.mcImage }}
-      imagePullPolicy: {{ .Values.image.imagePullPolicy | quote }}
+      imagePullPolicy: {{ .Values.tenants.image.imagePullPolicy | quote }}
       env:
         - name: MINIO_PORT
-          value: {{ .Values.service.port | quote }}
+          value: {{ include "minio.servicePort" . | trim | quote }}
         - name: MINIO_HOST
-          value: {{ include "minio.serviceName" . }}
+          value: {{ include "minio.serviceName" . | trim | quote }}
         - name: SECRET_KEY
           valueFrom:
             secretKeyRef:
@@ -35,6 +35,8 @@ spec:
         - -ec
         - |-
             set -x
+            # stall the ensure that the instances are started.
+            sleep 60
             mc config host add bigbang http://${MINIO_HOST}:${MINIO_PORT} ${ACCESS_KEY} ${SECRET_KEY}
             # cleanup from pervious runs
             mc rb bigbang/foobar --force || true 

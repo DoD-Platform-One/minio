@@ -1,8 +1,14 @@
 imagePullSecrets:
-  - name: private-registry-mil
+  - name: private-registry
+
+tenants:
+  imagePullSecret:
+    name: private-registry
+
 
 istio:
   enabled: true
   virtualService:
     enabled: true
     name: minio
+

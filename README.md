@@ -2,7 +2,7 @@
 
 MinIO is a high performance, distributed object storage system. It is software-defined, runs on industry standard hardware and is 100% open source under the Apache V2 license.
 
-* Operator version based on: 2.0.9
+* Operator version based on: 4.0.4
 * Instance deployment version:  RELEASE.2020-11-19T23-48-16Z
 
 ## Open Source Documentation
@@ -33,14 +33,10 @@ Th default root credentials are spcified in secret name in the above value.   Th
 
 This helm chart create a default secret that will be used if none is specified.
 
-### service name override
-Internal service name for minio instance.  This is the full name of the service used to connect to Minio from 
-within the cluster. If not specified, the service name will be the default full name of the minio instance.
+## New set of deployment values
 
-```
-service:
-  nameOverride: ""
-```
+This release of the Minio instance is based on the Minio 4.0.4 Operator which creates a CRD for deploying the instance.  
+The CRD is now named "tenant" and it's values more comprehensive than the 2.0.9 deploymnet. 
 
 ## Deployment
 ```

@@ -33,13 +33,13 @@ spec:
   containers:
     - name: {{ .Release.Name }}-ui-test
       image: registry.dso.mil/platform-one/big-bang/pipeline-templates/pipeline-templates/cypress/included:5.0.0
-      imagePullPolicy: {{ .Values.image.imagePullPolicy | quote }}
+      imagePullPolicy: {{ .Values.tenants.image.imagePullPolicy | quote }}
       workingDir: /e2e
       env:
         - name: HOST
-          value: {{ .Values.service.port | quote }}
+          value: {{ include "minio.serviceName" . | quote }}
         - name: MINIO_HOST
-          value: {{ include "minio.serviceName" . }}
+          value: {{ include "minio.serviceName" . | quote }}
         - name: cypress_secretkey
           valueFrom:
             secretKeyRef:
@@ -51,7 +51,7 @@ spec:
               name: {{ .Values.minioRootCreds }}
               key: accesskey
         - name: cypress_url
-          value: "http://{{ include "minio.serviceName" . }}:{{ .Values.service.port }}"
+          value: http://{{ include "minio.serviceName" . | trim }}:{{ include "minio.servicePort" . | trim }}
       args:
       - "--"
       - "--reporter-options=list"

@@ -2,7 +2,7 @@
 Expand the name of the chart.
 */}}
 {{- define "minio.name" -}}
-{{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
+{{- default .Chart.Name | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
@@ -11,15 +11,11 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 If release name contains chart name it will be used as a full name.
 */}}
 {{- define "minio.fullname" -}}
-{{- if .Values.fullnameOverride }}
-{{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
-{{- else }}
-{{- $name := default .Chart.Name .Values.nameOverride }}
+{{- $name := default .Chart.Name }}
 {{- if contains $name .Release.Name }}
 {{- .Release.Name | trunc 63 | trimSuffix "-" }}
 {{- else }}
 {{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" }}
-{{- end }}
 {{- end }}
 {{- end }}
 
@@ -62,9 +58,22 @@ Create the name of the service account to use
 {{- end }}
 
 {{/*
-Create the name of the service used to access the UI
+Create the name of the service used to access the Minio object UI.
+Note: the Minio operator has a fixed name of "minio" for the service it creates.
 */}}
 {{- define "minio.serviceName" -}}
-{{- default (include "minio.fullname" .) .Values.service.nameOverride }}
+minio
+{{- end }}
+
+{{/*
+Create the port used to communicate with the Minio service.
+Note: the Minio operator has a fixed name of "minio" for the service it creates.
+*/}}
+{{- define "minio.servicePort" -}}
+{{- if or .Values.tenants.certificate.requestAutoCert .Values.tenants.certificate.externalCertSecret }}
+443
+{{- else }}
+80
+{{- end }}
 {{- end }}
 

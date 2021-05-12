@@ -1,5 +1,9 @@
 #minio
 
+4.0.4-bb.1
+* Upgraded deployment of Minio using the Minio 4.0.4 operator.
+* Added delay in test startup due to time delay to startup minio instances   
+
 2.0.9-bb.9
 Added Virtual Service Parameters
 
