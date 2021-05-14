@@ -1,14 +1,32 @@
-imagePullSecrets:
-  - name: private-registry
-
-tenants:
-  imagePullSecret:
-    name: private-registry
-
-
-istio:
-  enabled: true
-  virtualService:
-    enabled: true
-    name: minio
-
+bbtests:
+  cypress:
+    artifacts: true
+    envs:
+      cypress_url: 'http://{{ include "minio.serviceName" . | trim }}:{{ include "minio.servicePort" . | trim }}'
+    secretEnvs:
+      - name: cypress_secretkey
+        valueFrom:
+          secretKeyRef:
+            name: "{{ .Values.tenants.secrets.name }}"
+            key: secretkey
+      - name: cypress_accesskey
+        valueFrom:
+          secretKeyRef:
+            name: "{{ .Values.tenants.secrets.name }}"
+            key: accesskey
+  scripts:
+    image: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2021-03-23T05-46-11Z
+    envs:
+      MINIO_PORT: '{{ include "minio.servicePort" . | trim }}'
+      MINIO_HOST: '{{ include "minio.serviceName" . | trim }}'
+    secretEnvs:
+      - name: SECRET_KEY
+        valueFrom:
+          secretKeyRef:
+            name: "{{ .Values.tenants.secrets.name }}"
+            key: secretkey
+      - name: ACCESS_KEY
+        valueFrom:
+          secretKeyRef:
+            name: "{{ .Values.tenants.secrets.name }}"
+            key: accesskey

@@ -26,9 +26,8 @@ hostname: bigbang.dev
 #  accessModes: ReadWriteOnce
 #  storage: 1Gi  # scale down for dev
 
-minioRootCreds: default-minio-creds-secret
-
-imagePullSecrets: [ ]
+imagePullSecrets:
+  - name: private-registry
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -66,8 +65,6 @@ monitoring:
   enabled: false
   namespace: monitoring
 
-mcImage: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2021-03-23T05-46-11Z
-
 
 ## MinIO Tenant Definition
 tenants:
@@ -79,7 +76,8 @@ tenants:
     repository: registry1.dso.mil/ironbank/opensource/minio/minio
     tag: RELEASE.2020-11-19T23-48-16Z
     pullPolicy: "IfNotPresent"
-  imagePullSecret: []
+  imagePullSecret:
+    name: private-registry
     ## If a scheduler is specified here, Tenant pods will be dispatched by specified scheduler.
     ## If not specified, the Tenant pods will be dispatched by default scheduler.
     ##scheduler:
@@ -99,9 +97,13 @@ tenants:
     ## Configure resource requests and limits for MinIO containers
   resources: {}
     ## Configure security context
-  securityContext: {}
+    ## BB Note: Defaults for Ironbank image are 1001 for user, group, and fsGroup
+  securityContext:
+    runAsUser: 1001
+    runAsGroup: 1001
+    fsGroup: 1001
   secrets:
-    name: default-minio-creds-secret
+    name: minio-creds-secret
     accessKey: ThisIsAVeryLongPasswordForExample
     secretKey: ThisIsAVeryLongPasswordForExample
   metrics:
@@ -178,7 +180,7 @@ tenants:
       pullPolicy: IfNotPresent
     replicaCount: 1
     secrets:
-      name: console-secret
+      name: minio-console-secret
       passphrase: ThisIsAVeryLongPasswordForExample
       salt: ThisIsAVeryLongPasswordForExample
       accessKey: ThisIsAVeryLongPasswordForExample
