@@ -177,10 +177,10 @@ tenants:
       label: minio-svc
     minioServiceAnnotations:
       v2.min.io: minio-svc
-    consoleServiceLabels:
-      label: console-svc
-    consoleServiceAnnotations:
-      v2.min.io: console-svc
+    # consoleServiceLabels:
+    #   label: console-svc
+    # consoleServiceAnnotations:
+    #   v2.min.io: console-svc
 
     ## Add environment variables to be set in MinIO container (https://github.com/minio/minio/tree/master/docs/config)
   env: {}
@@ -192,6 +192,7 @@ tenants:
     ## Define configuration for Console (Graphical user interface for MinIO)
     ## Refer https://github.com/minio/console
   console:
+    enabled: false
     image:
       repository: minio/console
       tag: v0.6.3
@@ -199,7 +200,7 @@ tenants:
     replicaCount: 1
     secrets:
       name: minio-console-secret
-      passphrase: ThisIsAVeryLongPasswordForExample
-      salt: ThisIsAVeryLongPasswordForExample
-      accessKey: ThisIsAVeryLongPasswordForExample
-      secretKey: ThisIsAVeryLongPasswordForExample
+      passphrase: ThisIsAVeryLongConsolePasswordForExample
+      salt: ThisIsAVeryLongConsolePasswordForExample
+      accessKey: ThisIsAVeryLongConsolePasswordForExample
+      secretKey: ThisIsAVeryLongConsolePasswordForExample

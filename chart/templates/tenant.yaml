@@ -40,7 +40,7 @@ spec:
     name: {{ .Values.tenants.secrets.name }}
 
   ## Specification for MinIO Pool(s) in this Tenant.
-  {{ range .Values.tenants.pools }}
+  {{- range .Values.tenants.pools }}
   pools:
     ## Servers specifies the number of MinIO Tenant Pods / Servers in this pool.
     ## For standalone mode, supply 1. For distributed mode, supply 4 or more.
@@ -71,7 +71,7 @@ spec:
       {{- with .tolerations }}
       tolerations:
         {{ toYaml . | nindent 8 }}
-      {{ end }}
+      {{- end }}
 
       ## nodeSelector parameters for MinIO Pods. It specifies a map of key-value pairs. For the pod to be
       ## eligible to run on a node, the node must have each of the
@@ -82,7 +82,7 @@ spec:
       {{- with .nodeSelector }}
       nodeSelector:
         {{ toYaml . | nindent 8 }}
-      {{ end }}
+      {{- end }}
 
       ## Affinity settings for MinIO pods. Read more about affinity
       ## here: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity.
@@ -99,7 +99,7 @@ spec:
       {{- with .affinity }}
       affinity:
         {{ toYaml . | nindent 8 }}
-      {{ end }}
+      {{- end }}
       #   podAntiAffinity:
       #     requiredDuringSchedulingIgnoredDuringExecution:
       #     - labelSelector:
@@ -121,7 +121,7 @@ spec:
       {{- with .resources }}
       resources:
         {{ toYaml . | nindent 8 }}
-      {{ end }}
+      {{- end }}
 
       ## Configure security context
       #securityContext:
@@ -131,7 +131,7 @@ spec:
       {{- with .securityContext }}
       securityContext:
         {{ toYaml . | nindent 8 }}
-      {{ end }}
+      {{- end }}
   {{ end }}
 
   ## Mount path where PV will be mounted inside container(s).
@@ -203,12 +203,13 @@ spec:
   ## PriorityClassName indicates the Pod priority and hence importance of a Pod relative to other Pods.
   ## This is applied to MinIO pods only.
   ## Refer Kubernetes documentation for details https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/#priorityclass/
-  {{ if .Values.tenants.priorityClassName }}
+  {{- if .Values.tenants.priorityClassName }}
   priorityClassName: {{ .Values.tenants.priorityClassName }}
-  {{ end }}
+  {{- end }}
 
   ## Define configuration for Console (Graphical user interface for MinIO)
   ## Refer https://github.com/minio/console
+  {{- if .Values.tenants.console.enabled }}
   console:
     image: {{ .Values.tenants.console.image.repository }}:{{ .Values.tenants.console.image.tag }}
     replicas: {{ .Values.tenants.console.replicaCount }}
@@ -218,3 +219,4 @@ spec:
     securityContext:
       {{ toYaml . | nindent 6 }}
     {{ end }}
+  {{- end }}
