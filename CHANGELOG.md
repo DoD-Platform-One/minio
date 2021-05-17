@@ -4,6 +4,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [4.0.4-bb.3]
+### Fixed
+- Default values at only one of the levels needed for tenant spec
+
 ## [4.0.4-bb.2]
 ### Changed
 - Migrated to new Helm library for testing
