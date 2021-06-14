@@ -65,6 +65,11 @@ monitoring:
   enabled: false
   namespace: monitoring
 
+networkPolicies:
+  enabled: false
+  ingressLabels:
+    app: istio-ingressgateway
+    istio: ingressgateway
 
 ## MinIO Tenant Definition
 tenants:

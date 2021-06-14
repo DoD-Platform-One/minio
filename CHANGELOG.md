@@ -4,6 +4,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [4.0.4-bb.5] - 2021-06-14
+### Added
+- Added network policies
+
 ## [4.0.4-bb.4]
 ### Added
 - Conditional for console enabled / disabled since upstream image is being used
