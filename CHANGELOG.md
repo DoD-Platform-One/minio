@@ -1,8 +1,14 @@
 # Changelog
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v## [2.0.0.html).
-
----
+## [4.1.2-bb.1] - 2021-7-21
+### Updated & Upgraded
+- Added infrastructure to support a phases upgrade from version 2.0.9 to version 4.1.2
+- NOTE/IMPORTANT: an backup restore of data is required to upgrade from 2.0.9 to 4.1.2
+- Added infrastructre and use of new "tenant v2" CRD as handled by the Minio Operator 4.1.2
+- Updated documentation
+- Refactored secrets to streamline their generation
+- Enabled Minio Operator 4.1.2 to create services for tenant deployment
+- Please note the storage requirements in the README for deploying this instance.
 
 ## [4.0.4-bb.5] - 2021-06-14
 ### Added

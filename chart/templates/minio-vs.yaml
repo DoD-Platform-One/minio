@@ -24,19 +24,19 @@ spec:
   - {{ tpl . $}}
   {{- end }}
   http:
-    - match:
-        - uri:
-            prefix: /minio/prometheus/metrics
-      route:
-        - destination:
-            host: {{ include "minio.serviceName" . }}
-            port:
-              number: {{ include "minio.servicePort" . | trim }}
-      fault:
-        abort:
-          percentage:
-            value: 100
-          httpStatus: 403
+    #- match:
+    #    - uri:
+    #        prefix: /minio/prometheus/metrics
+    #  route:
+    #    - destination:
+    #        host: {{ include "minio.serviceName" . }}
+    #        port:
+    #          number: {{ include "minio.servicePort" . | trim }}
+    #  fault:
+    #    abort:
+    #      percentage:
+    #        value: 100
+    #      httpStatus: 403
     - match:
         - uri:
             prefix: /

@@ -61,8 +61,12 @@ Create the name of the service account to use
 Create the name of the service used to access the Minio object UI.
 Note: the Minio operator has a fixed name of "minio" for the service it creates.
 */}}
-{{- define "minio.serviceName" -}}
+{{- define "minio.serviceName" }}
+{{- if .Values.upgradeTenants.enabled -}}
 minio
+{{- else -}}
+{{- default (include "minio.fullname" .) .Values.service.nameOverride }}
+{{- end }}
 {{- end }}
 
 {{/*

@@ -31,3 +31,7 @@ bbtests:
           secretKeyRef:
             name: "{{ .Values.tenants.secrets.name }}"
             key: accesskey
+
+# Enable use of new tenant CRD from the 4.1.x release
+upgradeTenants:
+  enabled: true

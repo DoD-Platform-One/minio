@@ -1,7 +1,0 @@
-apiVersion: operator.min.io/v1
-kind: MinIOInstance
-metadata:
-  name: minio
-spec:
-  # use IronBank hardened image
-  image: registry.dsop.io/platform-one/apps/minio/instance:RELEASE.2020-07-02T00-15-09Z
