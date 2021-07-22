@@ -1,32 +1,8 @@
-apiVersion: v1
-kind: Secret
-metadata:
-  name: minio-creds-secret
-type: Opaque
-data:
-  accesskey: bWluaW8= # base 64 encoded "minio" (echo -n 'minio' | base64)
-  secretkey: bWluaW8xMjM= # based 64 encoded "minio123" (echo -n 'minio123' | base64)
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: minio-service
-spec:
-  type: ClusterIP
-  ports:
-    - port: 9000
-      targetPort: 9000
-      protocol: TCP
-      # Optional field
-      # By default and for convenience, the Kubernetes control plane will allocate a port from a range (default: 30000-32767)
-      # nodePort: 30007
-  selector:
-    app: minio
----
+{{- if not .Values.upgradeTenants.enabled }}
 apiVersion: operator.min.io/v1
 kind: MinIOInstance
 metadata:
-  name: minio
+  name: {{ include "minio.fullname" . }}
 ## If specified, MinIOInstance pods will be dispatched by specified scheduler.
 ## If not specified, the pod will be dispatched by default scheduler.
 # scheduler:
@@ -36,13 +12,27 @@ spec:
   metadata:
     ## Optionally pass labels to be applied to the statefulset pods
     labels:
-      app: minio
+      app: {{ include "minio.fullname" . }}
+      {{- include "minio.labels" . | nindent 6 }}
+    {{- with .Values.podAnnotations }}
     annotations:
       prometheus.io/path: /minio/prometheus/metrics
       prometheus.io/port: "9000"
       prometheus.io/scrape: "true"
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+  {{- if .Values.affinity }}
+      affinity:
+{{ toYaml .Values.affinity | indent 8 }}
+{{- end }}
+    {{- if .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml .Values.nodeSelector | indent 8 }}
+      {{- end }}
+
   ## Registry location and Tag to download MinIO Server image
-  image: minio/minio:RELEASE.2020-07-13T18-09-56Z
+  image: {{ .Values.image.name }}:{{ .Values.image.tag }}
+  serviceAccountName: {{ include "minio.serviceAccountName" . }}
   ## A ClusterIP Service will be created with the given name
   serviceName: minio-internal-service
   zones:
@@ -50,9 +40,10 @@ spec:
       ## Number of MinIO servers/pods in this zone.
       ## For standalone mode, supply 1. For distributed mode, supply 4 or more.
       ## Note that the operator does not support upgrading from standalone to distributed mode.
-      servers: 4
+      servers: {{ .Values.zones.servers }}
   ## Supply number of volumes to be mounted per MinIO server instance.
-  volumesPerServer: 4
+  ## 2 is minimum volumes with 3 servers
+  volumesPerServer: {{ .Values.volumesPerServer }}
   ## Mount path where PV will be mounted inside container(s). Defaults to "/export".
   mountPath: /export
   ## Sub path inside Mount path where MinIO starts. Defaults to "".
@@ -65,13 +56,13 @@ spec:
       name: data
     spec:
       accessModes:
-        - ReadWriteOnce
+        - {{ .Values.volumeClaimTemplate.accessModes}}
       resources:
         requests:
-          storage: 1Ti
+          storage: {{ .Values.volumeClaimTemplate.storage}}
   ## Secret with credentials to be used by MinIO instance.
   credsSecret:
-    name: minio-creds-secret
+    name: {{ .Values.minioRootCreds }}
   ## PodManagement policy for pods created by StatefulSet. Can be "OrderedReady" or "Parallel"
   ## Refer https://kubernetes.io/docs/tutorials/stateful-application/basic-stateful-set/#pod-management-policy
   ## for details. Defaults to "Parallel"
@@ -97,7 +88,9 @@ spec:
   #    operator: Equal
   #    value: storage
   ## Add environment variables to be set in MinIO container (https://github.com/minio/minio/tree/master/docs/config)
-  # env:
+  env:
+    - name: MINIO_PROMETHEUS_AUTH_TYPE
+      value: "public"
     # - name: MINIO_BROWSER
     #   value: "off" # to turn-off browser
     # - name: MINIO_STORAGE_CLASS_STANDARD
@@ -122,3 +115,8 @@ spec:
   ## Affinity settings for MinIO pods. Read more about affinity
   ## here: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity.
   # affinity:
+  securityContext:
+    runAsUser: 1001
+    runAsGroup: 1001
+    fsGroup: 1001
+  {{- end }}

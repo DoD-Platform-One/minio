@@ -1,3 +1,4 @@
+{{- if .Values.upgradeTenants.enabled }}
 apiVersion: minio.min.io/v2
 kind: Tenant
 metadata:
@@ -7,6 +8,7 @@ metadata:
   ## Optionally pass labels to be applied to the statefulset pods
   labels:
     app: {{ template "minio.fullname" . }}
+    test: "test1"
     {{- include "minio.labels" . | nindent 4 }}
   {{- if .Values.istio.virtualService.labels }}
   {{ toYaml .Values.istio.virtualservice.labels | indent 4 }}
@@ -14,9 +16,9 @@ metadata:
   {{- if .Values.istio.virtualService.annotations }}
   ## Annotations for MinIO Tenant Pods
   annotations:
-    prometheus.io/path: /minio/prometheus/metrics
-    prometheus.io/port: "9000"
-    prometheus.io/scrape: "true"
+  #  prometheus.io/path: /minio/v2/metrics/cluster
+  #  prometheus.io/port: "9000"
+  #  prometheus.io/scrape: "true"
     {{ toYaml .Values.istio.virtualService.annotations | indent 4 }}
   {{- end }}
 
@@ -61,6 +63,7 @@ spec:
           resources:
             requests:
               storage: {{ .size }}
+          #storageClassName: {{ .storageClassName}}
 
       ## Used to specify a toleration for a pod
       # tolerations:
@@ -174,6 +177,13 @@ spec:
   ## for details.
   podManagementPolicy: {{ .Values.tenants.podManagementPolicy }}
 
+  ## PrometheusOperator enables the Minio Operator to create the Prometheus serviceMonitor objects to scrape
+  ## metrics from the tenant
+  prometheusOperator:
+    labels:
+      app.kubernetes.io/component: "monitoring"
+      {{ include "minio.labels" . | nindent 6 }}
+
   ## serviceMetadata allows passing additional labels and annotations to MinIO and Console specific
   ## services created by the operator.
   {{- with .Values.tenants.serviceMetadata }}
@@ -185,7 +195,9 @@ spec:
   {{- end }}
 
   ## Add environment variables to be set in MinIO container (https://github.com/minio/minio/tree/master/docs/config)
-  # env:
+  #env:
+  #  - name: MINIO_PROMETHEUS_AUTH_TYPE
+  #    value: "public"
   # - name: MINIO_BROWSER
   #   value: "off" # to turn-off browser
   # - name: MINIO_STORAGE_CLASS_STANDARD
@@ -220,3 +232,4 @@ spec:
       {{ toYaml . | nindent 6 }}
     {{ end }}
   {{- end }}
+{{- end }}

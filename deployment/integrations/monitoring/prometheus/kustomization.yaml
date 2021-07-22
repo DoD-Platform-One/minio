@@ -1,4 +1,0 @@
-resources:
-  - minioServiceMonitor.yaml
-  - role.yaml
-  - roleBinding.yaml

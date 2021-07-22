@@ -1,29 +1,17 @@
 apiVersion: v2
-
-name: minio-instance
-
-description: |-
-  A Helm chart for deploying the Minio instances based on use of the Minio operator
-
-#home: https://github.com/elastic/cloud-on-k8s
-
 type: application
-
-version: 4.0.4-bb.5
-
-appVersion: RELEASE.2020-11-19T23-48-16Z
-
-kubeVersion: ">=1.17.0-0"
-
+name: minio-instance
+version: 4.1.2-bb.1
+appVersion: v4.1.2
+description: A Helm chart for MinIO based on Minio Operator 4.1.2
+home: https://min.io
+icon: https://min.io/resources/img/logo/MINIO_wordmark.png
 keywords:
-  - Minio
-  - Instance
-
+- storage
+- object-storage
+- S3
 maintainers:
-  - name: me
-    email:
-
-dependencies:
-  - name: bb-test-lib
-    version: "0.5.0"
-    repository: "oci://registry.dso.mil/platform-one/big-bang/pipeline-templates/pipeline-templates"
+- email: dev@minio.io
+  name: MinIO, Inc
+sources:
+- https://github.com/minio/operator
