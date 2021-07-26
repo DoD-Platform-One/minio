@@ -35,3 +35,9 @@ bbtests:
 # Enable use of new tenant CRD from the 4.1.x release
 upgradeTenants:
   enabled: true
+networkPolocies:
+  enabled: true
+istio:
+  enabled: true
+monitoring:
+  enabled: true

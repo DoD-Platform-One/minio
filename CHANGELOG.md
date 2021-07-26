@@ -1,5 +1,9 @@
 # Changelog
 
+## [4.1.2-bb.2] - 2021-7-23
+### Fixes
+- minor fixes to tenant and virtual service templates
+
 ## [4.1.2-bb.1] - 2021-7-21
 ### Updated & Upgraded
 - Added infrastructure to support a phases upgrade from version 2.0.9 to version 4.1.2
