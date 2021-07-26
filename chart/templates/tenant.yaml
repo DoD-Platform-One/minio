@@ -8,19 +8,17 @@ metadata:
   ## Optionally pass labels to be applied to the statefulset pods
   labels:
     app: {{ template "minio.fullname" . }}
-    test: "test1"
     {{- include "minio.labels" . | nindent 4 }}
   {{- if .Values.istio.virtualService.labels }}
   {{ toYaml .Values.istio.virtualservice.labels | indent 4 }}
   {{- end }}
-  {{- if .Values.istio.virtualService.annotations }}
+  {{ if or .Values.monitoring.enabled .Values.tenants.metrics.enabled }}
   ## Annotations for MinIO Tenant Pods
   annotations:
-  #  prometheus.io/path: /minio/v2/metrics/cluster
-  #  prometheus.io/port: "9000"
-  #  prometheus.io/scrape: "true"
-    {{ toYaml .Values.istio.virtualService.annotations | indent 4 }}
-  {{- end }}
+    prometheus.io/path: /minio/v2/metrics/cluster
+    prometheus.io/port: {{ .Values.tenants.metrics.port |quote }}
+    prometheus.io/scrape: "true"
+  {{ end }}
 
 ## If a scheduler is specified here, Tenant pods will be dispatched by specified scheduler.
 ## If not specified, the Tenant pods will be dispatched by default scheduler.
@@ -177,12 +175,14 @@ spec:
   ## for details.
   podManagementPolicy: {{ .Values.tenants.podManagementPolicy }}
 
+  {{ if or .Values.monitoring.enabled .Values.tenants.metrics.enabled }}
   ## PrometheusOperator enables the Minio Operator to create the Prometheus serviceMonitor objects to scrape
   ## metrics from the tenant
   prometheusOperator:
     labels:
       app.kubernetes.io/component: "monitoring"
       {{ include "minio.labels" . | nindent 6 }}
+  {{- end }}
 
   ## serviceMetadata allows passing additional labels and annotations to MinIO and Console specific
   ## services created by the operator.

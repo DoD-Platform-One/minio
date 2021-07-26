@@ -49,6 +49,7 @@ monitoring:
 
 networkPolicies:
   enabled: false
+  controlPlaneCidr: 0.0.0.0/0
   ingressLabels:
     app: istio-ingressgateway
     istio: ingressgateway
