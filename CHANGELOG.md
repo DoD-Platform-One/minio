@@ -1,5 +1,9 @@
 # Changelog
 
+## [4.1.2-bb.3] - 2021-7-26
+### Fixes
+- remove incorrect annotations from tenant
+
 ## [4.1.2-bb.2] - 2021-7-23
 ### Fixes
 - minor fixes to tenant and virtual service templates
