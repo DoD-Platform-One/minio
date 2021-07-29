@@ -1,5 +1,9 @@
 # Changelog
 
+## [4.1.2-bb.4] - 2021-7-28
+### Added
+- Add openshift toggle. If it's set, add port 5353 egress rule.
+
 ## [4.1.2-bb.3] - 2021-7-26
 ### Fixes
 - remove incorrect annotations from tenant
