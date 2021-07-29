@@ -235,3 +235,5 @@ tenants:
       salt: SECRET
       accessKey: YOURCONSOLEACCESS
       secretKey: YOURCONSOLESECRET
+
+openshift: false
