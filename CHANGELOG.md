@@ -1,5 +1,9 @@
 # Changelog
 
+## [4.1.2-bb.5] - 2021-8-18
+### Added
+- Add resource requests and resource limits to Minio containers
+
 ## [4.1.2-bb.4] - 2021-7-28
 ### Added
 - Add openshift toggle. If it's set, add port 5353 egress rule.

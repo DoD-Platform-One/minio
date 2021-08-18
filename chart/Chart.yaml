@@ -1,7 +1,7 @@
 apiVersion: v2
 type: application
 name: minio-instance
-version: 4.1.2-bb.4
+version: 4.1.2-bb.5
 appVersion: v4.1.2
 description: A Helm chart for MinIO based on Minio Operator 4.1.2
 home: https://min.io
