@@ -1,5 +1,10 @@
 # Changelog
 
+---
+## [4.1.2-bb.6] - 2021-8-25
+### Changed
+- Changed label passthrough in istio network policy
+
 ## [4.1.2-bb.5] - 2021-8-18
 ### Added
 - Add resource requests and resource limits to Minio containers

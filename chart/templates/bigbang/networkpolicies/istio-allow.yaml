@@ -12,8 +12,7 @@ spec:
           app.kubernetes.io/name: istio-controlplane
       podSelector:
         matchLabels:
-          app: istio-ingressgateway
-          istio: ingressgateway
+          {{- toYaml .Values.networkPolicies.ingressLabels | nindent 10}}
     ports:
     - port: {{ .Values.service.port }}
       protocol: TCP
