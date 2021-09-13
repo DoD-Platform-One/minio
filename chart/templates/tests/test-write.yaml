@@ -1,11 +1,11 @@
-{{- include "bb-test-lib.script-configmap.overrides" (list . "minio-test.script-configmap") }}
+{{- include "gluon.tests.script-configmap.overrides" (list . "minio-test.script-configmap") }}
 {{- define "minio-test.script-configmap" }}
 metadata:
   labels:
     {{- include "minio.labels" . | nindent 4 }}
 {{- end }}
 ---
-{{- include "bb-test-lib.script-runner.overrides" (list . "minio-test.script-runner") -}}
+{{- include "gluon.tests.script-runner.overrides" (list . "minio-test.script-runner") -}}
 {{- define "minio-test.script-runner" -}}
 metadata:
   labels:

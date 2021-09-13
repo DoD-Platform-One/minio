@@ -77,7 +77,7 @@ Note: the Minio operator has a fixed name of "minio" for the service it creates.
 {{- if or .Values.tenants.certificate.requestAutoCert .Values.tenants.certificate.externalCertSecret }}
 443
 {{- else }}
-80
+9090
 {{- end }}
 {{- end }}
 
