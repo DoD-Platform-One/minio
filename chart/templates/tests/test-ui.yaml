@@ -1,11 +1,11 @@
-{{- include "bb-test-lib.cypress-configmap.overrides" (list . "minio-test.cypress-configmap") }}
+{{- include "gluon.tests.cypress-configmap.overrides" (list . "minio-test.cypress-configmap") }}
 {{- define "minio-test.cypress-configmap" }}
 metadata:
   labels:
     {{- include "minio.labels" . | nindent 4 }}
 {{- end }}
 ---
-{{- include "bb-test-lib.cypress-runner.overrides" (list . "minio-test.cypress-runner") -}}
+{{- include "gluon.tests.cypress-runner.overrides" (list . "minio-test.cypress-runner") -}}
 {{- define "minio-test.cypress-runner" -}}
 metadata:
   labels:

@@ -1,6 +1,10 @@
 # Changelog
 
 ---
+## [4.2.3-bb.0] - 2021-9-09
+### Changed
+- Update to 4.2.3
+
 ## [4.1.2-bb.6] - 2021-8-25
 ### Changed
 - Changed label passthrough in istio network policy

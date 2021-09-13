@@ -2,7 +2,7 @@
 set -ex
 # stall the ensure that the instances are started.
 sleep 60
-mc config host add bigbang http://${MINIO_HOST}:${MINIO_PORT} ${ACCESS_KEY} ${SECRET_KEY}
+mc config host add bigbang ${MINIO_HOST}:${MINIO_PORT} ${ACCESS_KEY} ${SECRET_KEY}
 # cleanup from pervious runs
 mc rb bigbang/foobar --force || true 
 mc mb bigbang/foobar

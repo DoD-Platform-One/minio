@@ -2,19 +2,14 @@
 
 MinIO is a high performance, distributed object storage system. It is software-defined, runs on industry standard
 hardware and is 100% open source under the Apache V2 license.   This deployment is provided as an example deployment of
-a Minio storage system within a
-
-* Operator version based on: 4.1.2
-* Instance deployment version:  RELEASE.2020-11-19T23-48-16Z (2.0.9 release)
-* Instance deployment version:  RELEASE.2021-06-17T00-10-46Z (4.1.2 release)
+a Minio storage system
 
 ## **CRITICAL UPGRADE INFORMATION - PLEASE READ BEFORE UPGRADING**
 
-
 **This upgrade requires a backup and restore of your Minio instance buckets.   Failure to do so will result in data lose during the upgrade.**
 
-By default, the update of the Minio Instance helm chart to V4.1.2 will keep the 2.0.9 instances in place and operational.
-This allow a backup to be performed on the operational Minio Instances.   After the back is complete, an upgrade to the V4.1.2
+By default, the update of the Minio Instance helm chart to V4 will keep the 2.0.9 instances in place and operational.
+This allow a backup to be performed on the operational Minio Instances.   After the back is complete, an upgrade to the V4
 instance is required.   This is accomplished by setting the upgrade key/value [in the values file] (show below) to TRUE.
 
 ```

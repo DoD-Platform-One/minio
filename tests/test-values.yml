@@ -3,7 +3,7 @@ bbtests:
   cypress:
     artifacts: true
     envs:
-      cypress_url: 'http://{{ include "minio.serviceName" . | trim }}:{{ include "minio.servicePort" . | trim }}'
+      cypress_url: 'http://{{ include "minio.fullname" . | trim }}-console:{{ include "minio.servicePort" . | trim }}/login'
     secretEnvs:
       - name: cypress_secretkey
         valueFrom:
@@ -16,10 +16,10 @@ bbtests:
             name: "{{ .Values.tenants.secrets.name }}"
             key: accesskey
   scripts:
-    image: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2021-03-23T05-46-11Z
+    image: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2021-09-02T09-21-27Z
     envs:
-      MINIO_PORT: '{{ include "minio.servicePort" . | trim }}'
-      MINIO_HOST: '{{ include "minio.serviceName" . | trim }}'
+      MINIO_PORT: '80'
+      MINIO_HOST: 'http://minio'
     secretEnvs:
       - name: SECRET_KEY
         valueFrom:
@@ -36,8 +36,4 @@ bbtests:
 upgradeTenants:
   enabled: true
 networkPolocies:
-  enabled: true
-istio:
-  enabled: true
-monitoring:
-  enabled: true
+  enabled: false

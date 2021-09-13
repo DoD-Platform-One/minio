@@ -25,7 +25,7 @@ service:
   # If not specified, the service name will be the default full name of the minio instance.
   nameOverride: ""
   type: ClusterIP
-  port: 9000
+  port: 9090
 
 # Removed ina future release
 podAnnotations: {}
@@ -58,7 +58,7 @@ networkPolicies:
 # once all upgrades are complete.
 image:
   name: registry1.dso.mil/ironbank/opensource/minio/minio
-  tag: RELEASE.2020-11-19T23-48-16Z
+  tag: RELEASE.2021-08-31T05-46-54Z
   pullPolicy: "IfNotPresent"
 
 # This is maintained for compatible upgrade with the 2.0.9 release.   The following service itens will be removed ina future release
@@ -82,22 +82,22 @@ volumeClaimTemplate:
 # once all upgrades are complete.
 minioRootCreds: default-minio-creds-secret
 
-## MinIO Tenant Definition used for 4.1.2 upgrade
+## MinIO Tenant Definition
 tenants:
   # Tenant name
   name: minio
-  ## Registry location and Tag to download MinIO Server image
+   ## Registry location and Tag to download MinIO Server image
   # Configure repo and tag of MinIO Operator Image
   image:
     repository: registry1.dso.mil/ironbank/opensource/minio/minio
-    tag: RELEASE.2021-06-17T00-10-46Z
+    tag: RELEASE.2021-08-31T05-46-54Z
     pullPolicy: "IfNotPresent"
-  ## Customize namespace for tenant deployment
-  #namespace: default
+    ## Customize namespace for tenant deployment
+    #namespace: default
   imagePullSecret:
     name: private-registry
-  ## If a scheduler is specified here, Tenant pods will be dispatched by specified scheduler.
-  ## If not specified, the Tenant pods will be dispatched by default scheduler.
+    ## If a scheduler is specified here, Tenant pods will be dispatched by specified scheduler.
+    ## If not specified, the Tenant pods will be dispatched by default scheduler.
   ##scheduler:
   ##  name:
   scheduler: {}
@@ -122,29 +122,29 @@ tenants:
   #  runAsGroup: 1001
   #  fsGroup: 1001
 
-  ## Specification for MinIO Pool(s) in this Tenant.
+    ## Specification for MinIO Pool(s) in this Tenant.
   pools:
       ## Servers specifies the number of MinIO Tenant Pods / Servers in this pool.
       ## For standalone mode, supply 1. For distributed mode, supply 4 or more.
       ## Note that the operator does not support upgrading from standalone to distributed mode.
     - servers: 4
-        ## volumesPerServer specifies the number of volumes attached per MinIO Tenant Pod / Server.
+      ## volumesPerServer specifies the number of volumes attached per MinIO Tenant Pod / Server.
       volumesPerServer: 4
-        ## size specifies the capacity per volume
+      ## size specifies the capacity per volume
       size: 1Gi
-        ## storageClass specifies the storage class name to be used for this pool
+      ## storageClass specifies the storage class name to be used for this pool
       storageClassName: local-path
-        ## Used to specify a toleration for a pod
+      ## Used to specify a toleration for a pod
       tolerations: {}
-          ## nodeSelector parameters for MinIO Pods. It specifies a map of key-value pairs. For the pod to be
-        ## eligible to run on a node, the node must have each of the
-        ## indicated key-value pairs as labels.
-        ## Read more here: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
+      ## nodeSelector parameters for MinIO Pods. It specifies a map of key-value pairs. For the pod to be
+      ## eligible to run on a node, the node must have each of the
+      ## indicated key-value pairs as labels.
+      ## Read more here: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
       nodeSelector: {}
-        ## Affinity settings for MinIO pods. Read more about affinity
-        ## here: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity.
+      ## Affinity settings for MinIO pods. Read more about affinity
+      ## here: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity.
       affinity: {}
-        ## Configure resource requests and limits for MinIO containers
+      ## Configure resource requests and limits for MinIO containers
       resources:
         requests:
           cpu: 250m
@@ -159,7 +159,7 @@ tenants:
         runAsUser: 1001
         runAsGroup: 1001
         fsGroup: 1001
-  ## Mount path where PV will be mounted inside container(s).
+    ## Mount path where PV will be mounted inside container(s).
   mountPath: /export
 
   ## Sub path inside Mount path where MinIO stores data.
@@ -178,17 +178,21 @@ tenants:
     port: 9000
 
   certificate:
-      ## Use this field to provide a list of Secrets with external certificates. This can be used to to configure
-      ## TLS for MinIO Tenant pods. Create secrets as explained here:
-      ## https://github.com/minio/minio/tree/master/docs/tls/kubernetes#2-create-kubernetes-secret
+    ## Use this field to provide one or more external CA certificates. This is used by MinIO
+    ## to verify TLS connections with other applications:
+    ## https://github.com/minio/minio/tree/master/docs/tls/kubernetes#2-create-kubernetes-secret
+    externalCaCertSecret: {}
+    ## Use this field to provide a list of Secrets with external certificates. This can be used to to configure
+    ## TLS for MinIO Tenant pods. Create secrets as explained here:
+    ## https://github.com/minio/minio/tree/master/docs/tls/kubernetes#2-create-kubernetes-secret
     externalCertSecret: {}
-      ## Enable automatic Kubernetes based certificate generation and signing as explained in
-      ## https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster
+    ## Enable automatic Kubernetes based certificate generation and signing as explained in
+    ## https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster
       ## false = disabled TLS endpoints at the tenants
     requestAutoCert: false
-      ## This field is used only when "requestAutoCert" is set to true. Use this field to set CommonName
-      ## for the auto-generated certificate. Internal DNS name for the pod will be used if CommonName is
-      ## not provided. DNS name format is *.minio.default.svc.cluster.local
+    ## This field is used only when "requestAutoCert" is set to true. Use this field to set CommonName
+    ## for the auto-generated certificate. Internal DNS name for the pod will be used if CommonName is
+    ## not provided. DNS name format is *.minio.default.svc.cluster.local
       ##certConfig:
       ## commonName: ""
       ##  organizationName: []
@@ -197,15 +201,15 @@ tenants:
     ## Enable S3 specific features such as Bucket DNS which would allow `buckets` to be
     ## accessible as DNS entries of form `<bucketname>.minio.default.svc.cluster.local`
   s3:
-      ## This feature is turned off by default
+    ## This feature is turned off by default
     bucketDNS: false
-    ## PodManagement policy for MinIO Tenant Pods. Can be "OrderedReady" or "Parallel"
-    ## Refer https://kubernetes.io/docs/tutorials/stateful-application/basic-stateful-set/#pod-management-policy
-    ## for details.
+  ## PodManagement policy for MinIO Tenant Pods. Can be "OrderedReady" or "Parallel"
+  ## Refer https://kubernetes.io/docs/tutorials/stateful-application/basic-stateful-set/#pod-management-policy
+  ## for details.
   podManagementPolicy: Parallel
-    ## serviceMetadata allows passing additional labels and annotations to MinIO and Console specific
-    ## services created by the operator.
-    ##serviceMetadata: {}
+  ## serviceMetadata allows passing additional labels and annotations to MinIO and Console specific
+  ## services created by the operator.
+  ##serviceMetadata: {}
   serviceMetadata:
     minioServiceLabels:
       label: minio-svc
@@ -216,7 +220,7 @@ tenants:
     # consoleServiceAnnotations:
     #   v2.min.io: console-svc
 
-    ## Add environment variables to be set in MinIO container (https://github.com/minio/minio/tree/master/docs/config)
+  ## Add environment variables to be set in MinIO container (https://github.com/minio/minio/tree/master/docs/config)
   env: {}
     ## PriorityClassName indicates the Pod priority and hence importance of a Pod relative to other Pods.
     ## This is applied to MinIO pods only.
