@@ -7,7 +7,7 @@ hostname: bigbang.dev
 # When true, upgradeTenants enables use of the V4.* Minio Operator CRD for creation of tenants is enabled.
 # The default will be made TRUE in a future release.
 upgradeTenants:
-  enabled: false
+  enabled: true
 
 serviceAccount:
   # Specifies whether a service account should be created

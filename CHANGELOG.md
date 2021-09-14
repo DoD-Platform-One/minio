@@ -1,6 +1,10 @@
 # Changelog
 
 ---
+## [4.2.3-bb.1] - 2021-9-14
+### Changed
+- Setting upgradeTenants to true by default.
+
 ## [4.2.3-bb.0] - 2021-9-09
 ### Changed
 - Update to 4.2.3
