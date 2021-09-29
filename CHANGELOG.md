@@ -1,6 +1,11 @@
 # Changelog
 
 ---
+
+## [4.2.3-bb.2] - 2021-9-29
+### Added
+- NP for operator ingress
+
 ## [4.2.3-bb.1] - 2021-9-14
 ### Changed
 - Setting upgradeTenants to true by default.
