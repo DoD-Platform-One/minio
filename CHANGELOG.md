@@ -1,6 +1,9 @@
 # Changelog
 
 ---
+## [4.2.3-bb.3] - 2021-9-29
+### Added
+- Modify script helm test
 
 ## [4.2.3-bb.2] - 2021-9-29
 ### Added
