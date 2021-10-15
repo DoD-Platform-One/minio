@@ -1,6 +1,10 @@
 # Changelog
 
 ---
+## [4.2.3-bb.4] - 2021-10-14
+### Added
+- Update README with gluon template
+
 ## [4.2.3-bb.3] - 2021-9-29
 ### Added
 - Modify script helm test
