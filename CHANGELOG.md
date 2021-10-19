@@ -1,6 +1,10 @@
 # Changelog
 
 ---
+## [4.2.3-bb.5] - 2021-10-19
+### Fixed
+- Set network policy to the correct port for prometheus scraping
+
 ## [4.2.3-bb.4] - 2021-10-14
 ### Added
 - Update README with gluon template
