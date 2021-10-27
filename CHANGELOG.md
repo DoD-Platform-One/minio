@@ -1,6 +1,10 @@
 # Changelog
 
 ---
+## [4.2.3-bb.6] - 2021-10-19
+### Fixed
+- Fixed pipeline CRD wait script
+
 ## [4.2.3-bb.5] - 2021-10-19
 ### Fixed
 - Set network policy to the correct port for prometheus scraping
