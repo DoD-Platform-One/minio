@@ -2,14 +2,12 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: allow-operator-ingress
+  name: allow-api-ingress
   namespace: {{ .Release.Namespace }}
 spec:
   ingress:
   - from:
-    - namespaceSelector:
-        matchLabels:
-          app.kubernetes.io/name: minioOperator
+    - namespaceSelector: {}
     ports:
     - port: 9000
       protocol: TCP

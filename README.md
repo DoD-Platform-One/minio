@@ -1,6 +1,6 @@
 # minio-instance
 
-![Version: 4.2.3-bb.5](https://img.shields.io/badge/Version-4.2.3--bb.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v4.2.3](https://img.shields.io/badge/AppVersion-v4.2.3-informational?style=flat-square)
+![Version: 4.2.3-bb.7](https://img.shields.io/badge/Version-4.2.3--bb.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v4.2.3](https://img.shields.io/badge/AppVersion-v4.2.3-informational?style=flat-square)
 
 A Helm chart for MinIO based on Minio Operator 4.2.3
 
@@ -10,8 +10,8 @@ A Helm chart for MinIO based on Minio Operator 4.2.3
 * <https://github.com/minio/operator>
 
 ## Learn More
-- [Application Overview](docs/overview.md)
-- [Other Documentation](docs/)
+* [Application Overview](docs/overview.md)
+* [Other Documentation](docs/)
 
 ## Pre-Requisites
 
@@ -44,14 +44,21 @@ helm install minio-instance chart/
 | service.type | string | `"ClusterIP"` |  |
 | service.port | int | `9090` |  |
 | podAnnotations | object | `{}` |  |
-| istio.enabled | bool | `false` |  |
-| istio.virtualService.enabled | bool | `true` |  |
-| istio.virtualService.annotations | object | `{}` |  |
-| istio.virtualService.labels | object | `{}` |  |
-| istio.virtualService.gateways[0] | string | `"istio-system/main"` |  |
-| istio.virtualService.hosts[0] | string | `"minio.{{ .Values.hostname }}"` |  |
-| istio.virtualService.service | string | `""` |  |
-| istio.virtualService.port | string | `""` |  |
+| istio.enabled | bool | `true` |  |
+| istio.console.enabled | bool | `true` |  |
+| istio.console.annotations | object | `{}` |  |
+| istio.console.labels | object | `{}` |  |
+| istio.console.gateways[0] | string | `"istio-system/main"` |  |
+| istio.console.hosts[0] | string | `"minio.{{ .Values.hostname }}"` |  |
+| istio.console.service | string | `""` |  |
+| istio.console.port | string | `""` |  |
+| istio.api.enabled | bool | `true` |  |
+| istio.api.annotations | object | `{}` |  |
+| istio.api.labels | object | `{}` |  |
+| istio.api.gateways[0] | string | `"istio-system/main"` |  |
+| istio.api.hosts[0] | string | `"minio-api.{{ .Values.hostname }}"` |  |
+| istio.api.service | string | `""` |  |
+| istio.api.port | string | `""` |  |
 | monitoring.enabled | bool | `false` |  |
 | monitoring.namespace | string | `"monitoring"` |  |
 | networkPolicies.enabled | bool | `false` |  |
@@ -119,4 +126,4 @@ helm install minio-instance chart/
 
 ## Contributing
 
-Please see the [contributing guide](https://repo1.dso.mil/platform-one/big-bang/bigbang/-/blob/master/CONTRIBUTING.md) if you are interested in contributing to Big Bang.
+Please see the [contributing guide](./CONTRIBUTING.md) if you are interested in contributing.

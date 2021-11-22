@@ -81,3 +81,12 @@ Note: the Minio operator has a fixed name of "minio" for the service it creates.
 {{- end }}
 {{- end }}
 
+{{/*
+Create the port used to communicate with the Minio API service.
+Note: the Minio operator has a fixed name of "minio" for the service it creates.
+*/}}
+{{- define "api.servicePort" -}}
+80
+{{- end }}
+
+
