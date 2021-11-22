@@ -32,7 +32,7 @@ podAnnotations: {}
 
 istio:
   enabled: false
-  virtualService:
+  console:
     enabled: true
     annotations: {}
     labels: {}
@@ -40,6 +40,16 @@ istio:
       - istio-system/main
     hosts:
       -  minio.{{ .Values.hostname }}
+    service: ""
+    port: ""
+  api:
+    enabled: true
+    annotations: {}
+    labels: {}
+    gateways:
+      - istio-system/main
+    hosts:
+      -  minio-api.{{ .Values.hostname }}
     service: ""
     port: ""
 

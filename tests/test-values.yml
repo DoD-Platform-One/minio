@@ -36,4 +36,4 @@ bbtests:
 upgradeTenants:
   enabled: true
 networkPolocies:
-  enabled: false
+  enabled: true

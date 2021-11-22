@@ -1,6 +1,11 @@
 # Changelog
 
 ---
+## [4.2.3-bb.7] - 2021-10-19
+### Added
+- Added virtual service for minio api
+- Modified network polices to allow communication to minio api
+
 ## [4.2.3-bb.6] - 2021-10-19
 ### Fixed
 - Fixed pipeline CRD wait script

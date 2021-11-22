@@ -1,4 +1,4 @@
-{{- if and .Values.istio.enabled .Values.istio.virtualService.enabled -}}
+{{- if and .Values.istio.enabled .Values.istio.console.enabled -}}
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
@@ -7,20 +7,20 @@ metadata:
   labels:
     app: {{ template "minio.fullname" . }}
     {{- include "minio.labels" . | nindent 4 }}
-  {{- if .Values.istio.virtualService.labels }}
-    {{ toYaml .Values.istio.virtualservice.labels | indent 4 }}
+  {{- if .Values.istio.console.labels }}
+    {{ toYaml .Values.istio.console.labels | indent 4 }}
   {{- end }}
-  {{- if .Values.istio.virtualService.annotations }}
+  {{- if .Values.istio.console.annotations }}
   annotations:
-    {{ toYaml .Values.istio.virtualService.annotations | indent 2 }}
+    {{ toYaml .Values.istio.console.annotations | indent 2 }}
   {{- end }}
 spec:
   gateways:
-  {{- range .Values.istio.virtualService.gateways }}
+  {{- range .Values.istio.console.gateways }}
   - {{ . }}
   {{- end }}
   hosts:
-  {{- range .Values.istio.virtualService.hosts }}
+  {{- range .Values.istio.console.hosts }}
   - {{ tpl . $}}
   {{- end }}
   http:
