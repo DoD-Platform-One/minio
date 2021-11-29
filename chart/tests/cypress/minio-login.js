@@ -1,6 +1,6 @@
 describe('Minio Login', function() {
   it('Check Minio Login', function() {
-      cy.visit(Cypress.env('url'), { timeout: 10000 })
+      cy.visit(Cypress.env('url'), { timeout: 15000 })
       // Fill the username
         cy.get('[id*="accessKey"]').eq(1)
         .type(Cypress.env('accesskey'))
