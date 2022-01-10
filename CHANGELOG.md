@@ -1,6 +1,10 @@
 # Changelog
 
 ---
+## [4.2.3-bb.9] - 2022-01-05
+### Changed
+- Added annotations to Tenant 
+
 ## [4.2.3-bb.8] - 2021-11-29
 ### Changed
 - Changed cypress timeout value to 15000 for testing access to UI

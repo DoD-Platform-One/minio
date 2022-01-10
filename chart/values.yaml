@@ -9,6 +9,7 @@ hostname: bigbang.dev
 upgradeTenants:
   enabled: true
 
+annotations: {}
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
