@@ -9,6 +9,10 @@ metadata:
   labels:
     app: {{ template "minio.fullname" . }}
     {{- include "minio.labels" . | nindent 4 }}
+  {{- if .Values.annotations }}
+  annotations:
+    {{- toYaml .Values.annotations | nindent 4 }}
+  {{- end }}
 
 ## If a scheduler is specified here, Tenant pods will be dispatched by specified scheduler.
 ## If not specified, the Tenant pods will be dispatched by default scheduler.
