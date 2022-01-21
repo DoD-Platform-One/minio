@@ -1,6 +1,10 @@
 # Changelog
 
 ---
+## [4.2.3-bb.10] - 2022-01-20
+### Changed
+- Relocated bbtests from `test-values.yaml` to `values.yaml`
+
 ## [4.2.3-bb.9] - 2022-01-05
 ### Changed
 - Added annotations to Tenant 

@@ -1,6 +1,6 @@
 # minio-instance
 
-![Version: 4.2.3-bb.9](https://img.shields.io/badge/Version-4.2.3--bb.9-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v4.2.3](https://img.shields.io/badge/AppVersion-v4.2.3-informational?style=flat-square)
+![Version: 4.2.3-bb.10](https://img.shields.io/badge/Version-4.2.3--bb.10-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v4.2.3](https://img.shields.io/badge/AppVersion-v4.2.3-informational?style=flat-square)
 
 A Helm chart for MinIO based on Minio Operator 4.2.3
 
@@ -123,6 +123,24 @@ helm install minio-instance chart/
 | tenants.console.secrets.accessKey | string | `"YOURCONSOLEACCESS"` |  |
 | tenants.console.secrets.secretKey | string | `"YOURCONSOLESECRET"` |  |
 | openshift | bool | `false` |  |
+| bbtests.enabled | bool | `false` |  |
+| bbtests.cypress.artifacts | bool | `true` |  |
+| bbtests.cypress.envs.cypress_url | string | `"http://{{ include \"minio.fullname\" . | trim }}-console:{{ include \"minio.servicePort\" . | trim }}/login"` |  |
+| bbtests.cypress.secretEnvs[0].name | string | `"cypress_secretkey"` |  |
+| bbtests.cypress.secretEnvs[0].valueFrom.secretKeyRef.name | string | `"{{ .Values.tenants.secrets.name }}"` |  |
+| bbtests.cypress.secretEnvs[0].valueFrom.secretKeyRef.key | string | `"secretkey"` |  |
+| bbtests.cypress.secretEnvs[1].name | string | `"cypress_accesskey"` |  |
+| bbtests.cypress.secretEnvs[1].valueFrom.secretKeyRef.name | string | `"{{ .Values.tenants.secrets.name }}"` |  |
+| bbtests.cypress.secretEnvs[1].valueFrom.secretKeyRef.key | string | `"accesskey"` |  |
+| bbtests.scripts.image | string | `"registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2021-09-02T09-21-27Z"` |  |
+| bbtests.scripts.envs.MINIO_PORT | string | `"80"` |  |
+| bbtests.scripts.envs.MINIO_HOST | string | `"http://minio"` |  |
+| bbtests.scripts.secretEnvs[0].name | string | `"SECRET_KEY"` |  |
+| bbtests.scripts.secretEnvs[0].valueFrom.secretKeyRef.name | string | `"{{ .Values.tenants.secrets.name }}"` |  |
+| bbtests.scripts.secretEnvs[0].valueFrom.secretKeyRef.key | string | `"secretkey"` |  |
+| bbtests.scripts.secretEnvs[1].name | string | `"ACCESS_KEY"` |  |
+| bbtests.scripts.secretEnvs[1].valueFrom.secretKeyRef.name | string | `"{{ .Values.tenants.secrets.name }}"` |  |
+| bbtests.scripts.secretEnvs[1].valueFrom.secretKeyRef.key | string | `"accesskey"` |  |
 
 ## Contributing
 
