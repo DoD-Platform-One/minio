@@ -1,8 +1,8 @@
 # minio-instance
 
-![Version: 4.2.3-bb.10](https://img.shields.io/badge/Version-4.2.3--bb.10-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v4.2.3](https://img.shields.io/badge/AppVersion-v4.2.3-informational?style=flat-square)
+![Version: 4.4.3-bb.0](https://img.shields.io/badge/Version-4.4.3--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v4.4.3](https://img.shields.io/badge/AppVersion-v4.4.3-informational?style=flat-square)
 
-A Helm chart for MinIO based on Minio Operator 4.2.3
+A Helm chart for MinIO Operator
 
 ## Upstream References
 * <https://min.io>
@@ -37,13 +37,13 @@ helm install minio-instance chart/
 |-----|------|---------|-------------|
 | hostname | string | `"bigbang.dev"` |  |
 | upgradeTenants.enabled | bool | `true` |  |
+| annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.name | string | `""` |  |
 | service.nameOverride | string | `""` |  |
 | service.type | string | `"ClusterIP"` |  |
 | service.port | int | `9090` |  |
-| podAnnotations | object | `{}` |  |
 | istio.enabled | bool | `false` |  |
 | istio.console.enabled | bool | `true` |  |
 | istio.console.annotations | object | `{}` |  |
@@ -65,24 +65,17 @@ helm install minio-instance chart/
 | networkPolicies.controlPlaneCidr | string | `"0.0.0.0/0"` |  |
 | networkPolicies.ingressLabels.app | string | `"istio-ingressgateway"` |  |
 | networkPolicies.ingressLabels.istio | string | `"ingressgateway"` |  |
-| image.name | string | `"registry1.dso.mil/ironbank/opensource/minio/minio"` |  |
-| image.tag | string | `"RELEASE.2021-08-31T05-46-54Z"` |  |
-| image.pullPolicy | string | `"IfNotPresent"` |  |
-| zones.servers | int | `3` |  |
-| volumesPerServer | int | `2` |  |
-| volumeClaimTemplate.accessModes | string | `"ReadWriteOnce"` |  |
-| volumeClaimTemplate.storage | string | `"1Gi"` |  |
-| minioRootCreds | string | `"default-minio-creds-secret"` |  |
-| tenants.name | string | `"minio"` |  |
+| openshift | bool | `false` |  |
+| tenants.name | string | `"minio-instance"` |  |
 | tenants.image.repository | string | `"registry1.dso.mil/ironbank/opensource/minio/minio"` |  |
-| tenants.image.tag | string | `"RELEASE.2021-08-31T05-46-54Z"` |  |
+| tenants.image.tag | string | `"RELEASE.2022-01-08T03-11-54Z"` |  |
 | tenants.image.pullPolicy | string | `"IfNotPresent"` |  |
 | tenants.imagePullSecret.name | string | `"private-registry"` |  |
 | tenants.scheduler | object | `{}` |  |
 | tenants.pools[0].servers | int | `4` |  |
 | tenants.pools[0].volumesPerServer | int | `4` |  |
 | tenants.pools[0].size | string | `"1Gi"` |  |
-| tenants.pools[0].storageClassName | string | `"local-path"` |  |
+| tenants.pools[0].storageClassName | string | `""` |  |
 | tenants.pools[0].tolerations | object | `{}` |  |
 | tenants.pools[0].nodeSelector | object | `{}` |  |
 | tenants.pools[0].affinity | object | `{}` |  |
@@ -107,25 +100,18 @@ helm install minio-instance chart/
 | tenants.certificate.certConfig | object | `{}` |  |
 | tenants.s3.bucketDNS | bool | `false` |  |
 | tenants.podManagementPolicy | string | `"Parallel"` |  |
-| tenants.serviceMetadata.minioServiceLabels.label | string | `"minio-svc"` |  |
-| tenants.serviceMetadata.minioServiceAnnotations."v2.min.io" | string | `"minio-svc"` |  |
+| tenants.liveness | object | `{}` |  |
+| tenants.readiness | object | `{}` |  |
+| tenants.exposeServices | object | `{}` |  |
+| tenants.serviceAccountName | string | `""` |  |
+| tenants.prometheusOperator | bool | `false` |  |
+| tenants.logging | object | `{}` |  |
+| tenants.serviceMetadata | object | `{}` |  |
 | tenants.env | object | `{}` |  |
 | tenants.priorityClassName | string | `""` |  |
-| tenants.console.enabled | bool | `false` |  |
-| tenants.console.image.repository | string | `"minio/console"` |  |
-| tenants.console.image.tag | string | `"v0.7.4"` |  |
-| tenants.console.image.pullPolicy | string | `"IfNotPresent"` |  |
-| tenants.console.replicaCount | int | `1` |  |
-| tenants.console.secrets.enabled | bool | `true` |  |
-| tenants.console.secrets.name | string | `"console-secret"` |  |
-| tenants.console.secrets.passphrase | string | `"SECRET"` |  |
-| tenants.console.secrets.salt | string | `"SECRET"` |  |
-| tenants.console.secrets.accessKey | string | `"YOURCONSOLEACCESS"` |  |
-| tenants.console.secrets.secretKey | string | `"YOURCONSOLESECRET"` |  |
-| openshift | bool | `false` |  |
 | bbtests.enabled | bool | `false` |  |
 | bbtests.cypress.artifacts | bool | `true` |  |
-| bbtests.cypress.envs.cypress_url | string | `"http://{{ include \"minio.fullname\" . | trim }}-console:{{ include \"minio.servicePort\" . | trim }}/login"` |  |
+| bbtests.cypress.envs.cypress_url | string | `"http://{{ include \"minio-operator.fullname\" . | trim }}-console:{{ include \"minio-operator.servicePort\" . | trim }}/login"` |  |
 | bbtests.cypress.secretEnvs[0].name | string | `"cypress_secretkey"` |  |
 | bbtests.cypress.secretEnvs[0].valueFrom.secretKeyRef.name | string | `"{{ .Values.tenants.secrets.name }}"` |  |
 | bbtests.cypress.secretEnvs[0].valueFrom.secretKeyRef.key | string | `"secretkey"` |  |

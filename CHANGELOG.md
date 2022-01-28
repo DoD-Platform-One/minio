@@ -1,6 +1,11 @@
 # Changelog
 
 ---
+## [4.4.3-bb.0] - 2022-01-24
+### Changed
+- Update to 4.4.3 -- upstream charts now split on operator/tenant charts -- kpt is used now
+- Charts are now closer to upstream versions
+
 ## [4.2.3-bb.10] - 2022-01-20
 ### Changed
 - Relocated bbtests from `test-values.yaml` to `values.yaml`
