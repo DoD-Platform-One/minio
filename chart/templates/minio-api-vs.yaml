@@ -2,11 +2,11 @@
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: {{ template "minio.fullname" . }}-api
+  name: {{ template "minio-operator.fullname" . }}-api
   namespace: {{ .Release.Namespace }}
   labels:
-    app: {{ template "minio.fullname" . }}
-    {{- include "minio.labels" . | nindent 4 }}
+    app: {{ template "minio-operator.fullname" . }}
+    {{- include "minio-operator.labels" . | nindent 4 }}
   {{- if .Values.istio.api.labels }}
     {{ toYaml .Values.istio.api.labels | indent 4 }}
   {{- end }}
