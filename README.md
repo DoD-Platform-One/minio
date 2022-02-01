@@ -1,6 +1,6 @@
 # minio-instance
 
-![Version: 4.4.3-bb.1](https://img.shields.io/badge/Version-4.4.3--bb.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v4.4.3](https://img.shields.io/badge/AppVersion-v4.4.3-informational?style=flat-square)
+![Version: 4.4.3-bb.2](https://img.shields.io/badge/Version-4.4.3--bb.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v4.4.3](https://img.shields.io/badge/AppVersion-v4.4.3-informational?style=flat-square)
 
 A Helm chart for MinIO Operator
 
@@ -66,7 +66,7 @@ helm install minio-instance chart/
 | networkPolicies.ingressLabels.app | string | `"istio-ingressgateway"` |  |
 | networkPolicies.ingressLabels.istio | string | `"ingressgateway"` |  |
 | openshift | bool | `false` |  |
-| tenants.name | string | `"minio-instance"` |  |
+| tenants.name | string | `"minio"` |  |
 | tenants.image.repository | string | `"registry1.dso.mil/ironbank/opensource/minio/minio"` |  |
 | tenants.image.tag | string | `"RELEASE.2022-01-08T03-11-54Z"` |  |
 | tenants.image.pullPolicy | string | `"IfNotPresent"` |  |
@@ -86,6 +86,7 @@ helm install minio-instance chart/
 | tenants.pools[0].securityContext.runAsUser | int | `1001` |  |
 | tenants.pools[0].securityContext.runAsGroup | int | `1001` |  |
 | tenants.pools[0].securityContext.fsGroup | int | `1001` |  |
+| tenants.pools[0].securityContext.runAsNonRoot | bool | `true` |  |
 | tenants.mountPath | string | `"/export"` |  |
 | tenants.subPath | string | `"/data"` |  |
 | tenants.secrets.enabled | bool | `true` |  |
