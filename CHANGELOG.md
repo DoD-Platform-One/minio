@@ -1,6 +1,11 @@
 # Changelog
 
 ---
+## [4.4.3-bb.1] - 2022-01-31
+### Updated
+- Update Chart.yaml to follow new standardization for release automation
+- Added renovate check to update new standardization
+
 ## [4.4.3-bb.0] - 2022-01-24
 ### Changed
 - Update to 4.4.3 -- upstream charts now split on operator/tenant charts -- kpt is used now
