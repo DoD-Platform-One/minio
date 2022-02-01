@@ -1,6 +1,10 @@
 # Changelog
 
 ---
+## [4.4.3-bb.2] - 2022-02-01
+### Changed
+- Fix a few NPs to bind to all pods and limit ingress on source namespace label
+
 ## [4.4.3-bb.1] - 2022-01-31
 ### Updated
 - Update Chart.yaml to follow new standardization for release automation
