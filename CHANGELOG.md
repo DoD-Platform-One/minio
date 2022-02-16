@@ -1,6 +1,10 @@
 # Changelog
 
 ---
+## [4.4.3-bb.2] - 2022-02-15
+### Fixed
+- Pass through custom annotation to the tenant chart
+
 ## [4.4.3-bb.2] - 2022-02-01
 ### Changed
 - Fix a few NPs to bind to all pods and limit ingress on source namespace label
