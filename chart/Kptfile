@@ -5,7 +5,7 @@ metadata:
 upstream:
   type: git
   git:
-    commit: a5d59a342b7f4d5d1daf5b785326666460ec8a7f
+    commit: 6a79dc041969013c363b357c0cecaf84d402bff3
     repo: https://github.com/minio/operator
     directory: /helm/tenant
-    ref: v4.4.3
+    ref: v4.4.10

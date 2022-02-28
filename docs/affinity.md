@@ -1,20 +1,23 @@
 # Affinity
 
-* [Kubernetes affinity ](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity)
+* [Kubernetes affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity)
 
 Pod constraints for this package is implemented following the Kubernetes affinity documentation. The MinIO operator can constrain a MinIO Pod using `nodeSelector` or the affinity/anti-affinity feature.
 
-## nodeSelector 
+## nodeSelector
+
 In the `values.yaml`, set `nodeSelector` as such:
-```
+
+```YAML
  nodeSelector:
     <key>: <values> 
 ```
 
 ## nodeAffinity
+
 In the `values.yaml`, set `nodeAffinity` as such:
 
-```
+```YAML
 affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
@@ -34,10 +37,12 @@ affinity:
             values:
             - another-node-label-value
 ```
+
 ## podAffinity
+
 In the `values.yaml`, set Pod affinity/antiaffinity as such:
 
-```
+```YAML
 affinity:
     podAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
