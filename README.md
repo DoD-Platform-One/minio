@@ -1,6 +1,6 @@
 # minio-instance
 
-![Version: 4.4.3-bb.3](https://img.shields.io/badge/Version-4.4.3--bb.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v4.4.3](https://img.shields.io/badge/AppVersion-v4.4.3-informational?style=flat-square)
+![Version: 4.4.10-bb.0](https://img.shields.io/badge/Version-4.4.10--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v4.4.10](https://img.shields.io/badge/AppVersion-v4.4.10-informational?style=flat-square)
 
 A Helm chart for MinIO Operator
 
@@ -68,7 +68,7 @@ helm install minio-instance chart/
 | openshift | bool | `false` |  |
 | tenants.name | string | `"minio"` |  |
 | tenants.image.repository | string | `"registry1.dso.mil/ironbank/opensource/minio/minio"` |  |
-| tenants.image.tag | string | `"RELEASE.2022-01-08T03-11-54Z"` |  |
+| tenants.image.tag | string | `"RELEASE.2022-02-26T02-54-46Z"` |  |
 | tenants.image.pullPolicy | string | `"IfNotPresent"` |  |
 | tenants.imagePullSecret.name | string | `"private-registry"` |  |
 | tenants.scheduler | object | `{}` |  |
@@ -112,14 +112,14 @@ helm install minio-instance chart/
 | tenants.priorityClassName | string | `""` |  |
 | bbtests.enabled | bool | `false` |  |
 | bbtests.cypress.artifacts | bool | `true` |  |
-| bbtests.cypress.envs.cypress_url | string | `"http://{{ include \"minio-operator.fullname\" . | trim }}-console:{{ include \"minio-operator.servicePort\" . | trim }}/login"` |  |
+| bbtests.cypress.envs.cypress_url | string | `"http://{{ include \"minio-operator.fullname\" . \| trim }}-console:{{ include \"minio-operator.servicePort\" . \| trim }}/login"` |  |
 | bbtests.cypress.secretEnvs[0].name | string | `"cypress_secretkey"` |  |
 | bbtests.cypress.secretEnvs[0].valueFrom.secretKeyRef.name | string | `"{{ .Values.tenants.secrets.name }}"` |  |
 | bbtests.cypress.secretEnvs[0].valueFrom.secretKeyRef.key | string | `"secretkey"` |  |
 | bbtests.cypress.secretEnvs[1].name | string | `"cypress_accesskey"` |  |
 | bbtests.cypress.secretEnvs[1].valueFrom.secretKeyRef.name | string | `"{{ .Values.tenants.secrets.name }}"` |  |
 | bbtests.cypress.secretEnvs[1].valueFrom.secretKeyRef.key | string | `"accesskey"` |  |
-| bbtests.scripts.image | string | `"registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2021-09-02T09-21-27Z"` |  |
+| bbtests.scripts.image | string | `"registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2022-02-26T03-58-31Z"` |  |
 | bbtests.scripts.envs.MINIO_PORT | string | `"80"` |  |
 | bbtests.scripts.envs.MINIO_HOST | string | `"http://minio"` |  |
 | bbtests.scripts.secretEnvs[0].name | string | `"SECRET_KEY"` |  |
