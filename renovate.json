@@ -6,7 +6,7 @@
     "dependencyDashboardTitle": "Renovate: Upgrade Minio Dependencies",
     "draftPR": true,
     "enabledManagers": ["regex"],
-    "labels": ["minio","Package Sustainment","kind::chore"],
+    "labels": ["minio","Package Sustainment","kind::maintenance"],
 
     "packageRules": [
         {
