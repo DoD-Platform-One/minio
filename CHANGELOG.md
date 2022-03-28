@@ -2,6 +2,12 @@
 
 ---
 
+## [4.4.10-bb.1] - 2022-03-24
+
+### Added
+
+- Grafana dashboards moved in from Monitoring
+
 ## [4.4.10-bb.0] - 2022-02-22
 
 ### Changed
