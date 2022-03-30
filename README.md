@@ -1,6 +1,6 @@
 # minio-instance
 
-![Version: 4.4.10-bb.1](https://img.shields.io/badge/Version-4.4.10--bb.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v4.4.10](https://img.shields.io/badge/AppVersion-v4.4.10-informational?style=flat-square)
+![Version: 4.4.12-bb.0](https://img.shields.io/badge/Version-4.4.12--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v4.4.12](https://img.shields.io/badge/AppVersion-v4.4.12-informational?style=flat-square)
 
 A Helm chart for MinIO Operator
 
@@ -68,7 +68,7 @@ helm install minio-instance chart/
 | openshift | bool | `false` |  |
 | tenants.name | string | `"minio"` |  |
 | tenants.image.repository | string | `"registry1.dso.mil/ironbank/opensource/minio/minio"` |  |
-| tenants.image.tag | string | `"RELEASE.2022-02-26T02-54-46Z"` |  |
+| tenants.image.tag | string | `"RELEASE.2022-03-22T02-05-10Z"` |  |
 | tenants.image.pullPolicy | string | `"IfNotPresent"` |  |
 | tenants.imagePullSecret.name | string | `"private-registry"` |  |
 | tenants.scheduler | object | `{}` |  |

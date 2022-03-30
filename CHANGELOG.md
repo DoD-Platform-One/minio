@@ -2,6 +2,13 @@
 
 ---
 
+## [4.4.12-bb.0] - 2022-03-25
+
+### Changed
+
+- Update to 4.4.12
+- Moved Big Bang virtual service definitions to templates/bigbang
+
 ## [4.4.10-bb.1] - 2022-03-24
 
 ### Added
