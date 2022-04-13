@@ -1,6 +1,6 @@
 minio-operator:
   git:
     repo: "https://repo1.dso.mil/platform-one/big-bang/apps/application-utilities/minio-operator.git"
-    tag: "4.4.10-bb.0"
+    tag: "4.4.12-bb.2"
   namespace: "minio-operator"
   package-name: "minio-operator"

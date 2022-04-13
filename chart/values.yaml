@@ -71,7 +71,7 @@ tenants:
   ## Registry location and Tag to download MinIO Server image
   image:
     repository: registry1.dso.mil/ironbank/opensource/minio/minio
-    tag: RELEASE.2022-03-22T02-05-10Z
+    tag: RELEASE.2022-04-12T06-55-35Z
     pullPolicy: IfNotPresent
   ## Customize namespace for tenant deployment
   #namespace: default

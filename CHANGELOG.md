@@ -1,10 +1,13 @@
 # Changelog
 
 ---
+## [4.4.12-bb.2] - 2022-04-13
+### Changed
+- Update MinIO image to RELEASE.2022-04-12T06-55-35Z
+
 ## [4.4.12-bb.1] - 2022-03-30
 ### Added
 - Added Tempo Zipkin Egress Policy
-
 
 ## [4.4.12-bb.0] - 2022-03-25
 
