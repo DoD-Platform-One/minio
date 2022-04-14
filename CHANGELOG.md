@@ -1,6 +1,10 @@
 # Changelog
 
 ---
+## [4.4.12-bb.3] - 2022-04-14
+### Fixed
+- Update BB version annotation to RELEASE.2022-04-12T06-55-35Z
+
 ## [4.4.12-bb.2] - 2022-04-13
 ### Changed
 - Update MinIO image to RELEASE.2022-04-12T06-55-35Z
