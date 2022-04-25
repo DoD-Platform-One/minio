@@ -1,6 +1,6 @@
 # minio-instance
 
-![Version: 4.4.12-bb.3](https://img.shields.io/badge/Version-4.4.12--bb.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v4.4.12](https://img.shields.io/badge/AppVersion-v4.4.12-informational?style=flat-square)
+![Version: 4.4.12-bb.4](https://img.shields.io/badge/Version-4.4.12--bb.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v4.4.12](https://img.shields.io/badge/AppVersion-v4.4.12-informational?style=flat-square)
 
 A Helm chart for MinIO Operator
 
@@ -45,6 +45,7 @@ helm install minio-instance chart/
 | service.type | string | `"ClusterIP"` |  |
 | service.port | int | `9090` |  |
 | istio.enabled | bool | `false` |  |
+| istio.mtls.mode | string | `"STRICT"` |  |
 | istio.console.enabled | bool | `true` |  |
 | istio.console.annotations | object | `{}` |  |
 | istio.console.labels | object | `{}` |  |
