@@ -1,6 +1,10 @@
 # Changelog
 
 ---
+## [4.4.12-bb.4] - 2022-04-22
+### Added
+- Added mTLS PeerAuthentication policy for minio pods 
+
 ## [4.4.12-bb.3] - 2022-04-14
 ### Fixed
 - Update BB version annotation to RELEASE.2022-04-12T06-55-35Z
