@@ -1,6 +1,12 @@
 # Changelog
 
 ---
+## [4.4.16-bb.0] - 2022-05-05
+### Changed
+- Update to 4.4.16
+- Update MinIO image to RELEASE.2022-04-30T22-23-53Z
+- Modified by BB to use with instead of range in NOTES and tenant-secret
+
 ## [4.4.12-bb.4] - 2022-04-22
 ### Added
 - Added mTLS PeerAuthentication policy for minio pods 
