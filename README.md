@@ -1,6 +1,6 @@
 # minio-instance
 
-![Version: 4.4.12-bb.4](https://img.shields.io/badge/Version-4.4.12--bb.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v4.4.12](https://img.shields.io/badge/AppVersion-v4.4.12-informational?style=flat-square)
+![Version: 4.4.16-bb.0](https://img.shields.io/badge/Version-4.4.16--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v4.4.16](https://img.shields.io/badge/AppVersion-v4.4.16-informational?style=flat-square)
 
 A Helm chart for MinIO Operator
 
@@ -69,7 +69,7 @@ helm install minio-instance chart/
 | openshift | bool | `false` |  |
 | tenants.name | string | `"minio"` |  |
 | tenants.image.repository | string | `"registry1.dso.mil/ironbank/opensource/minio/minio"` |  |
-| tenants.image.tag | string | `"RELEASE.2022-04-12T06-55-35Z"` |  |
+| tenants.image.tag | string | `"RELEASE.2022-04-30T22-23-53Z"` |  |
 | tenants.image.pullPolicy | string | `"IfNotPresent"` |  |
 | tenants.imagePullSecret.name | string | `"private-registry"` |  |
 | tenants.scheduler | object | `{}` |  |
@@ -113,7 +113,7 @@ helm install minio-instance chart/
 | tenants.priorityClassName | string | `""` |  |
 | bbtests.enabled | bool | `false` |  |
 | bbtests.cypress.artifacts | bool | `true` |  |
-| bbtests.cypress.envs.cypress_url | string | `"http://{{ include \"minio-operator.fullname\" . \| trim }}-console:{{ include \"minio-operator.servicePort\" . \| trim }}/login"` |  |
+| bbtests.cypress.envs.cypress_url | string | `"http://{{ include \"minio-operator.fullname\" . | trim }}-console:{{ include \"minio-operator.servicePort\" . | trim }}/login"` |  |
 | bbtests.cypress.secretEnvs[0].name | string | `"cypress_secretkey"` |  |
 | bbtests.cypress.secretEnvs[0].valueFrom.secretKeyRef.name | string | `"{{ .Values.tenants.secrets.name }}"` |  |
 | bbtests.cypress.secretEnvs[0].valueFrom.secretKeyRef.key | string | `"secretkey"` |  |
