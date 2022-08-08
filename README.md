@@ -1,16 +1,14 @@
 # minio-instance
 
-![Version: 4.4.16-bb.0](https://img.shields.io/badge/Version-4.4.16--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v4.4.16](https://img.shields.io/badge/AppVersion-v4.4.16-informational?style=flat-square)
+![Version: 4.4.25-bb.0](https://img.shields.io/badge/Version-4.4.25--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v4.4.25](https://img.shields.io/badge/AppVersion-v4.4.25-informational?style=flat-square)
 
-A Helm chart for MinIO Operator
-
-## Upstream References
-* <https://min.io>
-
-* <https://github.com/minio/operator>
+[MinIO](https://min.io) is a High Performance Object Storage released under GNU AGPLv3 or later. It is API compatible
+with Amazon S3 cloud storage service. Use MinIO to build high performance infrastructure for machine learning, analytics
+and application data workloads.
 
 ## Learn More
 * [Application Overview](docs/overview.md)
+* For more detailed documentation please visit [here](https://docs.minio.io/)
 * [Other Documentation](docs/)
 
 ## Pre-Requisites
@@ -19,7 +17,7 @@ A Helm chart for MinIO Operator
 * Kubernetes config installed in `~/.kube/config`
 * Helm installed
 
-Install Helm
+This chart bootstraps MinIO Tenant on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 https://helm.sh/docs/intro/install/
 
@@ -35,8 +33,6 @@ helm install minio-instance chart/
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| hostname | string | `"bigbang.dev"` |  |
-| upgradeTenants.enabled | bool | `true` |  |
 | annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.annotations | object | `{}` |  |
@@ -44,6 +40,130 @@ helm install minio-instance chart/
 | service.nameOverride | string | `""` |  |
 | service.type | string | `"ClusterIP"` |  |
 | service.port | int | `9090` |  |
+| secrets.name | string | `"minio-creds-secret"` |  |
+| secrets.accessKey | string | `"minio"` |  |
+| secrets.secretKey | string | `"minio123"` |  |
+| tenant.name | string | `"minio"` |  |
+| tenant.image.repository | string | `"registry1.dso.mil/ironbank/opensource/minio/minio"` |  |
+| tenant.image.tag | string | `"RELEASE.2022-06-25T15-50-16Z"` |  |
+| tenant.image.pullPolicy | string | `"IfNotPresent"` |  |
+| tenant.imagePullSecret.name | string | `"private-registry"` |  |
+| tenant.scheduler | object | `{}` |  |
+| tenant.pools[0].servers | int | `4` |  |
+| tenant.pools[0].name | string | `"pool-0"` |  |
+| tenant.pools[0].volumesPerServer | int | `4` |  |
+| tenant.pools[0].size | string | `"1Gi"` |  |
+| tenant.pools[0].storageClassName | string | `"standard"` |  |
+| tenant.pools[0].annotations | object | `{}` |  |
+| tenant.pools[0].labels | object | `{}` |  |
+| tenant.pools[0].tolerations | list | `[]` |  |
+| tenant.pools[0].nodeSelector | object | `{}` |  |
+| tenant.pools[0].affinity | object | `{}` |  |
+| tenant.pools[0].resources.requests.cpu | string | `"250m"` |  |
+| tenant.pools[0].resources.requests.memory | string | `"2Gi"` |  |
+| tenant.pools[0].resources.limits.cpu | string | `"250m"` |  |
+| tenant.pools[0].resources.limits.memory | string | `"2Gi"` |  |
+| tenant.pools[0].securityContext.runAsUser | int | `1001` |  |
+| tenant.pools[0].securityContext.runAsGroup | int | `1001` |  |
+| tenant.pools[0].securityContext.fsGroup | int | `1001` |  |
+| tenant.pools[0].securityContext.runAsNonRoot | bool | `true` |  |
+| tenant.pools[0].topologySpreadConstraints | list | `[]` |  |
+| tenant.mountPath | string | `"/export"` |  |
+| tenant.subPath | string | `"/data"` |  |
+| tenant.metrics.enabled | bool | `false` |  |
+| tenant.metrics.port | int | `9000` |  |
+| tenant.metrics.protocol | string | `"http"` |  |
+| tenant.certificate.externalCaCertSecret | list | `[]` |  |
+| tenant.certificate.externalCertSecret | list | `[]` |  |
+| tenant.certificate.requestAutoCert | bool | `true` |  |
+| tenant.certificate.certConfig | object | `{}` |  |
+| tenant.s3.bucketDNS | bool | `false` |  |
+| tenant.buckets | list | `[]` |  |
+| tenant.users | list | `[]` |  |
+| tenant.podManagementPolicy | string | `"Parallel"` |  |
+| tenant.liveness | object | `{}` |  |
+| tenant.readiness | object | `{}` |  |
+| tenant.exposeServices | object | `{}` |  |
+| tenant.serviceAccountName | string | `""` |  |
+| tenant.prometheusOperator | bool | `false` |  |
+| tenant.logging.anonymous | bool | `true` |  |
+| tenant.logging.json | bool | `true` |  |
+| tenant.logging.quiet | bool | `true` |  |
+| tenant.serviceMetadata | object | `{}` |  |
+| tenant.env | list | `[]` |  |
+| tenant.priorityClassName | string | `""` |  |
+| tenant.prometheus.image | string | `""` |  |
+| tenant.prometheus.env | list | `[]` |  |
+| tenant.prometheus.sidecarimage | string | `""` |  |
+| tenant.prometheus.initimage | string | `""` |  |
+| tenant.prometheus.diskCapacityGB | int | `1` |  |
+| tenant.prometheus.storageClassName | string | `"standard"` |  |
+| tenant.prometheus.annotations | object | `{}` |  |
+| tenant.prometheus.labels | object | `{}` |  |
+| tenant.prometheus.nodeSelector | object | `{}` |  |
+| tenant.prometheus.affinity.nodeAffinity | object | `{}` |  |
+| tenant.prometheus.affinity.podAffinity | object | `{}` |  |
+| tenant.prometheus.affinity.podAntiAffinity | object | `{}` |  |
+| tenant.prometheus.resources | object | `{}` |  |
+| tenant.prometheus.serviceAccountName | string | `""` |  |
+| tenant.prometheus.securityContext.runAsUser | int | `1000` |  |
+| tenant.prometheus.securityContext.runAsGroup | int | `1000` |  |
+| tenant.prometheus.securityContext.runAsNonRoot | bool | `true` |  |
+| tenant.prometheus.securityContext.fsGroup | int | `1000` |  |
+| tenant.log.image | string | `""` |  |
+| tenant.log.env | list | `[]` |  |
+| tenant.log.resources | object | `{}` |  |
+| tenant.log.nodeSelector | object | `{}` |  |
+| tenant.log.affinity.nodeAffinity | object | `{}` |  |
+| tenant.log.affinity.podAffinity | object | `{}` |  |
+| tenant.log.affinity.podAntiAffinity | object | `{}` |  |
+| tenant.log.tolerations | list | `[]` |  |
+| tenant.log.annotations | object | `{}` |  |
+| tenant.log.labels | object | `{}` |  |
+| tenant.log.audit.diskCapacityGB | int | `1` |  |
+| tenant.log.db.image | string | `""` |  |
+| tenant.log.db.env | list | `[]` |  |
+| tenant.log.db.initimage | string | `""` |  |
+| tenant.log.db.volumeClaimTemplate.metadata | object | `{}` |  |
+| tenant.log.db.volumeClaimTemplate.spec.storageClassName | string | `"standard"` |  |
+| tenant.log.db.volumeClaimTemplate.spec.accessModes[0] | string | `"ReadWriteOnce"` |  |
+| tenant.log.db.volumeClaimTemplate.spec.resources.requests.storage | string | `"1Gi"` |  |
+| tenant.log.db.resources | object | `{}` |  |
+| tenant.log.db.nodeSelector | object | `{}` |  |
+| tenant.log.db.affinity.nodeAffinity | object | `{}` |  |
+| tenant.log.db.affinity.podAffinity | object | `{}` |  |
+| tenant.log.db.affinity.podAntiAffinity | object | `{}` |  |
+| tenant.log.db.tolerations | list | `[]` |  |
+| tenant.log.db.annotations | object | `{}` |  |
+| tenant.log.db.labels | object | `{}` |  |
+| tenant.log.db.serviceAccountName | string | `""` |  |
+| tenant.log.db.securityContext.runAsUser | int | `999` |  |
+| tenant.log.db.securityContext.runAsGroup | int | `999` |  |
+| tenant.log.db.securityContext.runAsNonRoot | bool | `true` |  |
+| tenant.log.db.securityContext.fsGroup | int | `999` |  |
+| tenant.log.serviceAccountName | string | `""` |  |
+| tenant.log.securityContext.runAsUser | int | `1000` |  |
+| tenant.log.securityContext.runAsGroup | int | `1000` |  |
+| tenant.log.securityContext.runAsNonRoot | bool | `true` |  |
+| tenant.log.securityContext.fsGroup | int | `1000` |  |
+| ingress.api.enabled | bool | `false` |  |
+| ingress.api.ingressClassName | string | `""` |  |
+| ingress.api.labels | object | `{}` |  |
+| ingress.api.annotations | object | `{}` |  |
+| ingress.api.tls | list | `[]` |  |
+| ingress.api.host | string | `"minio.local"` |  |
+| ingress.api.path | string | `"/"` |  |
+| ingress.api.pathType | string | `"Prefix"` |  |
+| ingress.console.enabled | bool | `false` |  |
+| ingress.console.ingressClassName | string | `""` |  |
+| ingress.console.labels | object | `{}` |  |
+| ingress.console.annotations | object | `{}` |  |
+| ingress.console.tls | list | `[]` |  |
+| ingress.console.host | string | `"minio-console.local"` |  |
+| ingress.console.path | string | `"/"` |  |
+| ingress.console.pathType | string | `"Prefix"` |  |
+| hostname | string | `"bigbang.dev"` |  |
+| upgradeTenants.enabled | bool | `true` |  |
 | istio.enabled | bool | `false` |  |
 | istio.mtls.mode | string | `"STRICT"` |  |
 | istio.console.enabled | bool | `true` |  |
@@ -67,50 +187,6 @@ helm install minio-instance chart/
 | networkPolicies.ingressLabels.app | string | `"istio-ingressgateway"` |  |
 | networkPolicies.ingressLabels.istio | string | `"ingressgateway"` |  |
 | openshift | bool | `false` |  |
-| tenants.name | string | `"minio"` |  |
-| tenants.image.repository | string | `"registry1.dso.mil/ironbank/opensource/minio/minio"` |  |
-| tenants.image.tag | string | `"RELEASE.2022-04-30T22-23-53Z"` |  |
-| tenants.image.pullPolicy | string | `"IfNotPresent"` |  |
-| tenants.imagePullSecret.name | string | `"private-registry"` |  |
-| tenants.scheduler | object | `{}` |  |
-| tenants.pools[0].servers | int | `4` |  |
-| tenants.pools[0].volumesPerServer | int | `4` |  |
-| tenants.pools[0].size | string | `"1Gi"` |  |
-| tenants.pools[0].storageClassName | string | `""` |  |
-| tenants.pools[0].tolerations | object | `{}` |  |
-| tenants.pools[0].nodeSelector | object | `{}` |  |
-| tenants.pools[0].affinity | object | `{}` |  |
-| tenants.pools[0].resources.requests.cpu | string | `"250m"` |  |
-| tenants.pools[0].resources.requests.memory | string | `"2Gi"` |  |
-| tenants.pools[0].resources.limits.cpu | string | `"250m"` |  |
-| tenants.pools[0].resources.limits.memory | string | `"2Gi"` |  |
-| tenants.pools[0].securityContext.runAsUser | int | `1001` |  |
-| tenants.pools[0].securityContext.runAsGroup | int | `1001` |  |
-| tenants.pools[0].securityContext.fsGroup | int | `1001` |  |
-| tenants.pools[0].securityContext.runAsNonRoot | bool | `true` |  |
-| tenants.mountPath | string | `"/export"` |  |
-| tenants.subPath | string | `"/data"` |  |
-| tenants.secrets.enabled | bool | `true` |  |
-| tenants.secrets.name | string | `"minio-creds-secret"` |  |
-| tenants.secrets.accessKey | string | `"minio"` |  |
-| tenants.secrets.secretKey | string | `"minio123"` |  |
-| tenants.metrics.enabled | bool | `false` |  |
-| tenants.metrics.port | int | `9000` |  |
-| tenants.certificate.externalCaCertSecret | object | `{}` |  |
-| tenants.certificate.externalCertSecret | object | `{}` |  |
-| tenants.certificate.requestAutoCert | bool | `false` |  |
-| tenants.certificate.certConfig | object | `{}` |  |
-| tenants.s3.bucketDNS | bool | `false` |  |
-| tenants.podManagementPolicy | string | `"Parallel"` |  |
-| tenants.liveness | object | `{}` |  |
-| tenants.readiness | object | `{}` |  |
-| tenants.exposeServices | object | `{}` |  |
-| tenants.serviceAccountName | string | `""` |  |
-| tenants.prometheusOperator | bool | `false` |  |
-| tenants.logging | object | `{}` |  |
-| tenants.serviceMetadata | object | `{}` |  |
-| tenants.env | object | `{}` |  |
-| tenants.priorityClassName | string | `""` |  |
 | bbtests.enabled | bool | `false` |  |
 | bbtests.cypress.artifacts | bool | `true` |  |
 | bbtests.cypress.envs.cypress_url | string | `"http://{{ include \"minio-operator.fullname\" . | trim }}-console:{{ include \"minio-operator.servicePort\" . | trim }}/login"` |  |

@@ -1,6 +1,11 @@
 # Changelog
 
 ---
+## [4.4.25-bb.0] - 2022-07-11
+### Changed
+- Update to 4.4.25
+- Update MinIO image to RELEASE.2022-07-08T00-05-23Z
+
 ## [4.4.16-bb.0] - 2022-05-05
 ### Changed
 - Update to 4.4.16
