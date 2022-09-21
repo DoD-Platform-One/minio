@@ -1,10 +1,10 @@
 # How to upgrade
 
 Upgrading the minio instance can be a a little tricky since there are a number of changes that are unique to the minio instance deployed by Big Bang.
-You can not simply do a kpt pull and replace since there are qunique changes that must be maintained.   This is because of the way the minio tenant was originally deployed by
+You can not simply do a kpt pull and replace since there are unique changes that must be maintained.   This is because of the way the minio tenant was originally deployed by
 in the upstream minio operator charts.
 
- 1. Sync with new chart. This can be done with kpt or meld:  Becareful not to overwrite the Big Bang specific changes.
+ 1. Sync with new chart. This can be done with kpt or meld:  Be careful not to overwrite the Big Bang specific changes.
  `kpt pkg update chart/@{TAG} --strategy alpha-git-patch`
  or
  `kpt pkg update chart/@{TAG} --strategy force-delete-replace`
