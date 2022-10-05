@@ -1,6 +1,12 @@
 # Changelog
 
 ---
+## [4.5.1-bb.0] - 2022-10-3
+### Changed
+- Update MinIO image to RELEASE.2022-09-25T15-44-53Z
+- Update tenant configuration to match operator version 4.5.1
+- Updated credential usage in tenant due to deprecated minio operator feature in te CRD.
+
 ## [4.4.28-bb.1] - 2022-08-23
 ### Changed
 - Update MinIO image to RELEASE.2022-08-26T19-53-15Z
