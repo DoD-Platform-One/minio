@@ -1,6 +1,6 @@
 # minio-instance
 
-![Version: 4.4.28-bb.1](https://img.shields.io/badge/Version-4.4.28--bb.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v4.4.28](https://img.shields.io/badge/AppVersion-v4.4.28-informational?style=flat-square)
+![Version: 4.5.1-bb.0](https://img.shields.io/badge/Version-4.5.1--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v4.5.1](https://img.shields.io/badge/AppVersion-v4.5.1-informational?style=flat-square)
 
 A Helm chart for MinIO Operator
 
@@ -73,10 +73,11 @@ helm install minio-instance chart/
 | apiVersion | string | `"minio.min.io/v2"` |  |
 | tenant.name | string | `"minio"` |  |
 | tenant.image.repository | string | `"registry1.dso.mil/ironbank/opensource/minio/minio"` |  |
-| tenant.image.tag | string | `"RELEASE.2022-08-26T19-53-15Z"` |  |
+| tenant.image.tag | string | `"RELEASE.2022-09-25T15-44-53Z"` |  |
 | tenant.image.pullPolicy | string | `"IfNotPresent"` |  |
 | tenant.imagePullSecret.name | string | `"private-registry"` |  |
 | tenant.scheduler | object | `{}` |  |
+| tenant.configuration.name | string | `"minio1-env-configuration"` |  |
 | tenant.pools[0].servers | int | `4` |  |
 | tenant.pools[0].volumesPerServer | int | `4` |  |
 | tenant.pools[0].size | string | `"1Gi"` |  |
@@ -105,6 +106,7 @@ helm install minio-instance chart/
 | tenant.certificate.requestAutoCert | bool | `false` |  |
 | tenant.certificate.certConfig | object | `{}` |  |
 | tenant.s3.bucketDNS | bool | `false` |  |
+| tenant.s3.domains | object | `{}` |  |
 | tenant.buckets | list | `[]` |  |
 | tenant.users | list | `[]` |  |
 | tenant.podManagementPolicy | string | `"Parallel"` |  |
@@ -128,6 +130,7 @@ helm install minio-instance chart/
 | tenant.prometheus.annotations | object | `{}` |  |
 | tenant.prometheus.labels | object | `{}` |  |
 | tenant.prometheus.nodeSelector | object | `{}` |  |
+| tenant.prometheus.tolerations | list | `[]` |  |
 | tenant.prometheus.affinity.nodeAffinity | object | `{}` |  |
 | tenant.prometheus.affinity.podAffinity | object | `{}` |  |
 | tenant.prometheus.affinity.podAntiAffinity | object | `{}` |  |
