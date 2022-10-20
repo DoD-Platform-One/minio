@@ -1,6 +1,11 @@
 # Changelog
 
 ---
+## [4.5.3-bb.0] - 2022-10-20
+### Changed
+- Update MinIO image to RELEASE.2022-10-15T19-57-03Z
+- Update tenant configuration to v4.5.3
+
 ## [4.5.1-bb.0] - 2022-10-3
 ### Changed
 - Update MinIO image to RELEASE.2022-09-25T15-44-53Z
