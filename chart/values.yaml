@@ -130,11 +130,11 @@ tenant:
       ## Configure resource requests and limits for MinIO containers
       resources:
         requests:
-          cpu: 250m
           memory: 2Gi
+          cpu: 1000m
         limits:
-          cpu: 250m
           memory: 2Gi
+          cpu: 1000m
 
       ## Configure security context
       ## BB Note: Defaults for Ironbank image are 1001 for user, group, and fsGroup
