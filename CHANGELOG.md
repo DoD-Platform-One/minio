@@ -1,6 +1,10 @@
 # Changelog
 
 ---
+## [4.5.3-bb.1] - 2022-10-25
+### Changed
+- Update MinIO default resource requirements
+
 ## [4.5.3-bb.0] - 2022-10-20
 ### Changed
 - Update MinIO image to RELEASE.2022-10-15T19-57-03Z

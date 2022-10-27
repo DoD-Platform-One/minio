@@ -1,6 +1,6 @@
 # minio-instance
 
-![Version: 4.5.3-bb.0](https://img.shields.io/badge/Version-4.5.3--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v4.5.3](https://img.shields.io/badge/AppVersion-v4.5.3-informational?style=flat-square)
+![Version: 4.5.3-bb.1](https://img.shields.io/badge/Version-4.5.3--bb.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v4.5.3](https://img.shields.io/badge/AppVersion-v4.5.3-informational?style=flat-square)
 
 A Helm chart for MinIO Operator
 
@@ -87,10 +87,10 @@ helm install minio-instance chart/
 | tenant.pools[0].tolerations | list | `[]` |  |
 | tenant.pools[0].nodeSelector | object | `{}` |  |
 | tenant.pools[0].affinity | object | `{}` |  |
-| tenant.pools[0].resources.requests.cpu | string | `"250m"` |  |
 | tenant.pools[0].resources.requests.memory | string | `"2Gi"` |  |
-| tenant.pools[0].resources.limits.cpu | string | `"250m"` |  |
+| tenant.pools[0].resources.requests.cpu | string | `"1000m"` |  |
 | tenant.pools[0].resources.limits.memory | string | `"2Gi"` |  |
+| tenant.pools[0].resources.limits.cpu | string | `"1000m"` |  |
 | tenant.pools[0].securityContext.runAsUser | int | `1001` |  |
 | tenant.pools[0].securityContext.runAsGroup | int | `1001` |  |
 | tenant.pools[0].securityContext.fsGroup | int | `1001` |  |
@@ -105,8 +105,8 @@ helm install minio-instance chart/
 | tenant.certificate.externalCertSecret | list | `[]` |  |
 | tenant.certificate.requestAutoCert | bool | `false` |  |
 | tenant.certificate.certConfig | object | `{}` |  |
-| tenant.s3.bucketDNS | bool | `false` |  |
-| tenant.s3.domains | object | `{}` |  |
+| tenant.features.bucketDNS | bool | `false` |  |
+| tenant.features.domains | object | `{}` |  |
 | tenant.buckets | list | `[]` |  |
 | tenant.users | list | `[]` |  |
 | tenant.podManagementPolicy | string | `"Parallel"` |  |
