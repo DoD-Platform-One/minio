@@ -1,6 +1,11 @@
 # Changelog
 
 ---
+## [4.5.4-bb.0] - 2022-11-14
+### Updated
+- Update MinIO to `RELEASE.2022-11-08T05-27-07Z`
+- Update chart to v4.5.4
+
 ## [4.5.3-bb.1] - 2022-10-25
 ### Changed
 - Update MinIO default resource requirements
