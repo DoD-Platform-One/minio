@@ -1,6 +1,10 @@
 # Changelog
 
 ---
+## [4.5.4-bb.2] - 2022-12-05
+### Updated
+- Update MinIO to `RELEASE.2022-11-26T22-43-32Z`
+
 ## [4.5.4-bb.1] - 2022-11-28
 ### Updated
 - Update MinIO to `RELEASE.2022-11-17T23-20-09Z`
