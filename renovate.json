@@ -19,6 +19,7 @@
         {
             "fileMatch": ["^chart/values\\.yaml$"],
             "matchStrings": [
+                "scripts:\\s+image:\\s+(?<depName>.+):(?<currentValue>RELEASE\\..+Z)",
                 "image:\\s+name:\\s+[^/]+/(?<depName>.+)\\s+tag:\\s+(?<currentValue>RELEASE\\..+Z)",
                 "image:\\s+repository:\\s+[^/]+/(?<depName>.+)\\s+tag:\\s+(?<currentValue>RELEASE\\..+Z)"
             ],
@@ -28,7 +29,8 @@
         {
             "fileMatch": ["^chart/Chart\\.yaml$"],
             "matchStrings": [
-                "- Minio:\\s+(?<currentValue>.+)"
+                "- Minio:\\s+(?<currentValue>.+)",
+                "appVersion:\\s+(?<currentValue>.+)"
             ],
             "depNameTemplate": "ironbank/opensource/minio/minio",
             "datasourceTemplate": "docker",
