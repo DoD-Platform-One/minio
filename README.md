@@ -1,6 +1,6 @@
 # minio-instance
 
-![Version: 4.5.4-bb.2](https://img.shields.io/badge/Version-4.5.4--bb.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2022-11-26T22-43-32Z](https://img.shields.io/badge/AppVersion-RELEASE.2022--11--26T22--43--32Z-informational?style=flat-square)
+![Version: 4.5.4-bb.3](https://img.shields.io/badge/Version-4.5.4--bb.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2022-11-26T22-43-32Z](https://img.shields.io/badge/AppVersion-RELEASE.2022--11--26T22--43--32Z-informational?style=flat-square)
 
 A Helm chart for MinIO Operator
 

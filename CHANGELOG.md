@@ -1,6 +1,10 @@
 # Changelog
 
 ---
+## [4.5.4-bb.3] - 2022-01-17
+### Changed
+- Update gluon to new registry1 location + latest version (0.3.2)
+
 ## [4.5.4-bb.2] - 2022-12-05
 ### Updated
 - Update MinIO to `RELEASE.2022-11-26T22-43-32Z`
