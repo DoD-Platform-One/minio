@@ -35,6 +35,13 @@
             "depNameTemplate": "ironbank/opensource/minio/minio",
             "datasourceTemplate": "docker",
             "versioningTemplate": "regex:^RELEASE\\.(?<major>\\d+)-(?<minor>\\d+)-(?<patch>\\d+)T.*Z$"
+        },
+        {
+            "fileMatch": ["^chart/Chart\\.yaml$"],
+            "matchStrings": [
+                "image:[^\\S\\r\\n]+(?<depName>.+):(?<currentValue>.+)"
+            ],
+            "datasourceTemplate": "docker"
         }
     ],
     "separateMajorMinor": false
