@@ -1,6 +1,10 @@
 # Changelog
 
 ---
+## [4.5.8-bb.0] - 2022-01-17
+### Changed
+- Updated images, helm chart, and tenant
+
 ## [4.5.4-bb.3] - 2022-01-17
 ### Changed
 - Update gluon to new registry1 location + latest version (0.3.2)

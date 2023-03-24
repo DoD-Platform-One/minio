@@ -1,6 +1,6 @@
 # minio-instance
 
-![Version: 4.5.4-bb.3](https://img.shields.io/badge/Version-4.5.4--bb.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2022-11-26T22-43-32Z](https://img.shields.io/badge/AppVersion-RELEASE.2022--11--26T22--43--32Z-informational?style=flat-square)
+![Version: 4.5.8-bb.0](https://img.shields.io/badge/Version-4.5.8--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2023-01-31T02-24-19Z](https://img.shields.io/badge/AppVersion-RELEASE.2023--01--31T02--24--19Z-informational?style=flat-square)
 
 A Helm chart for MinIO Operator
 
@@ -73,7 +73,7 @@ helm install minio-instance chart/
 | apiVersion | string | `"minio.min.io/v2"` |  |
 | tenant.name | string | `"minio"` |  |
 | tenant.image.repository | string | `"registry1.dso.mil/ironbank/opensource/minio/minio"` |  |
-| tenant.image.tag | string | `"RELEASE.2022-11-26T22-43-32Z"` |  |
+| tenant.image.tag | string | `"RELEASE.2023-01-31T02-24-19Z"` |  |
 | tenant.image.pullPolicy | string | `"IfNotPresent"` |  |
 | tenant.imagePullSecret.name | string | `"private-registry"` |  |
 | tenant.scheduler | object | `{}` |  |
@@ -95,6 +95,9 @@ helm install minio-instance chart/
 | tenant.pools[0].securityContext.runAsGroup | int | `1001` |  |
 | tenant.pools[0].securityContext.fsGroup | int | `1001` |  |
 | tenant.pools[0].securityContext.runAsNonRoot | bool | `true` |  |
+| tenant.pools[0].containerSecurityContext.runAsUser | int | `1000` |  |
+| tenant.pools[0].containerSecurityContext.runAsGroup | int | `1000` |  |
+| tenant.pools[0].containerSecurityContext.runAsNonRoot | bool | `true` |  |
 | tenant.pools[0].topologySpreadConstraints | list | `[]` |  |
 | tenant.mountPath | string | `"/export"` |  |
 | tenant.subPath | string | `"/data"` |  |
@@ -112,6 +115,7 @@ helm install minio-instance chart/
 | tenant.podManagementPolicy | string | `"Parallel"` |  |
 | tenant.liveness | object | `{}` |  |
 | tenant.readiness | object | `{}` |  |
+| tenant.startup | object | `{}` |  |
 | tenant.exposeServices | object | `{}` |  |
 | tenant.serviceAccountName | string | `""` |  |
 | tenant.prometheusOperator | bool | `false` |  |
@@ -121,6 +125,7 @@ helm install minio-instance chart/
 | tenant.serviceMetadata | object | `{}` |  |
 | tenant.env | list | `[]` |  |
 | tenant.priorityClassName | string | `""` |  |
+| tenant.prometheus.disabled | bool | `true` |  |
 | tenant.prometheus.image | string | `""` |  |
 | tenant.prometheus.env | list | `[]` |  |
 | tenant.prometheus.sidecarimage | string | `""` |  |
@@ -140,6 +145,7 @@ helm install minio-instance chart/
 | tenant.prometheus.securityContext.runAsGroup | int | `1000` |  |
 | tenant.prometheus.securityContext.runAsNonRoot | bool | `true` |  |
 | tenant.prometheus.securityContext.fsGroup | int | `1000` |  |
+| tenant.log.disabled | bool | `true` |  |
 | tenant.log.image | string | `""` |  |
 | tenant.log.env | list | `[]` |  |
 | tenant.log.resources | object | `{}` |  |
@@ -201,7 +207,7 @@ helm install minio-instance chart/
 | bbtests.cypress.secretEnvs[1].name | string | `"cypress_accesskey"` |  |
 | bbtests.cypress.secretEnvs[1].valueFrom.secretKeyRef.name | string | `"{{ .Values.secrets.name }}"` |  |
 | bbtests.cypress.secretEnvs[1].valueFrom.secretKeyRef.key | string | `"accesskey"` |  |
-| bbtests.scripts.image | string | `"registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2022-02-26T03-58-31Z"` |  |
+| bbtests.scripts.image | string | `"registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2023-01-28T20-29-38Z"` |  |
 | bbtests.scripts.envs.MINIO_PORT | string | `"80"` |  |
 | bbtests.scripts.envs.MINIO_HOST | string | `"http://minio"` |  |
 | bbtests.scripts.secretEnvs[0].name | string | `"SECRET_KEY"` |  |
