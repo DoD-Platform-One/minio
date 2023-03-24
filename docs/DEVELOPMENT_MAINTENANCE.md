@@ -31,6 +31,49 @@ modify [MinIO](https://repo1.dso.mil/platform-one/big-bang/apps/application-util
 # Modifications made to upstream chart
 This is a high-level list of modifications that Big Bang has made to the upstream helm chart. You can use this as as cross-check to make sure that no modifications were lost during the upgrade process.
 
+## When performing the helm update the following items should be maintained.
+- in chart/templates/_helpers.tpl: keep the BB specific _helpers
+```
+{{/* Big Bang Added Helpers Start Here */}}
+
+{{/*
+Create the name of the service used to access the Minio object UI.
+Note: the Minio operator has a fixed name of "minio" for the service it creates.
+*/}}
+{{- define "minio-operator.serviceName" }}
+{{- if .Values.upgradeTenants.enabled -}}
+minio
+{{- else -}}
+{{- default (include "minio.fullname" .) .Values.service.nameOverride }}
+{{- end }}
+{{- end }}
+
+```
+- in chart/templates/tenant-configuration.yaml:  keep the secrets data access key changes._helpers
+```r
+{{- if dig "secrets" true (.Values | merge (dict)) }}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ dig "secrets" "name" "" (.Values | merge (dict)) }}
+type: Opaque
+stringData:
+  config.env: |-
+    export MINIO_ROOT_USER={{ .Values.secrets.accessKey | quote }}
+    export MINIO_ROOT_PASSWORD={{ .Values.secrets.secretKey | quote }}
+data:
+  ## Access Key for MinIO Tenant
+  accesskey: {{ dig "secrets" "accessKey" "" (.Values | merge (dict)) | b64enc }}
+  ## Secret Key for MinIO Tenant
+  secretkey: {{ dig "secrets" "secretKey" "" (.Values | merge (dict)) | b64enc }}
+  {{- end }}
+```
+- in charts/templates/tenant.yaml:  keep the changes associated with..._helpers
+    - assigning the metadata/name
+    - spec/image name
+    - spec/configuration secret and name
+    - metadata/annotations
+
 ##  chart/values.yaml
 - Bigbang additions at the end of the file
 - images to ironbank
