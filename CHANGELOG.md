@@ -1,6 +1,11 @@
 # Changelog
 
 ---
+## [5.0.3-bb.0] - 2023-04-06 
+### Changed
+- Updated chart to v5.0.3
+- Updated MinIO to `RELEASE.2023-03-24T21-41-23Z` 
+
 ## [4.5.8-bb.0] - 2022-01-17
 ### Changed
 - Updated images, helm chart, and tenant

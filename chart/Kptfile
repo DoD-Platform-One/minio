@@ -3,9 +3,9 @@ kind: Kptfile
 metadata:
   name: chart
 upstream:
-    type: git
-    git:
-        commit: 377337dcda4375721a3293e3d469cc47fb5cdb8f
-        repo: https://github.com/minio/operator
-        directory: helm/tenant
-        ref: v4.5.8
+  type: git
+  git:
+    commit: 471bc5de3b5021d4abba3137a89a839a6a6271f9
+    repo: https://github.com/minio/operator
+    directory: helm/tenant
+    ref: v5.0.3
