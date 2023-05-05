@@ -1,10 +1,11 @@
 # Changelog
 
 ---
-## [5.0.3-bb.0] - 2023-04-06 
+## [5.0.3-bb.1] - 2023-04-06 
 ### Changed
 - Updated chart to v5.0.3
-- Updated MinIO to `RELEASE.2023-03-24T21-41-23Z` 
+- Updated MinIO to `RELEASE.2023-04-28T18-11-17Z` 
+- Update mc to `RELEASE.2023-04-12T02-21-51Z`
 
 ## [4.5.8-bb.0] - 2022-01-17
 ### Changed
