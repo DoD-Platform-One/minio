@@ -1,6 +1,11 @@
 # Changelog
 
 ---
+## [5.0.3-bb.2] - 2023-05-08
+### Fix
+- Update container security context run as user and group to 1001 to match IronBank image.
+- add network policy to egress
+
 ## [5.0.3-bb.1] - 2023-04-06 
 ### Changed
 - Updated chart to v5.0.3

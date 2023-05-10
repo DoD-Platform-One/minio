@@ -1,6 +1,6 @@
 # minio-instance
 
-![Version: 5.0.3-bb.1](https://img.shields.io/badge/Version-5.0.3--bb.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2023-04-28T18-11-17Z](https://img.shields.io/badge/AppVersion-RELEASE.2023--01--31T02--24--19Z-informational?style=flat-square)
+![Version: 5.0.3-bb.2](https://img.shields.io/badge/Version-5.0.3--bb.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2023-04-28T18-11-17Z](https://img.shields.io/badge/AppVersion-RELEASE.2023--04--28T18--11--17Z-informational?style=flat-square)
 
 A Helm chart for MinIO Operator
 
@@ -95,8 +95,8 @@ helm install minio-instance chart/
 | tenant.pools[0].securityContext.runAsGroup | int | `1001` |  |
 | tenant.pools[0].securityContext.fsGroup | int | `1001` |  |
 | tenant.pools[0].securityContext.runAsNonRoot | bool | `true` |  |
-| tenant.pools[0].containerSecurityContext.runAsUser | int | `1000` |  |
-| tenant.pools[0].containerSecurityContext.runAsGroup | int | `1000` |  |
+| tenant.pools[0].containerSecurityContext.runAsUser | int | `1001` |  |
+| tenant.pools[0].containerSecurityContext.runAsGroup | int | `1001` |  |
 | tenant.pools[0].containerSecurityContext.runAsNonRoot | bool | `true` |  |
 | tenant.pools[0].topologySpreadConstraints | list | `[]` |  |
 | tenant.mountPath | string | `"/export"` |  |
@@ -141,10 +141,10 @@ helm install minio-instance chart/
 | tenant.prometheus.affinity.podAntiAffinity | object | `{}` |  |
 | tenant.prometheus.resources | object | `{}` |  |
 | tenant.prometheus.serviceAccountName | string | `""` |  |
-| tenant.prometheus.securityContext.runAsUser | int | `1000` |  |
-| tenant.prometheus.securityContext.runAsGroup | int | `1000` |  |
+| tenant.prometheus.securityContext.runAsUser | int | `1001` |  |
+| tenant.prometheus.securityContext.runAsGroup | int | `1001` |  |
 | tenant.prometheus.securityContext.runAsNonRoot | bool | `true` |  |
-| tenant.prometheus.securityContext.fsGroup | int | `1000` |  |
+| tenant.prometheus.securityContext.fsGroup | int | `1001` |  |
 | tenant.log.disabled | bool | `true` |  |
 | tenant.log.image | string | `""` |  |
 | tenant.log.env | list | `[]` |  |
@@ -178,10 +178,10 @@ helm install minio-instance chart/
 | tenant.log.db.securityContext.runAsNonRoot | bool | `true` |  |
 | tenant.log.db.securityContext.fsGroup | int | `999` |  |
 | tenant.log.serviceAccountName | string | `""` |  |
-| tenant.log.securityContext.runAsUser | int | `1000` |  |
-| tenant.log.securityContext.runAsGroup | int | `1000` |  |
+| tenant.log.securityContext.runAsUser | int | `1001` |  |
+| tenant.log.securityContext.runAsGroup | int | `1001` |  |
 | tenant.log.securityContext.runAsNonRoot | bool | `true` |  |
-| tenant.log.securityContext.fsGroup | int | `1000` |  |
+| tenant.log.securityContext.fsGroup | int | `1001` |  |
 | ingress.api.enabled | bool | `false` |  |
 | ingress.api.ingressClassName | string | `""` |  |
 | ingress.api.labels | object | `{}` |  |
