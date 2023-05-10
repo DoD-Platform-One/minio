@@ -4,5 +4,7 @@ bbtests:
 # Enable use of new tenant CRD from the 4.1.x release
 upgradeTenants:
   enabled: true
-networkPolocies:
+
+networkPolicies:
   enabled: true
+  controlPlaneCidr: 172.16.0.0/12
