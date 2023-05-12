@@ -1,6 +1,12 @@
 # Changelog
 
 ---
+## [5.0.4-bb.0] - 2023-05-10
+### Changed
+- Updated chart to v5.0.4
+- Updated minio to `RELEASE.2023-05-04T21-44-30Z`
+- Updated mc to `RELEASE.2023-05-04T18-10-16Z`
+
 ## [5.0.3-bb.2] - 2023-05-08
 ### Fix
 - Update container security context run as user and group to 1001 to match IronBank image.
