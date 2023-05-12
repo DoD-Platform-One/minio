@@ -1,8 +1,8 @@
 # minio-instance
 
-![Version: 5.0.3-bb.2](https://img.shields.io/badge/Version-5.0.3--bb.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2023-04-28T18-11-17Z](https://img.shields.io/badge/AppVersion-RELEASE.2023--04--28T18--11--17Z-informational?style=flat-square)
+![Version: 5.0.4-bb.0](https://img.shields.io/badge/Version-5.0.4--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2023-05-04T21-44-30Z](https://img.shields.io/badge/AppVersion-RELEASE.2023--05--04T21--44--30Z-informational?style=flat-square)
 
-A Helm chart for MinIO Operator
+A Helm chart for MinIO Tenants
 
 ## Upstream References
 * <https://min.io>
@@ -73,7 +73,7 @@ helm install minio-instance chart/
 | apiVersion | string | `"minio.min.io/v2"` |  |
 | tenant.name | string | `"minio"` |  |
 | tenant.image.repository | string | `"registry1.dso.mil/ironbank/opensource/minio/minio"` |  |
-| tenant.image.tag | string | `"RELEASE.2023-04-28T18-11-17Z"` |  |
+| tenant.image.tag | string | `"RELEASE.2023-05-04T21-44-30Z"` |  |
 | tenant.image.pullPolicy | string | `"IfNotPresent"` |  |
 | tenant.imagePullSecret.name | string | `"private-registry"` |  |
 | tenant.scheduler | object | `{}` |  |
@@ -207,7 +207,7 @@ helm install minio-instance chart/
 | bbtests.cypress.secretEnvs[1].name | string | `"cypress_accesskey"` |  |
 | bbtests.cypress.secretEnvs[1].valueFrom.secretKeyRef.name | string | `"{{ .Values.secrets.name }}"` |  |
 | bbtests.cypress.secretEnvs[1].valueFrom.secretKeyRef.key | string | `"accesskey"` |  |
-| bbtests.scripts.image | string | `"registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2023-04-12T02-21-51Z"` |  |
+| bbtests.scripts.image | string | `"registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2023-05-04T18-10-16Z"` |  |
 | bbtests.scripts.envs.MINIO_PORT | string | `"80"` |  |
 | bbtests.scripts.envs.MINIO_HOST | string | `"http://minio"` |  |
 | bbtests.scripts.secretEnvs[0].name | string | `"SECRET_KEY"` |  |
