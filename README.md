@@ -1,6 +1,6 @@
 # minio-instance
 
-![Version: 5.0.4-bb.0](https://img.shields.io/badge/Version-5.0.4--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2023-05-04T21-44-30Z](https://img.shields.io/badge/AppVersion-RELEASE.2023--05--04T21--44--30Z-informational?style=flat-square)
+![Version: 5.0.4-bb.1](https://img.shields.io/badge/Version-5.0.4--bb.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2023-05-04T21-44-30Z](https://img.shields.io/badge/AppVersion-RELEASE.2023--05--04T21--44--30Z-informational?style=flat-square)
 
 A Helm chart for MinIO Tenants
 
@@ -35,7 +35,7 @@ helm install minio-instance chart/
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| hostname | string | `"bigbang.dev"` |  |
+| domain | string | `"bigbang.dev"` |  |
 | upgradeTenants.enabled | bool | `true` |  |
 | annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
