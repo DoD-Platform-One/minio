@@ -2,7 +2,7 @@
 ## Note: to enable upgrade of minio instance, then values file has a number of values that will be
 ## deprecated in the future. Deprecation candidates will have an annotation in comments regarding the timeframe for deprecation.
 
-hostname: bigbang.dev
+domain: bigbang.dev
 
 # When true, upgradeTenants enables use of the V4.* Minio Operator CRD for creation of tenants is enabled.
 # The default will be made TRUE in a future release.
@@ -41,7 +41,7 @@ istio:
     gateways:
       - istio-system/main
     hosts:
-      -  minio.{{ .Values.hostname }}
+      -  minio.{{ .Values.domain }}
     service: ""
     port: ""
   api:
@@ -51,7 +51,7 @@ istio:
     gateways:
       - istio-system/main
     hosts:
-      -  minio-api.{{ .Values.hostname }}
+      -  minio-api.{{ .Values.domain }}
     service: ""
     port: ""
 

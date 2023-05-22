@@ -1,5 +1,8 @@
 # Changelog
 
+## [5.0.4-bb.1] - 2023-05-18
+### Updated
+- Updated chart/values.yaml hostname key to domain
 ---
 ## [5.0.4-bb.0] - 2023-05-10
 ### Changed
