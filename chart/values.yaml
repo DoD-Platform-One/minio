@@ -84,7 +84,7 @@ tenant:
   ## Registry location and Tag to download MinIO Server image
   image:
     repository: registry1.dso.mil/ironbank/opensource/minio/minio
-    tag: RELEASE.2023-05-04T21-44-30Z
+    tag: RELEASE.2023-06-19T19-52-50Z
     pullPolicy: IfNotPresent
   ## Customize namespace for tenant deployment
   #namespace: default
@@ -229,7 +229,7 @@ tenant:
   ## Define configuration for KES (stateless and distributed key-management system)
   ## Refer https://github.com/minio/kes
   #kes:
-  #  image: "" # minio/kes:2023-04-18T19-36-09Z
+  #  image: "" # minio/kes:2023-05-02T22-48-10Z
   #  env: [ ]
   #  replicas: 2
   #  configuration: |-
@@ -433,7 +433,7 @@ bbtests:
             name: "{{ .Values.secrets.name }}"
             key: accesskey
   scripts:
-    image: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2023-05-04T18-10-16Z
+    image: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2023-06-19T19-31-19Z
     envs:
       MINIO_PORT: '80'
       MINIO_HOST: 'http://minio'

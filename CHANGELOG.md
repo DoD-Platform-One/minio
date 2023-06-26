@@ -1,3 +1,9 @@
+## [5.0.5-bb.0] - 2023-06-23
+### Changed
+- Updated chart to v5.0.5
+- Updated minio to `RELEASE.2023-06-19T19-52-50Z`
+- Updated mc to `RELEASE.2023-06-19T19-31-19Z`
+
 # Changelog
 
 ## [5.0.4-bb.1] - 2023-05-18

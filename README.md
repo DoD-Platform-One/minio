@@ -1,6 +1,6 @@
 # minio-instance
 
-![Version: 5.0.4-bb.1](https://img.shields.io/badge/Version-5.0.4--bb.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2023-05-04T21-44-30Z](https://img.shields.io/badge/AppVersion-RELEASE.2023--05--04T21--44--30Z-informational?style=flat-square)
+![Version: 5.0.5-bb.0](https://img.shields.io/badge/Version-5.0.5--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2023-06-19T19-52-50Z](https://img.shields.io/badge/AppVersion-RELEASE.2023--06--19T19--52--50Z-informational?style=flat-square)
 
 A Helm chart for MinIO Tenants
 
@@ -50,14 +50,14 @@ helm install minio-instance chart/
 | istio.console.annotations | object | `{}` |  |
 | istio.console.labels | object | `{}` |  |
 | istio.console.gateways[0] | string | `"istio-system/main"` |  |
-| istio.console.hosts[0] | string | `"minio.{{ .Values.hostname }}"` |  |
+| istio.console.hosts[0] | string | `"minio.{{ .Values.domain }}"` |  |
 | istio.console.service | string | `""` |  |
 | istio.console.port | string | `""` |  |
 | istio.api.enabled | bool | `true` |  |
 | istio.api.annotations | object | `{}` |  |
 | istio.api.labels | object | `{}` |  |
 | istio.api.gateways[0] | string | `"istio-system/main"` |  |
-| istio.api.hosts[0] | string | `"minio-api.{{ .Values.hostname }}"` |  |
+| istio.api.hosts[0] | string | `"minio-api.{{ .Values.domain }}"` |  |
 | istio.api.service | string | `""` |  |
 | istio.api.port | string | `""` |  |
 | monitoring.enabled | bool | `false` |  |
@@ -73,7 +73,7 @@ helm install minio-instance chart/
 | apiVersion | string | `"minio.min.io/v2"` |  |
 | tenant.name | string | `"minio"` |  |
 | tenant.image.repository | string | `"registry1.dso.mil/ironbank/opensource/minio/minio"` |  |
-| tenant.image.tag | string | `"RELEASE.2023-05-04T21-44-30Z"` |  |
+| tenant.image.tag | string | `"RELEASE.2023-06-19T19-52-50Z"` |  |
 | tenant.image.pullPolicy | string | `"IfNotPresent"` |  |
 | tenant.imagePullSecret.name | string | `"private-registry"` |  |
 | tenant.scheduler | object | `{}` |  |
@@ -207,7 +207,7 @@ helm install minio-instance chart/
 | bbtests.cypress.secretEnvs[1].name | string | `"cypress_accesskey"` |  |
 | bbtests.cypress.secretEnvs[1].valueFrom.secretKeyRef.name | string | `"{{ .Values.secrets.name }}"` |  |
 | bbtests.cypress.secretEnvs[1].valueFrom.secretKeyRef.key | string | `"accesskey"` |  |
-| bbtests.scripts.image | string | `"registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2023-05-04T18-10-16Z"` |  |
+| bbtests.scripts.image | string | `"registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2023-06-19T19-31-19Z"` |  |
 | bbtests.scripts.envs.MINIO_PORT | string | `"80"` |  |
 | bbtests.scripts.envs.MINIO_HOST | string | `"http://minio"` |  |
 | bbtests.scripts.secretEnvs[0].name | string | `"SECRET_KEY"` |  |
