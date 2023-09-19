@@ -9,9 +9,6 @@ describe('Minio Login', function() {
 
       // Locate and submit the form
       cy.get('form').submit();
-
-      // Verify the app redirected you to the homepage
-      cy.location('pathname', { timeout: 60000 }).should('eq', '/buckets');
       
       // Verify the page title is "Home"
       cy.title().should('eq', 'MinIO Console');

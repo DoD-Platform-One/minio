@@ -1,0 +1,27 @@
+# IDE
+.idea
+.vscode/
+.DS_Store
+
+# VIM Swap
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# VIM Session
+Session.vim
+
+*.iml
+**/.classpath
+**/.project
+**/.settings
+
+
+target
+.gradle
+build
+out
+node_modules
+.iron-bank-creds.yaml
