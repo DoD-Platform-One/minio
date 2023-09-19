@@ -1,6 +1,6 @@
 # minio-instance
 
-![Version: 5.0.5-bb.0](https://img.shields.io/badge/Version-5.0.5--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2023-06-19T19-52-50Z](https://img.shields.io/badge/AppVersion-RELEASE.2023--06--19T19--52--50Z-informational?style=flat-square)
+![Version: 5.0.6-bb.0](https://img.shields.io/badge/Version-5.0.6--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2023-09-07T02-05-02Z](https://img.shields.io/badge/AppVersion-RELEASE.2023--09--07T02--05--02Z-informational?style=flat-square)
 
 A Helm chart for MinIO Tenants
 
@@ -73,7 +73,7 @@ helm install minio-instance chart/
 | apiVersion | string | `"minio.min.io/v2"` |  |
 | tenant.name | string | `"minio"` |  |
 | tenant.image.repository | string | `"registry1.dso.mil/ironbank/opensource/minio/minio"` |  |
-| tenant.image.tag | string | `"RELEASE.2023-06-19T19-52-50Z"` |  |
+| tenant.image.tag | string | `"RELEASE.2023-09-07T02-05-02Z"` |  |
 | tenant.image.pullPolicy | string | `"IfNotPresent"` |  |
 | tenant.imagePullSecret.name | string | `"private-registry"` |  |
 | tenant.scheduler | object | `{}` |  |
@@ -207,7 +207,7 @@ helm install minio-instance chart/
 | bbtests.cypress.secretEnvs[1].name | string | `"cypress_accesskey"` |  |
 | bbtests.cypress.secretEnvs[1].valueFrom.secretKeyRef.name | string | `"{{ .Values.secrets.name }}"` |  |
 | bbtests.cypress.secretEnvs[1].valueFrom.secretKeyRef.key | string | `"accesskey"` |  |
-| bbtests.scripts.image | string | `"registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2023-06-19T19-31-19Z"` |  |
+| bbtests.scripts.image | string | `"registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2023-09-07T22-48-55Z"` |  |
 | bbtests.scripts.envs.MINIO_PORT | string | `"80"` |  |
 | bbtests.scripts.envs.MINIO_HOST | string | `"http://minio"` |  |
 | bbtests.scripts.secretEnvs[0].name | string | `"SECRET_KEY"` |  |

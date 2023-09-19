@@ -1,10 +1,22 @@
+# Changelog
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+---
+
+## [5.0.6-bb.0] - 2023-09-19
+### Changed
+- Updated chart to v5.0.6
+- Updated minio to `RELEASE.2023-09-07T02-05-02Z`
+- Updated mc to `RELEASE.2023-09-07T22-48-55Z`
+- Updated gluon from 0.4.0 to 0.4.1
+- Updated folder structure for cypress 13.X+
+
 ## [5.0.5-bb.0] - 2023-06-23
 ### Changed
 - Updated chart to v5.0.5
 - Updated minio to `RELEASE.2023-06-19T19-52-50Z`
 - Updated mc to `RELEASE.2023-06-19T19-31-19Z`
-
-# Changelog
 
 ## [5.0.4-bb.1] - 2023-05-18
 ### Updated
