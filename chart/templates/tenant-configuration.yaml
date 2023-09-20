@@ -1,4 +1,4 @@
-{{- if dig "secrets" true (.Values | merge (dict)) }}
+{{- if not .Values.secrets.existingSecret }}
 apiVersion: v1
 kind: Secret
 metadata:
@@ -13,4 +13,4 @@ data:
   accesskey: {{ dig "secrets" "accessKey" "" (.Values | merge (dict)) | b64enc }}
   ## Secret Key for MinIO Tenant
   secretkey: {{ dig "secrets" "secretKey" "" (.Values | merge (dict)) | b64enc }}
-  {{- end }}
+{{- end }}

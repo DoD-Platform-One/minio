@@ -74,6 +74,8 @@ secrets:
   name: minio-creds-secret
   accessKey: minio
   secretKey: minio123
+  ## Set the value for existingSecret to use a pre created secret and dont create default one
+  # existingSecret: random-env-configuration
 
 apiVersion: minio.min.io/v2
 
@@ -84,7 +86,7 @@ tenant:
   ## Registry location and Tag to download MinIO Server image
   image:
     repository: registry1.dso.mil/ironbank/opensource/minio/minio
-    tag: RELEASE.2023-09-07T02-05-02Z
+    tag: RELEASE.2023-09-16T01-01-47Z
     pullPolicy: IfNotPresent
   ## Customize namespace for tenant deployment
   #namespace: default
@@ -135,13 +137,16 @@ tenant:
         limits:
           memory: 2Gi
           cpu: 1000m
-
-      ## Configure security context
+      ## Configure Pod's security context
+      ## We recommend to skip the recursive permission change by using
+      ## fsGroupChangePolicy as OnRootMismatch because it can be pretty
+      ## expensive for larger volumes with lots of small files.
       ## BB Note: Defaults for Ironbank image are 1001 for user, group, and fsGroup
       securityContext:
         runAsUser: 1001
         runAsGroup: 1001
         fsGroup: 1001
+        fsGroupChangePolicy: "OnRootMismatch"
         runAsNonRoot: true
       ## Configure container security context
       containerSecurityContext:
@@ -155,6 +160,12 @@ tenant:
   ## Mount path where PV will be mounted inside container(s).
   mountPath: /export
   ## Sub path inside Mount path where MinIO stores data.
+  ## WARNING:
+  ## We recommend you to keep the same mountPath and the same subPath once the
+  ## Tenant has been deployed over your different PVs.
+  ## This is because if you change these values once Tenant is deployed, then
+  ## you will end up with multiple paths for different buckets. So please, be
+  ## very careful to keep same value for the life of the Tenant.
   subPath: /data
   # pool metrics to be read by Prometheus
   metrics:
@@ -182,7 +193,12 @@ tenant:
   features:
     bucketDNS: false
     domains: { }
-  ## List of bucket names to create during tenant provisioning
+    enableSFTP: false
+  ## List of bucket definitions to create during tenant provisioning.
+  ## Example:
+  #   - name: my-minio-bucket
+  #     objectLock: false        # optional
+  #     region: us-east-1        # optional
   buckets: [ ]
   ## List of secret names to use for generating MinIO users during tenant provisioning
   users: [ ]
@@ -229,7 +245,19 @@ tenant:
   ## Define configuration for KES (stateless and distributed key-management system)
   ## Refer https://github.com/minio/kes
   #kes:
-  #  image: "" # minio/kes:2023-05-02T22-48-10Z
+  #  ### Image field:
+  #  ## Image from tag (original behaviour), for example:
+  #  # image:
+  #  #   repository: quay.io/minio/kes
+  #  #   tag: 2023-08-19T17-27-47Z
+  #  ## Image from digest (added after original behaviour), for example:
+  #  # image:
+  #  #   repository: quay.io/minio/kes@sha256
+  #  #   digest: fb15af611149892f357a8a99d1bcd8bf5dae713bd64c15e6eb27fbdb88fc208b
+  #  image:
+  #    repository: quay.io/minio/kes
+  #    tag: 2023-08-19T17-27-47Z
+  #    pullPolicy: IfNotPresent
   #  env: [ ]
   #  replicas: 2
   #  configuration: |-
@@ -415,6 +443,23 @@ ingress:
     path: /
     pathType: Prefix
 
+## Use an extraResources template section to include additional Kubernetes resources
+## with the Helm deployment.
+## Example: the following creates the config secret together with the tenant:
+#secrets:
+#  existingSecret: custom-env-configuration
+#extraResources:
+#  - |
+#    apiVersion: v1
+#    kind: Secret
+#    type: Opaque
+#    metadata:
+#      name: {{ dig "secrets" "existingSecret" "" (.Values | merge (dict)) }}
+#    stringData:
+#      config.env: |-
+#        export MINIO_ROOT_USER='minio'
+#        export MINIO_ROOT_PASSWORD='minio123'
+
 bbtests:
   enabled: false
   cypress:
@@ -433,7 +478,7 @@ bbtests:
             name: "{{ .Values.secrets.name }}"
             key: accesskey
   scripts:
-    image: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2023-09-07T22-48-55Z
+    image: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2023-09-13T23-08-58Z
     envs:
       MINIO_PORT: '80'
       MINIO_HOST: 'http://minio'
