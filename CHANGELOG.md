@@ -3,7 +3,12 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
-## [5.0.9-bb.0]
+## [5.0.9-bb.1] - 2023-09-25
+### Changed
+- Updated minio to `RELEASE.2023-09-20T22-49-55Z`
+- Updated mc to `RELEASE.2023-09-20T15-22-31Z`
+
+## [5.0.9-bb.0] - 2023-09-22
 ### Changed
 - Updated chart to v5.0.9
 - Updated minio to `RELEASE.2023-09-16T01-01-47Z`
