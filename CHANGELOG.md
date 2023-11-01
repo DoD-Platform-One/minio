@@ -3,6 +3,13 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [5.0.10-bb.1] - 2022-10-17
+### Added
+- Added istio `allow-nothing` policy
+- Added istio `allow-ingress` polic(y|ies)
+- Added istio `allow-tempo` policy
+- Added istio custom policy template
+
 ## [5.0.10-bb.0] - 2023-10-16
 ### Changed
 - Updated minio to `RELEASE.2023-10-07T15-07-38Z`

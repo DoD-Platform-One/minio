@@ -1,6 +1,6 @@
 # minio-instance
 
-![Version: 5.0.10-bb.0](https://img.shields.io/badge/Version-5.0.10--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2023-10-07T15-07-38Z](https://img.shields.io/badge/AppVersion-RELEASE.2023--10--07T15--07--38Z-informational?style=flat-square)
+![Version: 5.0.10-bb.1](https://img.shields.io/badge/Version-5.0.10--bb.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2023-10-07T15-07-38Z](https://img.shields.io/badge/AppVersion-RELEASE.2023--10--07T15--07--38Z-informational?style=flat-square)
 
 A Helm chart for MinIO Tenants
 
@@ -45,6 +45,11 @@ helm install minio-instance chart/
 | service.type | string | `"ClusterIP"` |  |
 | service.port | int | `9090` |  |
 | istio.enabled | bool | `false` |  |
+| istio.hardened.enabled | bool | `false` |  |
+| istio.hardened.customAuthorizationPolicies | list | `[]` |  |
+| istio.hardened.tempo.enabled | bool | `false` |  |
+| istio.hardened.tempo.namespaces[0] | string | `"tempo"` |  |
+| istio.hardened.tempo.principals[0] | string | `"cluster.local/ns/tempo/sa/tempo-tempo"` |  |
 | istio.mtls.mode | string | `"STRICT"` |  |
 | istio.console.enabled | bool | `true` |  |
 | istio.console.annotations | object | `{}` |  |
