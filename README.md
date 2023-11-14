@@ -1,6 +1,6 @@
 # minio-instance
 
-![Version: 5.0.10-bb.2](https://img.shields.io/badge/Version-5.0.10--bb.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2023-10-16T04-13-43Z](https://img.shields.io/badge/AppVersion-RELEASE.2023--10--16T04--13--43Z-informational?style=flat-square)
+![Version: 5.0.10-bb.3](https://img.shields.io/badge/Version-5.0.10--bb.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2023-11-06T22-26-08Z](https://img.shields.io/badge/AppVersion-RELEASE.2023--10--16T04--13--43Z-informational?style=flat-square)
 
 A Helm chart for MinIO Tenants
 
@@ -78,7 +78,7 @@ helm install minio-instance chart/
 | apiVersion | string | `"minio.min.io/v2"` |  |
 | tenant.name | string | `"minio"` |  |
 | tenant.image.repository | string | `"registry1.dso.mil/ironbank/opensource/minio/minio"` |  |
-| tenant.image.tag | string | `"RELEASE.2023-10-16T04-13-43Z"` |  |
+| tenant.image.tag | string | `"RELEASE.2023-11-06T22-26-08Z"` |  |
 | tenant.image.pullPolicy | string | `"IfNotPresent"` |  |
 | tenant.imagePullSecret.name | string | `"private-registry"` |  |
 | tenant.scheduler | object | `{}` |  |
