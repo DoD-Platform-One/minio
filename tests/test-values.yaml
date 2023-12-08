@@ -1,5 +1,21 @@
 bbtests:
   enabled: true
+  cypress:
+    envs:
+      cypress_url: 'http://{{ include "minio-operator.fullname" . | trim }}-console:{{ include "minio-operator.servicePort" . | trim }}/login'
+    resources:
+        requests:
+          cpu: 2
+          memory: 2Gi
+  istio:
+    sidecar:
+      resources:
+        cpu:
+          requests: 100m
+          limits: 2000m
+        memory:
+          requests: 512Mi
+          limits: 2048Mi
 
 # Enable use of new tenant CRD from the 4.1.x release
 upgradeTenants:
