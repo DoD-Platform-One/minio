@@ -1,6 +1,6 @@
 # minio-instance
 
-![Version: 5.0.10-bb.4](https://img.shields.io/badge/Version-5.0.10--bb.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2023-11-20T22-40-07Z](https://img.shields.io/badge/AppVersion-RELEASE.2023--11--20T22--40--07Z-informational?style=flat-square)
+![Version: 5.0.11-bb.0](https://img.shields.io/badge/Version-5.0.11--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2023-11-20T22-40-07Z](https://img.shields.io/badge/AppVersion-RELEASE.2023--11--20T22--40--07Z-informational?style=flat-square)
 
 A Helm chart for MinIO Tenants
 
@@ -82,10 +82,11 @@ helm install minio-instance chart/
 | tenant.image.pullPolicy | string | `"IfNotPresent"` |  |
 | tenant.imagePullSecret.name | string | `"private-registry"` |  |
 | tenant.scheduler | object | `{}` |  |
-| tenant.configuration.name | string | `"minio1-env-configuration"` |  |
+| tenant.configuration.name | string | `"myminio-env-configuration"` |  |
 | tenant.pools[0].servers | int | `4` |  |
+| tenant.pools[0].name | string | `"pool-0"` |  |
 | tenant.pools[0].volumesPerServer | int | `4` |  |
-| tenant.pools[0].size | string | `"1Gi"` |  |
+| tenant.pools[0].size | string | `"10Gi"` |  |
 | tenant.pools[0].storageClassName | string | `""` |  |
 | tenant.pools[0].annotations | object | `{}` |  |
 | tenant.pools[0].labels | object | `{}` |  |
@@ -126,12 +127,12 @@ helm install minio-instance chart/
 | tenant.exposeServices | object | `{}` |  |
 | tenant.serviceAccountName | string | `""` |  |
 | tenant.prometheusOperator | bool | `false` |  |
-| tenant.logging.anonymous | bool | `true` |  |
-| tenant.logging.json | bool | `true` |  |
-| tenant.logging.quiet | bool | `true` |  |
+| tenant.logging | object | `{}` |  |
 | tenant.serviceMetadata | object | `{}` |  |
 | tenant.env | list | `[]` |  |
 | tenant.priorityClassName | string | `""` |  |
+| tenant.additionalVolumes | list | `[]` |  |
+| tenant.additionalVolumeMounts | list | `[]` |  |
 | tenant.prometheus.disabled | bool | `true` |  |
 | tenant.prometheus.image | string | `""` |  |
 | tenant.prometheus.env | list | `[]` |  |

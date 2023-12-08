@@ -3,6 +3,11 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [5.0.11-bb.0] - 2023-12-05
+### Changed
+- Updated chart to v5.0.11
+- Updated gluon to 0.4.4
+
 ## [5.0.10-bb.4] - 2023-11-22
 ### Changed
 - Updated minio to `RELEASE.2023-11-20T22-40-07Z`
