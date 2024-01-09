@@ -3,6 +3,10 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [5.0.11-bb.1] - 2024-01-09
+### Changed
+- Added istio hardening to tests
+
 ## [5.0.11-bb.0] - 2023-12-05
 ### Changed
 - Updated chart to v5.0.11

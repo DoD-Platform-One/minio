@@ -23,3 +23,10 @@ upgradeTenants:
 
 networkPolicies:
   enabled: true
+
+# test hardening as well
+istio:
+  enabled: true
+  hardened:
+    enabled: true
+
