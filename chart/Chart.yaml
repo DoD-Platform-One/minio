@@ -1,7 +1,7 @@
 apiVersion: v2
 description: A Helm chart for MinIO Tenants
 name: minio-instance
-version: 5.0.11-bb.5
+version: 5.0.11-bb.6
 appVersion: RELEASE.2024-02-04T22-36-13Z
 keywords:
   - storage

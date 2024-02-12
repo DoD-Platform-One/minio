@@ -3,6 +3,10 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [5.0.11-bb.6] - 2024-02-09
+### Changed
+- fixed ingress gateway authorization policy
+
 ## [5.0.11-bb.5] - 2024-02-06
 ### Changed
 - Updated minio to `RELEASE.2024-02-04T22-36-13Z`

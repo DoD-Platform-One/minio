@@ -1,6 +1,6 @@
 # minio-instance
 
-![Version: 5.0.11-bb.5](https://img.shields.io/badge/Version-5.0.11--bb.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-02-04T22-36-13Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--02--04T22--36--13Z-informational?style=flat-square)
+![Version: 5.0.11-bb.6](https://img.shields.io/badge/Version-5.0.11--bb.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-02-04T22-36-13Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--02--04T22--36--13Z-informational?style=flat-square)
 
 A Helm chart for MinIO Tenants
 
