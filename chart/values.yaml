@@ -98,7 +98,7 @@ tenant:
   ## Registry location and Tag to download MinIO Server image
   image:
     repository: registry1.dso.mil/ironbank/opensource/minio/minio
-    tag: RELEASE.2024-02-04T22-36-13Z
+    tag: RELEASE.2024-02-09T21-25-16Z
     pullPolicy: IfNotPresent
   ## Customize namespace for tenant deployment
   #namespace: default
@@ -140,6 +140,9 @@ tenant:
       # Please make sure to set xfs for "csi.storage.k8s.io/fstype" parameter under StorageClass.parameters.
       # Docs: https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/docs/parameters.md
       storageClassName: ""
+      ###
+      # Specify `storageAnnotations <https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/>`__ to associate to PVCs.
+      storageAnnotations: { }
       ###
       # Specify `annotations <https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/>`__ to associate to Tenant pods.
       annotations: { }
@@ -358,14 +361,14 @@ tenant:
   #  # Image from tag (original behavior), for example:
   #  # image:
   #  #   repository: quay.io/minio/kes
-  #  #   tag: 2023-11-10T10-44-28Z
+  #  #   tag: 2024-01-11T13-09-29Z
   #  # Image from digest (added after original behavior), for example:
   #  # image:
   #  #   repository: quay.io/minio/kes@sha256
   #  #   digest: fb15af611149892f357a8a99d1bcd8bf5dae713bd64c15e6eb27fbdb88fc208b
   #  image:
   #    repository: quay.io/minio/kes
-  #    tag: 2023-11-10T10-44-28Z
+  #    tag: 2024-01-11T13-09-29Z
   #    pullPolicy: IfNotPresent
   #  env: [ ]
   #  replicas: 2
@@ -590,7 +593,7 @@ bbtests:
             name: "{{ .Values.secrets.name }}"
             key: accesskey
   scripts:
-    image: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2024-01-31T08-59-40Z
+    image: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2024-02-09T22-18-24Z
     envs:
       MINIO_PORT: '80'
       MINIO_HOST: 'http://minio'
