@@ -3,6 +3,12 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [5.0.12-bb.0] - 2024-02-13
+### Changed
+- Updated minio to `RELEASE.2024-02-09T21-25-16Z`
+- Updated mc to `RELEASE.2024-02-09T22-18-24Z`
+- Updated gluon to `0.4.8`
+
 ## [5.0.11-bb.6] - 2024-02-09
 ### Changed
 - fixed ingress gateway authorization policy
