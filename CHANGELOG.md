@@ -3,6 +3,11 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [5.0.12-bb.3] - 2024-02-13
+### Changed
+- Updated minio to `RELEASE.2024-02-26T09-33-48Z`
+- Updated mc to `RELEASE.2024-02-24T01-33-20Z`
+
 ## [5.0.12-bb.2] - 2024-02-20
 ### Changed
 - Updated Renovate to include helmv3
