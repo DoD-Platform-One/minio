@@ -1,6 +1,6 @@
 # minio-instance
 
-![Version: 5.0.12-bb.4](https://img.shields.io/badge/Version-5.0.12--bb.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-02-26T09-33-48Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--02--26T09--33--48Z-informational?style=flat-square)
+![Version: 5.0.12-bb.5](https://img.shields.io/badge/Version-5.0.12--bb.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-02-26T09-33-48Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--02--26T09--33--48Z-informational?style=flat-square)
 
 A Helm chart for MinIO Tenants
 
@@ -50,6 +50,9 @@ helm install minio-instance chart/
 | istio.hardened.tempo.enabled | bool | `false` |  |
 | istio.hardened.tempo.namespaces[0] | string | `"tempo"` |  |
 | istio.hardened.tempo.principals[0] | string | `"cluster.local/ns/tempo/sa/tempo-tempo"` |  |
+| istio.hardened.minio.enabled | bool | `true` |  |
+| istio.hardened.minio.namespaces[0] | string | `"minio"` |  |
+| istio.hardened.minio.principals[0] | string | `"cluster.local/ns/minio/sa/minio-minio-minio-instance-sa"` |  |
 | istio.mtls.mode | string | `"STRICT"` |  |
 | istio.console.enabled | bool | `true` |  |
 | istio.console.annotations | object | `{}` |  |
