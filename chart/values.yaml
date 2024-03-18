@@ -42,6 +42,12 @@ istio:
       - tempo
       principals:
       - cluster.local/ns/tempo/sa/tempo-tempo
+    minio:
+      enabled: true
+      namespaces:
+      - minio
+      principals:
+      - cluster.local/ns/minio/sa/minio-minio-minio-instance-sa
   mtls:
     # STRICT = Allow only mutual TLS traffic
     # PERMISSIVE = Allow both plain text and mutual TLS traffic
