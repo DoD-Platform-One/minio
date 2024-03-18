@@ -17,13 +17,42 @@ in the upstream minio operator charts.
  `export HELM_EXPERIMENTAL_OCI=1`
  `helm dependency update chart`
 
+# Deploying
+
+Prerequisites:
+- Make sure to do git pull to get the latest code from bigbang
+
+Deployment Steps:
+- The following is an example override:
+```
+addons:
+  minio:
+    enabled: true
+    git:
+      tag: ""
+      branch: "renovate/ironbank"   
+  minioOperator:
+    enabled: true
+    # git:
+      # tag: ""
+      # branch: "renovate/ironbank"
+    values:
+      console:
+        enabled: true
+```
+- Modify Override to point to correct branch for minio and minioOperator.
+- (from the root of the bigbang repo) `helm upgrade chart -f <registryCredentials overrides> -f chart/ingress-certs.yaml -f docs/assets/configs/example/dev-sso-values.yaml -f docs/assets/configs/example/policy-overrides-k3d.yaml -f <minio override file>`
+- Verify /etc/hosts file contains `minio.bigbang.dev` targeting your K3D instance's public IP
+
 # How to test the upgrade
 
 Local install:
 1. Clean install:
-install minio-operator and minio from your branch.
+install minio-operator and minio from your branch using deployment steps above.
 1. Upgrade:
 install current versions of minio-operator and minio, and upgrade to your branch. Ensure both minio-operator and minio have upgraded to the newer versions.
+1. Test:
+navigate to minio.bigbang.dev.  Log in (credentials can be found in /chart/values.yaml).  Create test bucket and verify creation.  Delete test bucket and verify deletion.
 
 Pipeline:
 modify [MinIO](https://repo1.dso.mil/platform-one/big-bang/apps/application-utilities/minio/-/blob/main/tests/dependencies.yaml) package dependency to point to your branch/version and create an MR
