@@ -99,6 +99,9 @@ tenant:
         fsGroup: 1001
         fsGroupChangePolicy: "OnRootMismatch"
         runAsNonRoot: true
+        capabilities:
+          drop:
+            - ALL
       ###
       # The Kubernetes `SecurityContext <https://kubernetes.io/docs/tasks/configure-pod-container/security-context/>`__ to use for deploying Tenant containers.
       # You may need to modify these values to meet your cluster's security and access settings.
@@ -106,6 +109,9 @@ tenant:
         runAsUser: 1001
         runAsGroup: 1001
         runAsNonRoot: true
+        capabilities:
+          drop:
+            - ALL
       ###
       #
       # An array of `Topology Spread Constraints <https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/>`__ to associate to Operator Console pods.

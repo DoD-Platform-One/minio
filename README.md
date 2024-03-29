@@ -1,6 +1,6 @@
 # minio-instance
 
-![Version: 5.0.12-bb.6](https://img.shields.io/badge/Version-5.0.12--bb.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-03-15T01-07-19Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--03--15T01--07--19Z-informational?style=flat-square)
+![Version: 5.0.12-bb.7](https://img.shields.io/badge/Version-5.0.12--bb.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-03-15T01-07-19Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--03--15T01--07--19Z-informational?style=flat-square)
 
 A Helm chart for MinIO Tenants
 
@@ -106,9 +106,11 @@ helm install minio-instance chart/
 | tenant.pools[0].securityContext.fsGroup | int | `1001` |  |
 | tenant.pools[0].securityContext.fsGroupChangePolicy | string | `"OnRootMismatch"` |  |
 | tenant.pools[0].securityContext.runAsNonRoot | bool | `true` |  |
+| tenant.pools[0].securityContext.capabilities.drop[0] | string | `"ALL"` |  |
 | tenant.pools[0].containerSecurityContext.runAsUser | int | `1001` |  |
 | tenant.pools[0].containerSecurityContext.runAsGroup | int | `1001` |  |
 | tenant.pools[0].containerSecurityContext.runAsNonRoot | bool | `true` |  |
+| tenant.pools[0].containerSecurityContext.capabilities.drop[0] | string | `"ALL"` |  |
 | tenant.pools[0].topologySpreadConstraints | list | `[]` |  |
 | tenant.mountPath | string | `"/export"` |  |
 | tenant.subPath | string | `"/data"` |  |

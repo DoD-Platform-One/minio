@@ -3,6 +3,10 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [5.0.12-bb.7] - 2024-03-28
+### Changed
+- Added capabilities: drop: -ALL
+
 ## [5.0.12-bb.6] - 2024-03-25
 ### Changed
 - Updated minio to `RELEASE.2024-03-15T01-07-19Z`
