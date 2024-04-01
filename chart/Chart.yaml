@@ -1,8 +1,8 @@
 apiVersion: v2
 description: A Helm chart for MinIO Tenants
 name: minio-instance
-version: 5.0.12-bb.7
-appVersion: RELEASE.2024-03-15T01-07-19Z
+version: 5.0.12-bb.8
+appVersion: RELEASE.2024-03-26T22-10-45Z
 keywords:
   - storage
   - object-storage
@@ -21,7 +21,7 @@ dependencies:
   repository: "oci://registry1.dso.mil/bigbang"
 annotations:
   bigbang.dev/applicationVersions: |
-    - Minio: RELEASE.2024-03-15T01-07-19Z
+    - Minio: RELEASE.2024-03-26T22-10-45Z
   helm.sh/images: |
     - name: minio
-      image: registry1.dso.mil/ironbank/opensource/minio/minio:RELEASE.2024-03-15T01-07-19Z
+      image: registry1.dso.mil/ironbank/opensource/minio/minio:RELEASE.2024-03-26T22-10-45Z
