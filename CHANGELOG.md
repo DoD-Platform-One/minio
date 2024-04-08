@@ -3,6 +3,12 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [5.0.12-bb.10] - 2024-04-04
+### Changed
+- Adde Authpol to allow ingress from then minio-operator workload
+- Added Istio Sidecar to restrict egress traffic to REGISTRY_ONLY
+- Added Istio ServiceEntry to explicitly allow egress 
+
 ## [5.0.12-bb.9] - 2024-04-02
 ### Changed
 - Updated minio to `RELEASE.2024-03-30T09-41-56Z`

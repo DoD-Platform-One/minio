@@ -19,3 +19,44 @@ This chart works by deploying an instance of MinIO using the MinIOInstance CRD w
 ## External Resources
 
 If you'd like to learn more about the MinIO application and its features, see their [official documentation](https://min.io/).
+
+
+## Granting Egress to Blocked Services
+
+When Istio hardening is enabled through the settings `istio.enabled` and `istio.enabled.hardened`, a sidecar is injected into the Minio namespace. This sidecar limits network traffic to 'REGISTRY_ONLY', effectively blocking access to external services.
+
+> **Note:** Access to external services will be blocked.
+
+This restriction commonly affects cloud provider object stores configured in the Minio UI. To resolve this, you'll need to identify the hosts blocked by Istio and add a `customServiceEntry` for each one to your Big Bang `values.yaml` file.
+
+### Discovering Blocked Hosts
+
+To find out which hosts are being blocked, inspect the `istio-proxy` logs from the 'minio' pod using the following commands:
+
+```bash
+export SOURCE_POD=$(kubectl -n minio get pod -l name=minio -o jsonpath={.items..metadata.name})
+kubectl -n minio logs "$SOURCE_POD" -c istio-proxy | grep -i "BlackHoleCluster"
+```
+
+Here is an example of a `customServiceEntry` that can be added to your Big Bang `values.yaml`
+```yaml
+istio:
+  enabled: true
+  hardened:
+    enabled: true
+    customServiceEntries:
+     - name: "allow-amazonaws"
+       enabled: true
+       spec:
+         hosts:
+           - "<bucket-name>.s3.us-gov-west-1.amazonaws.com"
+         location: MESH_EXTERNAL
+         exportTo:
+         - "."
+         ports:
+         - name: https
+           number: 443
+           protocol: TLS
+         resolution: DNS
+```
+

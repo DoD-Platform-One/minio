@@ -1,6 +1,6 @@
 # minio-instance
 
-![Version: 5.0.12-bb.9](https://img.shields.io/badge/Version-5.0.12--bb.9-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-03-30T09-41-56Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--03--30T09--41--56Z-informational?style=flat-square)
+![Version: 5.0.12-bb.10](https://img.shields.io/badge/Version-5.0.12--bb.10-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-03-30T09-41-56Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--03--30T09--41--56Z-informational?style=flat-square)
 
 A Helm chart for MinIO Tenants
 
@@ -47,12 +47,17 @@ helm install minio-instance chart/
 | istio.enabled | bool | `false` |  |
 | istio.hardened.enabled | bool | `false` |  |
 | istio.hardened.customAuthorizationPolicies | list | `[]` |  |
+| istio.hardened.outboundTrafficPolicyMode | string | `"REGISTRY_ONLY"` |  |
+| istio.hardened.customServiceEntries | list | `[]` |  |
 | istio.hardened.tempo.enabled | bool | `false` |  |
 | istio.hardened.tempo.namespaces[0] | string | `"tempo"` |  |
 | istio.hardened.tempo.principals[0] | string | `"cluster.local/ns/tempo/sa/tempo-tempo"` |  |
 | istio.hardened.minio.enabled | bool | `true` |  |
 | istio.hardened.minio.namespaces[0] | string | `"minio"` |  |
 | istio.hardened.minio.principals[0] | string | `"cluster.local/ns/minio/sa/minio-minio-minio-instance-sa"` |  |
+| istio.hardened.minioOperator.enabled | bool | `true` |  |
+| istio.hardened.minioOperator.namespaces[0] | string | `"minio-operator"` |  |
+| istio.hardened.minioOperator.principals[0] | string | `"cluster.local/ns/minio-operator/sa/minio-operator"` |  |
 | istio.mtls.mode | string | `"STRICT"` |  |
 | istio.console.enabled | bool | `true` |  |
 | istio.console.annotations | object | `{}` |  |
