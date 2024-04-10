@@ -36,6 +36,19 @@ istio:
     # - name: "allow-nothing"
     #   enabled: true
     #   spec: {}
+    outboundTrafficPolicyMode: "REGISTRY_ONLY"
+    customServiceEntries: []
+      # - name: "allow-google"
+      #   enabled: true
+      #   spec:
+      #     hosts:
+      #       - google.com
+      #     location: MESH_EXTERNAL
+      #     ports:
+      #       - number: 443
+      #         protocol: TLS
+      #         name: https
+      #     resolution: DNS
     tempo:
       enabled: false
       namespaces:
@@ -48,6 +61,12 @@ istio:
       - minio
       principals:
       - cluster.local/ns/minio/sa/minio-minio-minio-instance-sa
+    minioOperator:
+      enabled: true
+      namespaces:
+      - minio-operator
+      principals:
+      - cluster.local/ns/minio-operator/sa/minio-operator
   mtls:
     # STRICT = Allow only mutual TLS traffic
     # PERMISSIVE = Allow both plain text and mutual TLS traffic
@@ -104,7 +123,7 @@ tenant:
   ## Registry location and Tag to download MinIO Server image
   image:
     repository: registry1.dso.mil/ironbank/opensource/minio/minio
-    tag: RELEASE.2024-03-15T01-07-19Z
+    tag: RELEASE.2024-03-30T09-41-56Z
     pullPolicy: IfNotPresent
   ## Customize namespace for tenant deployment
   #namespace: default
@@ -193,6 +212,9 @@ tenant:
         fsGroup: 1001
         fsGroupChangePolicy: "OnRootMismatch"
         runAsNonRoot: true
+        capabilities:
+          drop:
+            - ALL
       ###
       # The Kubernetes `SecurityContext <https://kubernetes.io/docs/tasks/configure-pod-container/security-context/>`__ to use for deploying Tenant containers.
       # You may need to modify these values to meet your cluster's security and access settings.
@@ -200,6 +222,9 @@ tenant:
         runAsUser: 1001
         runAsGroup: 1001
         runAsNonRoot: true
+        capabilities:
+          drop:
+            - ALL
       ###
       #
       # An array of `Topology Spread Constraints <https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/>`__ to associate to Operator Console pods.
@@ -599,7 +624,7 @@ bbtests:
             name: "{{ .Values.secrets.name }}"
             key: accesskey
   scripts:
-    image: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2024-03-13T23-51-57Z
+    image: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2024-03-30T15-29-52Z
     envs:
       MINIO_PORT: '80'
       MINIO_HOST: 'http://minio'
