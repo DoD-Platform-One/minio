@@ -1,6 +1,6 @@
 # minio-instance
 
-![Version: 5.0.12-bb.10](https://img.shields.io/badge/Version-5.0.12--bb.10-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-03-30T09-41-56Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--03--30T09--41--56Z-informational?style=flat-square)
+![Version: 5.0.12-bb.11](https://img.shields.io/badge/Version-5.0.12--bb.11-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-03-30T09-41-56Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--03--30T09--41--56Z-informational?style=flat-square)
 
 A Helm chart for MinIO Tenants
 
@@ -79,6 +79,7 @@ helm install minio-instance chart/
 | networkPolicies.controlPlaneCidr | string | `"0.0.0.0/0"` |  |
 | networkPolicies.ingressLabels.app | string | `"istio-ingressgateway"` |  |
 | networkPolicies.ingressLabels.istio | string | `"ingressgateway"` |  |
+| networkPolicies.additionalPolicies | list | `[]` |  |
 | openshift | bool | `false` |  |
 | secrets.name | string | `"minio-creds-secret"` |  |
 | secrets.accessKey | string | `"minio"` |  |
