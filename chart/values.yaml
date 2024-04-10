@@ -102,6 +102,7 @@ networkPolicies:
   ingressLabels:
     app: istio-ingressgateway
     istio: ingressgateway
+  additionalPolicies: []
 
 openshift: false
 
