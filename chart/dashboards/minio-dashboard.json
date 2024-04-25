@@ -41,7 +41,10 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },        
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -70,7 +73,10 @@
   "panels": [
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -145,7 +151,10 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -221,7 +230,10 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "fieldConfig": {
         "defaults": {
           "mappings": [
@@ -295,7 +307,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -383,7 +398,10 @@
       }
     },
     {
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "fieldConfig": {
         "defaults": {
           "mappings": [],
@@ -445,7 +463,10 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -525,7 +546,10 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -601,7 +625,10 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -681,7 +708,10 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -761,7 +791,10 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -841,7 +874,10 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "fieldConfig": {
         "defaults": {
           "mappings": [
@@ -925,7 +961,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1021,7 +1060,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1111,7 +1153,10 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1191,7 +1236,10 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1271,7 +1319,10 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "fieldConfig": {
         "defaults": {
           "mappings": [
@@ -1349,7 +1400,10 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1417,7 +1471,10 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1491,7 +1548,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1587,7 +1647,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1684,7 +1747,10 @@
       "bars": true,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "description": "Total number of bytes received and sent among all MinIO server instances",
       "fieldConfig": {
         "defaults": {
@@ -1796,7 +1862,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1904,7 +1973,10 @@
       "bars": true,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1996,7 +2068,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2088,7 +2163,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2182,7 +2260,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2280,7 +2361,10 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "description": "Number of online disks per MinIO Server",
       "fieldConfig": {
         "defaults": {
@@ -2397,7 +2481,10 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2499,7 +2586,10 @@
       "bars": true,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2604,6 +2694,19 @@
   ],
   "templating": {
     "list": [
+      {        
+        "hide": 0,
+      "includeAll": false,
+      "multi": false,
+      "name": "datasource",
+      "options": [],
+      "query": "prometheus",
+      "queryValue": "",
+      "refresh": 1,
+      "regex": "",
+      "skipUrlSync": false,
+      "type": "datasource"
+      },
       {
         "allValue": null,
         "current": {
@@ -2615,7 +2718,10 @@
             "minio"
           ]
         },
-        "datasource": "Prometheus",
+        "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+        },
         "definition": "label_values(job)",
         "description": null,
         "error": null,
