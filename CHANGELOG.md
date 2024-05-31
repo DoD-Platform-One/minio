@@ -3,6 +3,11 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [5.0.15-bb.1] - 2024-05-29
+### Changed
+- Updated minio to `RELEASE.2024-05-27T19-17-46Z`
+- Updated registry1.dso.mil/ironbank/opensource/minio/mc  to `RELEASE.2024-05-24T09-08-49Z`
+
 ## [5.0.15-bb.0] - 2024-05-17
 ### Changed
 - Updated minio to `RELEASE.2024-05-10T01-41-38Z`

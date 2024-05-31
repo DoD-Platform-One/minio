@@ -143,7 +143,7 @@ tenant:
   ## Registry location and Tag to download MinIO Server image
   image:
     repository: registry1.dso.mil/ironbank/opensource/minio/minio
-    tag: RELEASE.2024-05-10T01-41-38Z
+    tag: RELEASE.2024-05-27T19-17-46Z
     pullPolicy: IfNotPresent
   ## Customize namespace for tenant deployment
   #namespace: default
@@ -679,7 +679,7 @@ bbtests:
             name: "{{ .Values.secrets.name }}"
             key: accesskey
   scripts:
-    image: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2024-05-09T17-04-24Z
+    image: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2024-05-24T09-08-49Z
     envs:
       MINIO_PORT: '80'
       MINIO_HOST: 'http://minio'
