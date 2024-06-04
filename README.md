@@ -1,6 +1,6 @@
 # minio-instance
 
-![Version: 5.0.15-bb.1](https://img.shields.io/badge/Version-5.0.15--bb.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-05-27T19-17-46Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--05--10T01--41--38Z-informational?style=flat-square)
+![Version: 5.0.15-bb.2](https://img.shields.io/badge/Version-5.0.15--bb.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-05-28T17-19-04Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--05--28T17--19--04Z-informational?style=flat-square)
 
 A Helm chart for MinIO Tenants
 
@@ -87,7 +87,7 @@ helm install minio-instance chart/
 | apiVersion | string | `"minio.min.io/v2"` |  |
 | tenant.name | string | `"minio"` |  |
 | tenant.image.repository | string | `"registry1.dso.mil/ironbank/opensource/minio/minio"` |  |
-| tenant.image.tag | string | `"RELEASE.2024-05-27T19-17-46Z"` |  |
+| tenant.image.tag | string | `"RELEASE.2024-05-28T17-19-04Z"` |  |
 | tenant.image.pullPolicy | string | `"IfNotPresent"` |  |
 | tenant.imagePullSecret.name | string | `"private-registry"` |  |
 | tenant.scheduler | object | `{}` |  |
@@ -116,7 +116,9 @@ helm install minio-instance chart/
 | tenant.pools[0].containerSecurityContext.runAsUser | int | `1001` |  |
 | tenant.pools[0].containerSecurityContext.runAsGroup | int | `1001` |  |
 | tenant.pools[0].containerSecurityContext.runAsNonRoot | bool | `true` |  |
+| tenant.pools[0].containerSecurityContext.allowPrivilegeEscalation | bool | `false` |  |
 | tenant.pools[0].containerSecurityContext.capabilities.drop[0] | string | `"ALL"` |  |
+| tenant.pools[0].containerSecurityContext.seccompProfile.type | string | `"RuntimeDefault"` |  |
 | tenant.pools[0].topologySpreadConstraints | list | `[]` |  |
 | tenant.mountPath | string | `"/export"` |  |
 | tenant.subPath | string | `"/data"` |  |
@@ -136,6 +138,7 @@ helm install minio-instance chart/
 | tenant.liveness | object | `{}` |  |
 | tenant.readiness | object | `{}` |  |
 | tenant.startup | object | `{}` |  |
+| tenant.lifecycle | object | `{}` |  |
 | tenant.exposeServices | object | `{}` |  |
 | tenant.serviceAccountName | string | `""` |  |
 | tenant.prometheusOperator | bool | `false` |  |
