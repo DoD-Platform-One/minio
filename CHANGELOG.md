@@ -3,6 +3,11 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [5.0.15-bb.3] - 2024-06-06
+### Changed
+- Updated minio to `RELEASE.2024-06-04T19-20-08Z`
+- Updated mc to `RELEASE.2024-06-01T15-03-35Z`
+
 ## [5.0.15-bb.2] - 2024-06-03
 ### Changed
 - Updated minio to `RELEASE.2024-05-28T17-19-04Z`
