@@ -3,175 +3,248 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+
 ## [5.0.15-bb.4] - 2024-06-21
+
 ### Changed
+
 - Updated mc to `RELEASE.2024-06-12T14-34-03Z`
 
 ## [5.0.15-bb.3] - 2024-06-06
+
 ### Changed
+
 - Updated minio to `RELEASE.2024-06-04T19-20-08Z`
 - Updated mc to `RELEASE.2024-06-01T15-03-35Z`
 
 ## [5.0.15-bb.2] - 2024-06-03
+
 ### Changed
+
 - Updated minio to `RELEASE.2024-05-28T17-19-04Z`
 
 ## [5.0.15-bb.1] - 2024-05-29
+
 ### Changed
+
 - Updated minio to `RELEASE.2024-05-27T19-17-46Z`
 - Updated registry1.dso.mil/ironbank/opensource/minio/mc  to `RELEASE.2024-05-24T09-08-49Z`
 
 ## [5.0.15-bb.0] - 2024-05-17
+
 ### Changed
+
 - Updated minio to `RELEASE.2024-05-10T01-41-38Z`
 - Updated registry1.dso.mil/ironbank/opensource/minio/mc  to `RELEASE.2024-05-09T17-04-24Z`
 - Updated chart to 5.0.15
 
 ## [5.0.12-bb.14] - 2024-05-09
+
 ### Changed
+
 - Updated minio to `RELEASE.2024-05-07T06-41-25Z`
 
 ## [5.0.12-bb.13] - 2024-05-07
+
 ### Changed
+
 - Updated gluon to 0.5.0
 - Updated minio to `RELEASE.2024-05-01T01-11-10Z`
 - Updated mc to `RELEASE.2024-04-29T09-56-05Z`
 
 ## [5.0.12-bb.12] - 2024-04-17
+
 ### Changed
+
 - Updated grafana dashboards to be compatible with Thanos
 
 ## [5.0.12-bb.11] - 2024-04-09
+
 ### Added
+
 - Added custom network policies
 
 ## [5.0.12-bb.10] - 2024-04-04
+
 ### Changed
+
 - Added Authpol to allow ingress from then minio-operator workload
 - Added Istio Sidecar to restrict egress traffic to REGISTRY_ONLY
-- Added Istio ServiceEntry to explicitly allow egress 
+- Added Istio ServiceEntry to explicitly allow egress
 
 ## [5.0.12-bb.9] - 2024-04-02
+
 ### Changed
+
 - Updated minio to `RELEASE.2024-03-30T09-41-56Z`
 - Updated mc to `RELEASE.2024-03-30T15-29-52Z`
 
 ## [5.0.12-bb.8] - 2024-03-28
+
 ### Changed
+
 - Updated minio to `RELEASE.2024-03-26T22-10-45Z`
 - Updated mc to `RELEASE.2024-03-25T16-41-14Z`
 
 ## [5.0.12-bb.7] - 2024-03-28
+
 ### Changed
+
 - Added capabilities: drop: -ALL
 
 ## [5.0.12-bb.6] - 2024-03-25
+
 ### Changed
+
 - Updated minio to `RELEASE.2024-03-15T01-07-19Z`
 - Updated mc to `RELEASE.2024-03-13T23-51-57Z`
 
 ## [5.0.12-bb.5] - 2024-03-15
+
 ### Added
+
 - Adding the minio policy for limited intranamespace communication
 
 ## [5.0.12-bb.4] - 2024-03-08
+
 ### Changed
+
 - Openshift update for deploying Minio into Openshift cluster
 
 ## [5.0.12-bb.3] - 2024-02-13
+
 ### Changed
+
 - Updated minio to `RELEASE.2024-02-26T09-33-48Z`
 - Updated mc to `RELEASE.2024-02-24T01-33-20Z`
 
 ## [5.0.12-bb.2] - 2024-02-20
+
 ### Changed
+
 - Updated Renovate to include helmv3
 
 ## [5.0.12-bb.1] - 2024-02-13
+
 ### Changed
+
 - Modified test-values.yaml to reduce pod creation, was causing issues with pipelines
 
 ## [5.0.12-bb.0] - 2024-02-13
+
 ### Changed
+
 - Updated minio to `RELEASE.2024-02-09T21-25-16Z`
 - Updated mc to `RELEASE.2024-02-09T22-18-24Z`
 - Updated gluon to `0.4.8`
 
 ## [5.0.11-bb.6] - 2024-02-09
+
 ### Changed
+
 - fixed ingress gateway authorization policy
 
 ## [5.0.11-bb.5] - 2024-02-06
+
 ### Changed
+
 - Updated minio to `RELEASE.2024-02-04T22-36-13Z`
 
 ## [5.0.11-bb.4] - 2024-02-05
+
 ### Changed
+
 - Updated minio to `RELEASE.2024-01-31T20-20-33Z`
 - Updated mc to `RELEASE.2024-01-31T08-59-40Z`
 
 ## [5.0.11-bb.3] - 2024-01-23
+
 ### Changed
+
 - Updated minio to `RELEASE.2024-01-18T22-51-28Z`
 - Updated mc to `RELEASE.2024-01-18T07-03-39Z`
 
 ## [5.0.11-bb.2] - 2024-01-11
+
 ### Changed
+
 - Updated gluon to 0.4.7
 
 ## [5.0.11-bb.1] - 2024-01-09
+
 ### Changed
+
 - Added istio hardening to tests
 
 ## [5.0.11-bb.0] - 2023-12-05
+
 ### Changed
+
 - Updated chart to v5.0.11
 - Updated gluon to 0.4.4
 
 ## [5.0.10-bb.4] - 2023-11-22
+
 ### Changed
+
 - Updated minio to `RELEASE.2023-11-20T22-40-07Z`
 - Updated mc to `RELEASE.2023-11-20T16-30-59Z`
 
 ## [5.0.10-bb.3] - 2023-11-13
+
 ### Changed
+
 - Updated minio to `RELEASE.2023-11-06T22-26-08Z`
 
 ## [5.0.10-bb.2] - 2023-11-02
+
 ### Changed
+
 - Updated minio to `RELEASE.2023-10-16T04-13-43Z`
 - Updated mc to `RELEASE.2023-10-30T18-43-32Z`
 
 ## [5.0.10-bb.1] - 2022-10-17
+
 ### Added
+
 - Added istio `allow-nothing` policy
 - Added istio `allow-ingress` polic(y|ies)
 - Added istio `allow-tempo` policy
 - Added istio custom policy template
 
 ## [5.0.10-bb.0] - 2023-10-16
+
 ### Changed
+
 - Updated minio to `RELEASE.2023-10-07T15-07-38Z`
 - Updated mc to `RELEASE.2023-10-14T01-57-03Z`
 
 ## [5.0.9-bb.2] - 2023-09-26
+
 ### Changed
+
 - Updated minio to `RELEASE.2023-09-23T03-47-50Z`
 - Updated mc to `RELEASE.2023-09-22T05-07-46Z`
 
 ## [5.0.9-bb.1] - 2023-09-25
+
 ### Changed
+
 - Updated minio to `RELEASE.2023-09-20T22-49-55Z`
 - Updated mc to `RELEASE.2023-09-20T15-22-31Z`
 
 ## [5.0.9-bb.0] - 2023-09-22
+
 ### Changed
+
 - Updated chart to v5.0.9
 - Updated minio to `RELEASE.2023-09-16T01-01-47Z`
 - Updated mc to `RELEASE.2023-09-13T23-08-58Z`
 
 ## [5.0.6-bb.0] - 2023-09-19
+
 ### Changed
+
 - Updated chart to v5.0.6
 - Updated minio to `RELEASE.2023-09-07T02-05-02Z`
 - Updated mc to `RELEASE.2023-09-07T22-48-55Z`
@@ -179,97 +252,139 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Updated folder structure for cypress 13.X+
 
 ## [5.0.5-bb.0] - 2023-06-23
+
 ### Changed
+
 - Updated chart to v5.0.5
 - Updated minio to `RELEASE.2023-06-19T19-52-50Z`
 - Updated mc to `RELEASE.2023-06-19T19-31-19Z`
 
 ## [5.0.4-bb.1] - 2023-05-18
+
 ### Updated
+
 - Updated chart/values.yaml hostname key to domain
+
 ---
+
 ## [5.0.4-bb.0] - 2023-05-10
+
 ### Changed
+
 - Updated chart to v5.0.4
 - Updated minio to `RELEASE.2023-05-04T21-44-30Z`
 - Updated mc to `RELEASE.2023-05-04T18-10-16Z`
 
 ## [5.0.3-bb.2] - 2023-05-08
+
 ### Fix
+
 - Update container security context run as user and group to 1001 to match IronBank image.
 - add network policy to egress
 
-## [5.0.3-bb.1] - 2023-04-06 
+## [5.0.3-bb.1] - 2023-04-06
+
 ### Changed
+
 - Updated chart to v5.0.3
-- Updated MinIO to `RELEASE.2023-04-28T18-11-17Z` 
+- Updated MinIO to `RELEASE.2023-04-28T18-11-17Z`
 - Update mc to `RELEASE.2023-04-12T02-21-51Z`
 
 ## [4.5.8-bb.0] - 2022-01-17
+
 ### Changed
+
 - Updated images, helm chart, and tenant
 
 ## [4.5.4-bb.3] - 2022-01-17
+
 ### Changed
+
 - Update gluon to new registry1 location + latest version (0.3.2)
 
 ## [4.5.4-bb.2] - 2022-12-05
+
 ### Updated
+
 - Update MinIO to `RELEASE.2022-11-26T22-43-32Z`
 
 ## [4.5.4-bb.1] - 2022-11-28
+
 ### Updated
+
 - Update MinIO to `RELEASE.2022-11-17T23-20-09Z`
 
 ## [4.5.4-bb.0] - 2022-11-14
+
 ### Updated
+
 - Update MinIO to `RELEASE.2022-11-08T05-27-07Z`
 - Update chart to v4.5.4
 
 ## [4.5.3-bb.1] - 2022-10-25
+
 ### Changed
+
 - Update MinIO default resource requirements
 
 ## [4.5.3-bb.0] - 2022-10-20
+
 ### Changed
+
 - Update MinIO image to RELEASE.2022-10-15T19-57-03Z
 - Update tenant configuration to v4.5.3
 
 ## [4.5.1-bb.0] - 2022-10-3
+
 ### Changed
+
 - Update MinIO image to RELEASE.2022-09-25T15-44-53Z
 - Update tenant configuration to match operator version 4.5.1
 - Updated credential usage in tenant due to deprecated minio operator feature in te CRD.
 
 ## [4.4.28-bb.1] - 2022-08-23
+
 ### Changed
+
 - Update MinIO image to RELEASE.2022-08-26T19-53-15Z
 
 ## [4.4.25-bb.0] - 2022-07-11
+
 ### Changed
+
 - Update to 4.4.25
 - Update MinIO image to RELEASE.2022-07-08T00-05-23Z
 
 ## [4.4.16-bb.0] - 2022-05-05
+
 ### Changed
+
 - Update to 4.4.16
 - Update MinIO image to RELEASE.2022-04-30T22-23-53Z
 - Modified by BB to use with instead of range in NOTES and tenant-secret
 
 ## [4.4.12-bb.4] - 2022-04-22
+
 ### Added
-- Added mTLS PeerAuthentication policy for minio pods 
+
+- Added mTLS PeerAuthentication policy for minio pods
 
 ## [4.4.12-bb.3] - 2022-04-14
+
 ### Fixed
+
 - Update BB version annotation to RELEASE.2022-04-12T06-55-35Z
 
 ## [4.4.12-bb.2] - 2022-04-13
+
 ### Changed
+
 - Update MinIO image to RELEASE.2022-04-12T06-55-35Z
 
 ## [4.4.12-bb.1] - 2022-03-30
+
 ### Added
+
 - Added Tempo Zipkin Egress Policy
 
 ## [4.4.12-bb.0] - 2022-03-25

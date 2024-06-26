@@ -5,11 +5,13 @@
 A Helm chart for MinIO Tenants
 
 ## Upstream References
+
 * <https://min.io>
 
 * <https://github.com/minio/operator>
 
 ## Learn More
+
 * [Application Overview](docs/overview.md)
 * [Other Documentation](docs/)
 
@@ -21,12 +23,13 @@ A Helm chart for MinIO Tenants
 
 Install Helm
 
-https://helm.sh/docs/intro/install/
+<https://helm.sh/docs/intro/install/>
 
 ## Deployment
 
 * Clone down the repository
 * cd into directory
+
 ```bash
 helm install minio-instance chart/
 ```
