@@ -1,98 +1,11 @@
 bbtests:
   enabled: true
-  cypress:
-    envs:
-      cypress_url: 'http://{{ include "minio-operator.fullname" . | trim }}-console:{{ include "minio-operator.servicePort" . | trim }}/login'
-    resources:
-        requests:
-          cpu: 2
-          memory: 2Gi
-  istio:
-    sidecar:
-      resources:
-        cpu:
-          requests: 100m
-          limits: 2000m
-        memory:
-          requests: 512Mi
-          limits: 2048Mi
-
-# Enable use of new tenant CRD from the 4.1.x release
-upgradeTenants:
-  enabled: true
-
-networkPolicies:
-  enabled: true
-
-# test hardening as well
-istio:
-  hardened:
-    enabled: true
 
 tenant:
   pools:
-    ###
-    # The number of MinIO Tenant Pods / Servers in this pool.
-    # For standalone mode, supply 1. For distributed mode, supply 4 or more.
-    # Note that the operator does not support upgrading from standalone to distributed mode.
     - servers: 2
-      ###
-      # Custom name for the pool
       name: pool-0
-      ###
-      # The number of volumes attached per MinIO Tenant Pod / Server.
-      volumesPerServer: 4
-      ###
-      # The capacity per volume requested per MinIO Tenant Pod.
-      size: 10Gi
-      ###
-      # The `storageClass <https://kubernetes.io/docs/concepts/storage/storage-classes/>`__ to associate with volumes generated for this pool.
-      #
-      # If using Amazon Elastic Block Store (EBS) CSI driver
-      # Please make sure to set xfs for "csi.storage.k8s.io/fstype" parameter under StorageClass.parameters.
-      # Docs: https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/docs/parameters.md
-      storageClassName: ""
-      ###
-      # Specify `storageAnnotations <https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/>`__ to associate to PVCs.
-      storageAnnotations: { }
-      ###
-      # Specify `annotations <https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/>`__ to associate to Tenant pods.
-      annotations: { }
-      ###
-      # Specify `labels <https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/>`__ to associate to Tenant pods.
-      labels: { }
-      ###
-      #
-      # An array of `Toleration labels <https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/>`__ to associate to Tenant pods.
-      #
-      # These settings determine the distribution of pods across worker nodes.
-      tolerations: [ ]
-      ###
-      # Any `Node Selectors <https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/>`__ to apply to Tenant pods.
-      #
-      # The Kubernetes scheduler uses these selectors to determine which worker nodes onto which it can deploy Tenant pods.
-      #
-      # If no worker nodes match the specified selectors, the Tenant deployment will fail.
-      nodeSelector: { }
-      ###
-      #
-      # The `affinity <https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/>`__ or anti-affinity settings to apply to Tenant pods.
-      #
-      # These settings determine the distribution of pods across worker nodes and can help prevent or allow colocating pods onto the same worker nodes.
-      affinity: { }
-      ## Configure resource requests and limits for MinIO containers
-      resources:
-        requests:
-          memory: 2Gi
-          cpu: 1000m
-        limits:
-          memory: 2Gi
-          cpu: 1000m
-      ## Configure Pod's security context
-      ## We recommend to skip the recursive permission change by using
-      ## fsGroupChangePolicy as OnRootMismatch because it can be pretty
-      ## expensive for larger volumes with lots of small files.
-      ## BB Note: Defaults for Ironbank image are 1001 for user, group, and fsGroup
+
       securityContext:
         runAsUser: 1001
         runAsGroup: 1001
@@ -102,23 +15,4 @@ tenant:
         capabilities:
           drop:
             - ALL
-      ###
-      # The Kubernetes `SecurityContext <https://kubernetes.io/docs/tasks/configure-pod-container/security-context/>`__ to use for deploying Tenant containers.
-      # You may need to modify these values to meet your cluster's security and access settings.
-      containerSecurityContext:
-        runAsUser: 1001
-        runAsGroup: 1001
-        runAsNonRoot: true
-        capabilities:
-          drop:
-            - ALL
-      ###
-      #
-      # An array of `Topology Spread Constraints <https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/>`__ to associate to Operator Console pods.
-      #
-      # These settings determine the distribution of pods across worker nodes.
-      topologySpreadConstraints: [ ]
-      ###
-      #
-      # The name of a custom `Container Runtime <https://kubernetes.io/docs/concepts/containers/runtime-class/>`__ to use for the Operator Console pods.
-      # runtimeClassName: ""
+

@@ -660,11 +660,11 @@ bbtests:
     artifacts: true
     resources:
       requests:
-        cpu: "1"
-        memory: "1Gi"
+        cpu: "2"
+        memory: "4Gi"
       limits:
         cpu: "2"
-        memory: "2Gi"
+        memory: "4Gi"
     envs:
       cypress_url: 'http://{{ include "minio-operator.fullname" . | trim }}-console:{{ include "minio-operator.servicePort" . | trim }}/login'
     secretEnvs:

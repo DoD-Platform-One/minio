@@ -1,17 +1,15 @@
 # minio-instance
 
-![Version: 5.0.15-bb.5](https://img.shields.io/badge/Version-5.0.15--bb.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-06-04T19-20-08Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--06--04T19--20--08Z-informational?style=flat-square)
+![Version: 5.0.15-bb.6](https://img.shields.io/badge/Version-5.0.15--bb.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-06-04T19-20-08Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--06--04T19--20--08Z-informational?style=flat-square)
 
 A Helm chart for MinIO Tenants
 
 ## Upstream References
-
 * <https://min.io>
 
 * <https://github.com/minio/operator>
 
 ## Learn More
-
 * [Application Overview](docs/overview.md)
 * [Other Documentation](docs/)
 
@@ -23,13 +21,12 @@ A Helm chart for MinIO Tenants
 
 Install Helm
 
-<https://helm.sh/docs/intro/install/>
+https://helm.sh/docs/intro/install/
 
 ## Deployment
 
 * Clone down the repository
 * cd into directory
-
 ```bash
 helm install minio-instance chart/
 ```
@@ -226,10 +223,10 @@ helm install minio-instance chart/
 | ingress.console.pathType | string | `"Prefix"` |  |
 | bbtests.enabled | bool | `false` |  |
 | bbtests.cypress.artifacts | bool | `true` |  |
-| bbtests.cypress.resources.requests.cpu | string | `"1"` |  |
-| bbtests.cypress.resources.requests.memory | string | `"1Gi"` |  |
+| bbtests.cypress.resources.requests.cpu | string | `"2"` |  |
+| bbtests.cypress.resources.requests.memory | string | `"4Gi"` |  |
 | bbtests.cypress.resources.limits.cpu | string | `"2"` |  |
-| bbtests.cypress.resources.limits.memory | string | `"2Gi"` |  |
+| bbtests.cypress.resources.limits.memory | string | `"4Gi"` |  |
 | bbtests.cypress.envs.cypress_url | string | `"http://{{ include \"minio-operator.fullname\" . \| trim }}-console:{{ include \"minio-operator.servicePort\" . \| trim }}/login"` |  |
 | bbtests.cypress.secretEnvs[0].name | string | `"cypress_secretkey"` |  |
 | bbtests.cypress.secretEnvs[0].valueFrom.secretKeyRef.name | string | `"{{ .Values.secrets.name }}"` |  |
