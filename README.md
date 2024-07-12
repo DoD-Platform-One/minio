@@ -1,6 +1,6 @@
 # minio-instance
 
-![Version: 5.0.15-bb.6](https://img.shields.io/badge/Version-5.0.15--bb.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-06-04T19-20-08Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--06--04T19--20--08Z-informational?style=flat-square)
+![Version: 5.0.15-bb.7](https://img.shields.io/badge/Version-5.0.15--bb.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-06-04T19-20-08Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--06--04T19--20--08Z-informational?style=flat-square)
 
 A Helm chart for MinIO Tenants
 
@@ -58,6 +58,9 @@ helm install minio-instance chart/
 | istio.hardened.minioOperator.enabled | bool | `true` |  |
 | istio.hardened.minioOperator.namespaces[0] | string | `"minio-operator"` |  |
 | istio.hardened.minioOperator.principals[0] | string | `"cluster.local/ns/minio-operator/sa/minio-operator"` |  |
+| istio.hardened.velero.enabled | bool | `true` |  |
+| istio.hardened.velero.namespaces[0] | string | `"velero"` |  |
+| istio.hardened.velero.principals[0] | string | `"cluster.local/ns/velero/sa/velero"` |  |
 | istio.mtls.mode | string | `"STRICT"` |  |
 | istio.console.enabled | bool | `true` |  |
 | istio.console.annotations | object | `{}` |  |
