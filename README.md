@@ -9,6 +9,10 @@ A Helm chart for MinIO Tenants
 
 * <https://github.com/minio/operator>
 
+### Upstream Release Notes
+
+The [upstream minio release notes](https://github.com/minio/minio/releases) may help when reviewing this package. You may also want to look at the [minio operator's release notes](https://github.com/minio/operator/releases) as that repository contains the upstream helm chart for this one.
+
 ## Learn More
 * [Application Overview](docs/overview.md)
 * [Other Documentation](docs/)
