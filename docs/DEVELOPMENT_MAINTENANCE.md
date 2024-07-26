@@ -122,3 +122,22 @@ data:
 - run ```helm dependency update ./chart``` and commit the downloaded archives
 
 - commit the tar archives that were downloaded from the helm dependency update command. And also commit the requirements.lock that was generated.
+
+# Files that need integration testing
+
+If you modify any of these things, you should perform an integration test with your branch against the rest of bigbang. Some of these files have automatic tests already defined, but those automatic tests may not model corner cases found in full integration scenarios.
+
+* `./chart/templates/bigbang/*`
+* `./chart/templates/api-ingress.yaml`
+* `./chart/templates/peer-authentication.yaml`
+* `./chart/values.yaml` if it involves any of:
+  * monitoring changes
+  * network policy changes
+  * kyverno policy changes
+  * istio hardening rule changes
+  * service definition changes
+  * TLS settings
+  * server ingress settings
+  * headless server settings (especially port or other comms settings)
+
+Follow [the standard process](https://repo1.dso.mil/big-bang/bigbang/-/blob/master/docs/developer/test-package-against-bb.md?ref_type=heads) for performing an integration test against bigbang.
