@@ -1,3 +1,4 @@
+{{- $bb_labels := include "bigbang.labels" . -}}
 apiVersion: minio.min.io/v2
 kind: Tenant
 metadata:
@@ -63,9 +64,11 @@ spec:
       {{- with (dig "annotations" (dict) .) }}
       annotations: {{- toYaml . | nindent 8 }}
       {{- end }}
+      labels:
       {{- with (dig "labels" (dict) .) }}
-      labels: {{- toYaml . | nindent 8 }}
+        {{- toYaml . | nindent 8 }}
       {{- end }}
+        {{ $bb_labels | nindent 8 }}
       {{- with (dig "tolerations" (list) .) }}
       tolerations: {{- toYaml . | nindent 8 }}
       {{- end }}
@@ -191,9 +194,11 @@ spec:
     {{- with (dig "annotations" (dict) .) }}
     annotations: {{- toYaml . | nindent 4 }}
     {{- end }}
+    labels:
     {{- with (dig "labels" (dict) .) }}
-    labels: {{- toYaml . | nindent 4 }}
+      {{- toYaml . | nindent 4 }}
     {{- end }}
+      {{ $bb_labels | nindent 4 }}
     serviceAccountName: {{ .kes.serviceAccountName | quote }}
     {{- if hasKey .kes "securityContext" }}
     securityContext: {{- if eq (len .kes.securityContext) 0 }} {} {{- end }}

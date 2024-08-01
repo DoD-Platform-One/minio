@@ -4,6 +4,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [5.0.16-bb.1] - 2024-07-31
+
+### Added
+
+- Added `bigbang.labels` helper function to authservice under `templates/bigbang`
+- Added call to `bigbang.labels` function in `pools` template section of `chart/templates/tenant.yaml`
+
 ## [5.0.16-bb.0] - 2024-06-27
 
 ### Changed
