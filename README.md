@@ -1,6 +1,7 @@
+<!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # minio-instance
 
-![Version: 5.0.16-bb.0](https://img.shields.io/badge/Version-5.0.16--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-06-04T19-20-08Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--06--04T19--20--08Z-informational?style=flat-square)
+![Version: 5.0.16-bb.1](https://img.shields.io/badge/Version-5.0.16--bb.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-06-04T19-20-08Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--06--04T19--20--08Z-informational?style=flat-square)
 
 A Helm chart for MinIO Tenants
 
@@ -11,7 +12,8 @@ A Helm chart for MinIO Tenants
 
 ### Upstream Release Notes
 
-The [upstream minio release notes](https://github.com/minio/minio/releases) may help when reviewing this package. You may also want to look at the [minio operator's release notes](https://github.com/minio/operator/releases) as that repository contains the upstream helm chart for this one.
+* [Find our upstream chart's CHANGELOG here](https://github.com/minio/minio/releases)
+* [and our upstream application release notes here](https://github.com/minio/operator/releases)
 
 ## Learn More
 * [Application Overview](docs/overview.md)
@@ -254,3 +256,8 @@ helm install minio-instance chart/
 ## Contributing
 
 Please see the [contributing guide](./CONTRIBUTING.md) if you are interested in contributing.
+
+---
+
+_This file is programatically generated using `helm-docs` and some BigBang-specific templates. The `gluon` repository has [instructions for regenerating package READMEs](https://repo1.dso.mil/big-bang/product/packages/gluon/-/blob/master/docs/bb-package-readme.md)._
+
