@@ -460,14 +460,14 @@ tenant:
   #  # Image from tag (original behavior), for example:
   #  # image:
   #  #   repository: quay.io/minio/kes
-  #  #   tag: 2024-04-12T13-50-00Z
+  #  #   tag: 2024-06-17T15-47-05Z
   #  # Image from digest (added after original behavior), for example:
   #  # image:
   #  #   repository: quay.io/minio/kes@sha256
   #  #   digest: fb15af611149892f357a8a99d1bcd8bf5dae713bd64c15e6eb27fbdb88fc208b
   #  image:
   #    repository: quay.io/minio/kes
-  #    tag: 2024-04-12T13-50-00Z
+  #    tag: 2024-06-17T15-47-05Z
   #    pullPolicy: IfNotPresent
   #  env: [ ]
   #  replicas: 2
@@ -685,7 +685,7 @@ bbtests:
             name: "{{ .Values.secrets.name }}"
             key: accesskey
   scripts:
-    image: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2024-07-03T20-17-25Z
+    image: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2024-07-15T17-46-06Z
     envs:
       MINIO_PORT: '80'
       MINIO_HOST: 'http://minio'
