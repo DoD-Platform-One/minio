@@ -1,7 +1,7 @@
 apiVersion: v2
 description: A Helm chart for MinIO Tenants
 name: minio-instance
-version: 6.0.2-bb.0
+version: 6.0.2-bb.1
 appVersion: RELEASE.2024-06-04T19-20-08Z
 keywords:
   - storage
@@ -22,9 +22,6 @@ dependencies:
 annotations:
   bigbang.dev/applicationVersions: |
     - Minio: RELEASE.2024-06-04T19-20-08Z
-  bigbang.dev/upstreamReleaseNotesMarkdown: |
-    * [Find our upstream chart's CHANGELOG here](https://github.com/minio/minio/releases)
-    * [and our upstream application release notes here](https://github.com/minio/operator/releases)
   helm.sh/images: |
     - name: minio
       image: registry1.dso.mil/ironbank/opensource/minio/minio:RELEASE.2024-06-04T19-20-08Z
