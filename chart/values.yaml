@@ -685,7 +685,7 @@ bbtests:
             name: "{{ .Values.secrets.name }}"
             key: accesskey
   scripts:
-    image: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2024-08-13T05-33-17Z
+    image: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2024-08-17T11-33-50Z
     envs:
       MINIO_PORT: '80'
       MINIO_HOST: 'http://minio'
