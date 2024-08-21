@@ -1,7 +1,7 @@
 apiVersion: v2
 description: A Helm chart for MinIO Tenants
 name: minio-instance
-version: 6.0.2-bb.1
+version: 6.0.2-bb.2
 appVersion: RELEASE.2024-06-04T19-20-08Z
 keywords:
   - storage
@@ -26,4 +26,4 @@ annotations:
     - name: minio
       image: registry1.dso.mil/ironbank/opensource/minio/minio:RELEASE.2024-06-04T19-20-08Z
     - name: operator-sidecar
-      image: registry1.dso.mil/ironbank/opensource/minio/operator-sidecar:v6.0.0
+      image: registry1.dso.mil/ironbank/opensource/minio/operator-sidecar:v6.0.2
