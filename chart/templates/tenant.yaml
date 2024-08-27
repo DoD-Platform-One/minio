@@ -6,6 +6,9 @@ metadata:
   ## Optionally pass labels to be applied to the statefulset pods
   labels:
     app: minio
+    {{- if $.Values.tenant.podLabels }}
+    {{- tpl (toYaml $.Values.tenant.podLabels ) $ | nindent 4 }}
+    {{- end }}
   {{ if or (dig "metrics" "enabled" false .) $.Values.annotations }}
   ## Annotations for MinIO Tenant Pods
   annotations:

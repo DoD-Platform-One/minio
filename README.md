@@ -1,7 +1,7 @@
 <!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # minio-instance
 
-![Version: 6.0.2-bb.2](https://img.shields.io/badge/Version-6.0.2--bb.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-06-04T19-20-08Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--06--04T19--20--08Z-informational?style=flat-square)
+![Version: 6.0.2-bb.3](https://img.shields.io/badge/Version-6.0.2--bb.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-06-04T19-20-08Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--06--04T19--20--08Z-informational?style=flat-square)
 
 A Helm chart for MinIO Tenants
 
@@ -163,6 +163,7 @@ helm install minio-instance chart/
 | tenant.priorityClassName | string | `""` |  |
 | tenant.additionalVolumes | list | `[]` |  |
 | tenant.additionalVolumeMounts | list | `[]` |  |
+| tenant.podLabels | object | `{}` | Labels for tenant pod(s) |
 | tenant.prometheus.disabled | bool | `true` |  |
 | tenant.prometheus.image | string | `""` |  |
 | tenant.prometheus.env | list | `[]` |  |

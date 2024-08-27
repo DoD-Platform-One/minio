@@ -3,6 +3,14 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+
+## [6.0.2-bb.3] - 2024-08-26
+
+### Added
+
+- Added `podLabels` input value
+- Added usage of `podLabels` in `chart/templates/tenant.yaml`
+
 ## [6.0.2-bb.2] - 2024-08-21
 
 ### Changed
