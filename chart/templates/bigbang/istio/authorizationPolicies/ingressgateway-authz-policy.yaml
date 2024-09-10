@@ -15,7 +15,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: minio
+      {{- include "minio-operator.selectorLabels" $ | nindent 6 }}
   action: ALLOW
   rules:
   - from:
