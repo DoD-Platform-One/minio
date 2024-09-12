@@ -1,9 +1,9 @@
 <!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # minio-instance
 
-![Version: 6.0.2-bb.5](https://img.shields.io/badge/Version-6.0.2--bb.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-06-04T19-20-08Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--06--04T19--20--08Z-informational?style=flat-square)
+![Version: 6.0.3-bb.1](https://img.shields.io/badge/Version-6.0.3--bb.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-06-04T19-20-08Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--06--04T19--20--08Z-informational?style=flat-square)
 
-A Helm chart for MinIO Tenants
+A Helm chart for MinIO Operator
 
 ## Upstream References
 * <https://min.io>
@@ -107,6 +107,9 @@ helm install minio-instance chart/
 | tenant.imagePullSecret.name | string | `"private-registry"` |  |
 | tenant.scheduler | object | `{}` |  |
 | tenant.configuration.name | string | `"myminio-env-configuration"` |  |
+| tenant.configSecret.name | string | `"myminio-env-configuration"` |  |
+| tenant.configSecret.accessKey | string | `"minio"` |  |
+| tenant.configSecret.secretKey | string | `"minio123"` |  |
 | tenant.pools[0].servers | int | `4` |  |
 | tenant.pools[0].name | string | `"pool-0"` |  |
 | tenant.pools[0].volumesPerServer | int | `4` |  |
@@ -250,7 +253,7 @@ helm install minio-instance chart/
 | bbtests.cypress.secretEnvs[1].name | string | `"cypress_accesskey"` |  |
 | bbtests.cypress.secretEnvs[1].valueFrom.secretKeyRef.name | string | `"{{ .Values.secrets.name }}"` |  |
 | bbtests.cypress.secretEnvs[1].valueFrom.secretKeyRef.key | string | `"accesskey"` |  |
-| bbtests.scripts.image | string | `"registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2024-08-26T10-49-58Z"` |  |
+| bbtests.scripts.image | string | `"registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2024-09-09T07-53-10Z"` |  |
 | bbtests.scripts.envs.MINIO_PORT | string | `"80"` |  |
 | bbtests.scripts.envs.MINIO_HOST | string | `"http://minio"` |  |
 | bbtests.scripts.secretEnvs[0].name | string | `"SECRET_KEY"` |  |

@@ -35,11 +35,7 @@ spec:
   {{- end }}
   ## Secret with default environment variable configurations
   configuration:
-    {{- if $.Values.secrets.existingSecret }}
-    name: {{ .configuration.name }}
-    {{- else }}
-    name: {{ dig "secrets" "name" "" ($.Values | merge (dict)) }}
-    {{- end }}
+    name: {{ dig "tenant" "configSecret" "name" "" ($.Values | merge (dict)) }}
   pools:
     {{- range (dig "pools" (list) .) }}
     - servers: {{ dig "servers" 4 . }}
