@@ -1,7 +1,7 @@
 <!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # minio-instance
 
-![Version: 6.0.3-bb.1](https://img.shields.io/badge/Version-6.0.3--bb.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-06-04T19-20-08Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--06--04T19--20--08Z-informational?style=flat-square)
+![Version: 6.0.3-bb.2](https://img.shields.io/badge/Version-6.0.3--bb.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-06-04T19-20-08Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--06--04T19--20--08Z-informational?style=flat-square)
 
 A Helm chart for MinIO Operator
 
@@ -96,9 +96,6 @@ helm install minio-instance chart/
 | networkPolicies.ingressLabels.istio | string | `"ingressgateway"` |  |
 | networkPolicies.additionalPolicies | list | `[]` |  |
 | openshift | bool | `false` |  |
-| secrets.name | string | `"minio-creds-secret"` |  |
-| secrets.accessKey | string | `"minio"` |  |
-| secrets.secretKey | string | `"minio123"` |  |
 | apiVersion | string | `"minio.min.io/v2"` |  |
 | tenant.name | string | `"minio"` |  |
 | tenant.image.repository | string | `"registry1.dso.mil/ironbank/opensource/minio/minio"` |  |
@@ -107,7 +104,7 @@ helm install minio-instance chart/
 | tenant.imagePullSecret.name | string | `"private-registry"` |  |
 | tenant.scheduler | object | `{}` |  |
 | tenant.configuration.name | string | `"myminio-env-configuration"` |  |
-| tenant.configSecret.name | string | `"myminio-env-configuration"` |  |
+| tenant.configSecret.name | string | `"minio-creds-secret"` |  |
 | tenant.configSecret.accessKey | string | `"minio"` |  |
 | tenant.configSecret.secretKey | string | `"minio123"` |  |
 | tenant.pools[0].servers | int | `4` |  |
@@ -248,19 +245,19 @@ helm install minio-instance chart/
 | bbtests.cypress.resources.limits.memory | string | `"4Gi"` |  |
 | bbtests.cypress.envs.cypress_url | string | `"http://{{ include \"minio-operator.fullname\" . \| trim }}-console:{{ include \"minio-operator.servicePort\" . \| trim }}/login"` |  |
 | bbtests.cypress.secretEnvs[0].name | string | `"cypress_secretkey"` |  |
-| bbtests.cypress.secretEnvs[0].valueFrom.secretKeyRef.name | string | `"{{ .Values.secrets.name }}"` |  |
+| bbtests.cypress.secretEnvs[0].valueFrom.secretKeyRef.name | string | `"{{ .Values.tenant.configSecret.name }}"` |  |
 | bbtests.cypress.secretEnvs[0].valueFrom.secretKeyRef.key | string | `"secretkey"` |  |
 | bbtests.cypress.secretEnvs[1].name | string | `"cypress_accesskey"` |  |
-| bbtests.cypress.secretEnvs[1].valueFrom.secretKeyRef.name | string | `"{{ .Values.secrets.name }}"` |  |
+| bbtests.cypress.secretEnvs[1].valueFrom.secretKeyRef.name | string | `"{{ .Values.tenant.configSecret.name }}"` |  |
 | bbtests.cypress.secretEnvs[1].valueFrom.secretKeyRef.key | string | `"accesskey"` |  |
 | bbtests.scripts.image | string | `"registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2024-09-09T07-53-10Z"` |  |
 | bbtests.scripts.envs.MINIO_PORT | string | `"80"` |  |
 | bbtests.scripts.envs.MINIO_HOST | string | `"http://minio"` |  |
 | bbtests.scripts.secretEnvs[0].name | string | `"SECRET_KEY"` |  |
-| bbtests.scripts.secretEnvs[0].valueFrom.secretKeyRef.name | string | `"{{ .Values.secrets.name }}"` |  |
+| bbtests.scripts.secretEnvs[0].valueFrom.secretKeyRef.name | string | `"{{ .Values.tenant.configSecret.name }}"` |  |
 | bbtests.scripts.secretEnvs[0].valueFrom.secretKeyRef.key | string | `"secretkey"` |  |
 | bbtests.scripts.secretEnvs[1].name | string | `"ACCESS_KEY"` |  |
-| bbtests.scripts.secretEnvs[1].valueFrom.secretKeyRef.name | string | `"{{ .Values.secrets.name }}"` |  |
+| bbtests.scripts.secretEnvs[1].valueFrom.secretKeyRef.name | string | `"{{ .Values.tenant.configSecret.name }}"` |  |
 | bbtests.scripts.secretEnvs[1].valueFrom.secretKeyRef.key | string | `"accesskey"` |  |
 
 ## Contributing

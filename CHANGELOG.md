@@ -4,6 +4,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [6.0.3-bb.2] - 2024-09-17
+
+### Changed
+
+- Fixed a bug in istio authorization policies introduced in 6.0.3-bb.1 that resulted in failing RBAC access denied when istio hardening was enabled
+
 ## [6.0.3-bb.1] - 2024-09-12
 
 ### Changed
