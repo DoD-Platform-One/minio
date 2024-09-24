@@ -1,7 +1,7 @@
 <!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # minio-instance
 
-![Version: 6.0.3-bb.2](https://img.shields.io/badge/Version-6.0.3--bb.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-06-04T19-20-08Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--06--04T19--20--08Z-informational?style=flat-square)
+![Version: 6.0.3-bb.3](https://img.shields.io/badge/Version-6.0.3--bb.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-06-04T19-20-08Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--06--04T19--20--08Z-informational?style=flat-square)
 
 A Helm chart for MinIO Operator
 
@@ -250,7 +250,7 @@ helm install minio-instance chart/
 | bbtests.cypress.secretEnvs[1].name | string | `"cypress_accesskey"` |  |
 | bbtests.cypress.secretEnvs[1].valueFrom.secretKeyRef.name | string | `"{{ .Values.tenant.configSecret.name }}"` |  |
 | bbtests.cypress.secretEnvs[1].valueFrom.secretKeyRef.key | string | `"accesskey"` |  |
-| bbtests.scripts.image | string | `"registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2024-09-09T07-53-10Z"` |  |
+| bbtests.scripts.image | string | `"registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2024-09-16T17-43-14Z"` |  |
 | bbtests.scripts.envs.MINIO_PORT | string | `"80"` |  |
 | bbtests.scripts.envs.MINIO_HOST | string | `"http://minio"` |  |
 | bbtests.scripts.secretEnvs[0].name | string | `"SECRET_KEY"` |  |
