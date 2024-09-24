@@ -4,6 +4,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [6.0.3-bb.3] - 2024-09-23
+
+### Changed
+
+- Upgraded mc to RELEASE.2024-09-16T17-43-14Z
+
 ## [6.0.3-bb.2] - 2024-09-17
 
 ### Changed
