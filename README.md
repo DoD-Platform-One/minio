@@ -1,7 +1,7 @@
 <!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # minio-instance
 
-![Version: 6.0.3-bb.3](https://img.shields.io/badge/Version-6.0.3--bb.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-06-04T19-20-08Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--06--04T19--20--08Z-informational?style=flat-square)
+![Version: 6.0.3-bb.4](https://img.shields.io/badge/Version-6.0.3--bb.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-06-04T19-20-08Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--06--04T19--20--08Z-informational?style=flat-square)
 
 A Helm chart for MinIO Operator
 
@@ -259,6 +259,13 @@ helm install minio-instance chart/
 | bbtests.scripts.secretEnvs[1].name | string | `"ACCESS_KEY"` |  |
 | bbtests.scripts.secretEnvs[1].valueFrom.secretKeyRef.name | string | `"{{ .Values.tenant.configSecret.name }}"` |  |
 | bbtests.scripts.secretEnvs[1].valueFrom.secretKeyRef.key | string | `"accesskey"` |  |
+| waitJob.enabled | bool | `true` |  |
+| waitJob.scripts.image | string | `"registry1.dso.mil/ironbank/opensource/kubernetes/kubectl:v1.29.6"` |  |
+| waitJob.permissions.apiGroups[0] | string | `"minio.min.io"` |  |
+| waitJob.permissions.apiGroups[1] | string | `"minio.min.io/v2"` |  |
+| waitJob.permissions.resources[0] | string | `"tenants"` |  |
+| waitJob.permissions.resources[1] | string | `"tenant"` |  |
+| waitJob.permissions.resources[2] | string | `"tenants.minio.min.io"` |  |
 
 ## Contributing
 
