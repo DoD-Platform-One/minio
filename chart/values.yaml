@@ -678,3 +678,16 @@ bbtests:
           secretKeyRef:
             name: "{{ .Values.tenant.configSecret.name }}"
             key: accesskey
+
+waitJob:
+  enabled: true
+  scripts:
+    image: registry1.dso.mil/ironbank/opensource/kubernetes/kubectl:v1.29.6
+  permissions:
+    apiGroups:
+     - minio.min.io
+     - minio.min.io/v2
+    resources:
+     - tenants
+     - tenant
+     - tenants.minio.min.io

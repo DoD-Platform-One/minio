@@ -1,0 +1,34 @@
+{{- include "gluon.wait.wait-job-configmap.overrides" (list . "minio-wait.wait-configmap") }}
+{{- define "minio-wait.wait-configmap" }}
+metadata:
+  labels:
+    {{- include "minio-operator.labels" . | nindent 4 }}
+{{- end }}
+---
+{{ include "gluon.wait.wait-job.overrides" (list . "minio-wait.wait-job") }}
+{{- define "minio-wait.wait-job" }}
+metadata:
+  labels:
+    {{- include "minio-operator.labels" . | nindent 4 }}
+{{- end }}
+---
+{{ include "gluon.wait.wait-job-sa.overrides" (list . "minio-wait.wait-job-sa") }}
+{{- define "minio-wait.wait-job-sa" }}
+metadata:
+  labels:
+    {{- include "minio-operator.labels" . | nindent 4 }}
+{{- end }}
+---
+{{ include "gluon.wait.wait-job-role.overrides" (list . "minio-wait.wait-job-role") }}
+{{- define "minio-wait.wait-job-role" }}
+metadata:
+  labels:
+    {{- include "minio-operator.labels" . | nindent 4 }}
+{{- end }}
+---
+{{ include "gluon.wait.wait-job-rolebinding.overrides" (list . "minio-wait.wait-job-rolebinding") }}
+{{- define "minio-wait.wait-job-rolebinding" }}
+metadata:
+  labels:
+    {{- include "minio-operator.labels" . | nindent 4 }}
+{{- end }}
