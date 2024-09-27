@@ -62,6 +62,13 @@ The mutating Kyverno policy named `update-automountserviceaccounttokens` is leve
 
 This policy revokes access to the K8s API for Pods utilizing said ServiceAccounts. If a Pod truly requires access to the K8s API (for app functionality), the Pod is added to the `pods:` array of the same mutating policy. This grants the Pod access to the API, and creates a Kyverno PolicyException to prevent an alert.
 
+# Deploying with modifications to tenant pool definitions
+At this time, tenant definitions are replaced by the last array provided in the merge order.  This means any user override will completely replace default values provided in the chart which may result in key configurations being removed.
+
+To resolve this issue, when modifying or applying new tenant pool definitions, all values must be duplicated in the user override chart (ex: `securityContext`, `containerSecurityContext`, `automountServceAccountToken`, etc.).
+
+Initial basic values for a single minio tenant pool can be found in `chart/values.yaml`.
+
 # Modifications made to upstream chart
 This is a high-level list of modifications that Big Bang has made to the upstream helm chart. You can use this as as cross-check to make sure that no modifications were lost during the upgrade process.
 
