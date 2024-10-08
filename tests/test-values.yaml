@@ -1,9 +1,6 @@
 bbtests:
   enabled: true
 
-waitJob:
-  enabled: true
-
 tenant:
   pools:
     - servers: 2
