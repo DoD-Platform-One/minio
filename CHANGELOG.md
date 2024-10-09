@@ -3,6 +3,12 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [6.0.3-bb.5] - 2024-10-07
+
+### Changed
+
+- Upgraded mc RELEASE.2024-09-16T17-43-14Z -> RELEASE.2024-10-02T08-27-28Z
+
 ## [6.0.3-bb.4] - 2024-09-25
 
 ### Changed
@@ -40,6 +46,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 
 - Updated mc to `RELEASE.2024-08-26T10-49-58Z`
+
+## [6.0.3-bb.0] - 2024-08-29
+
+### Changed
+
+- Upgraded to RELEASE.2024-08-26T10-49-58Z
 
 ## [6.0.2-bb.3] - 2024-08-26
 
