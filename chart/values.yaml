@@ -117,9 +117,34 @@ apiVersion: minio.min.io/v2
 
 ## MinIO Tenant Definition
 tenant:
-  # Tenant name
-  name: minio
-  ## Registry location and Tag to download MinIO Server image
+  ###
+  # The Tenant name
+  #
+  # Change this to match your preferred MinIO Tenant name.
+  name: myminio
+  ###
+  # Specify the Operator container image to use for the deployment.
+  # ``image.tag`` 
+  # For example, the following sets the image to the ``quay.io/minio/operator`` repo and the v6.0.3 tag.
+  # The container pulls the image if not already present:
+  #
+  # .. code-block:: yaml
+  # 
+  #    image:
+  #       repository: quay.io/minio/minio
+  #       tag: RELEASE.2024-08-17T01-24-54Z
+  #       pullPolicy: IfNotPresent
+  #
+  # The chart also supports specifying an image based on digest value:
+  # 
+  # .. code-block:: yaml
+  # 
+  #    image:
+  #       repository: quay.io/minio/minio@sha256
+  #       digest: 28c80b379c75242c6fe793dfbf212f43c602140a0de5ebe3d9c2a3a7b9f9f983
+  #       pullPolicy: IfNotPresent
+  #
+  #
   image:
     repository: registry1.dso.mil/ironbank/opensource/minio/minio
     tag: RELEASE.2024-06-04T19-20-08Z
@@ -663,7 +688,7 @@ bbtests:
             name: "{{ .Values.tenant.configSecret.name }}"
             key: accesskey
   scripts:
-    image: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2024-09-16T17-43-14Z
+    image: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2024-10-02T08-27-28Z
     envs:
       MINIO_PORT: '80'
       MINIO_HOST: 'http://minio'
