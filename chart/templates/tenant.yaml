@@ -5,7 +5,7 @@ metadata:
   {{- with .Values.tenant }}
   ## Optionally pass labels to be applied to the statefulset pods
   labels:
-    app: minio
+    {{- include "minio.labels" . | nindent 4 }}
     {{- if $.Values.tenant.podLabels }}
     {{- tpl (toYaml $.Values.tenant.podLabels ) $ | nindent 4 }}
     {{- end }}
