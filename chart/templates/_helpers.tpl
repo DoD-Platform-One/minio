@@ -85,6 +85,13 @@ app.kubernetes.io/instance: {{ printf "%s-%s" .Release.Name "console" }}
 
 
 {{/*
+Minio Labels
+*/}}
+{{- define "minio.labels" -}}
+app: minio
+{{- end }}
+
+{{/*
 Renders a value that contains template.
 Usage:
 {{ include "minio-operator.render" ( dict "value" .Values.path.to.the.Value "context" $) }}
