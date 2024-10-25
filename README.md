@@ -1,7 +1,7 @@
 <!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # minio-instance
 
-![Version: 6.0.3-bb.8](https://img.shields.io/badge/Version-6.0.3--bb.8-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-06-04T19-20-08Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--06--04T19--20--08Z-informational?style=flat-square)
+![Version: 6.0.4-bb.0](https://img.shields.io/badge/Version-6.0.4--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-06-04T19-20-08Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--06--04T19--20--08Z-informational?style=flat-square)
 
 A Helm chart for MinIO Operator
 
