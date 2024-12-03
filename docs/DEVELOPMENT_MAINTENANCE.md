@@ -114,6 +114,7 @@ data:
     - spec/image name
     - spec/configuration secret and name
     - metadata/annotations
+    - ensure `{{- with .Values.tenant }}` occurs after the labels are assigned; Otherwise, the context is changed and the helper will fail
 
 ##  chart/values.yaml
 - Bigbang additions at the end of the file

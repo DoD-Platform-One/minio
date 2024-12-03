@@ -4,6 +4,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [6.0.4-bb.3] - 2024-12-03
+
+### Changed
+
+- Added app.kubernetes.io/name label to minio.labels helper
+- Created new helper for tenants to ensure it also gets the app.kubernetes.io/version label
+- Updated tenant deployment to include newly created helper
+- Removed previous solution to fix Kiali Labels applied in 6.0.2-bb.3
+
 ## [6.0.4-bb.2] - 2024-11-08
 
 ### Changed
