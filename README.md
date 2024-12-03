@@ -1,14 +1,14 @@
 <!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # minio-instance
 
-![Version: 6.0.4-bb.2](https://img.shields.io/badge/Version-6.0.4--bb.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-06-04T19-20-08Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--06--04T19--20--08Z-informational?style=flat-square)
+![Version: 6.0.4-bb.2](https://img.shields.io/badge/Version-6.0.4--bb.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-06-04T19-20-08Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--06--04T19--20--08Z-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
 
 A Helm chart for MinIO Operator
 
 ## Upstream References
-
 - <https://min.io>
-- <https://github.com/minio/operator>
+
+* <https://github.com/minio/operator>
 
 ## Upstream Release Notes
 

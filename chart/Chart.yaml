@@ -20,6 +20,7 @@ dependencies:
   version: "0.5.10"
   repository: "oci://registry1.dso.mil/bigbang"
 annotations:
+  bigbang.dev/maintenanceTrack: bb_integrated
   bigbang.dev/applicationVersions: |
     - Minio: RELEASE.2024-06-04T19-20-08Z
   helm.sh/images: |
