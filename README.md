@@ -1,12 +1,12 @@
 <!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # minio-instance
 
-![Version: 6.0.4-bb.2](https://img.shields.io/badge/Version-6.0.4--bb.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-06-04T19-20-08Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--06--04T19--20--08Z-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
+![Version: 6.0.4-bb.3](https://img.shields.io/badge/Version-6.0.4--bb.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: RELEASE.2024-06-04T19-20-08Z](https://img.shields.io/badge/AppVersion-RELEASE.2024--06--04T19--20--08Z-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
 
 A Helm chart for MinIO Operator
 
 ## Upstream References
-- <https://min.io>
+* <https://min.io>
 
 * <https://github.com/minio/operator>
 
@@ -23,14 +23,14 @@ annotations:
 
 ## Learn More
 
-- [Application Overview](docs/overview.md)
-- [Other Documentation](docs/)
+* [Application Overview](docs/overview.md)
+* [Other Documentation](docs/)
 
 ## Pre-Requisites
 
-- Kubernetes Cluster deployed
-- Kubernetes config installed in `~/.kube/config`
-- Helm installed
+* Kubernetes Cluster deployed
+* Kubernetes config installed in `~/.kube/config`
+* Helm installed
 
 Install Helm
 
@@ -38,8 +38,8 @@ https://helm.sh/docs/intro/install/
 
 ## Deployment
 
-- Clone down the repository
-- cd into directory
+* Clone down the repository
+* cd into directory
 
 ```bash
 helm install minio-instance chart/
@@ -165,7 +165,6 @@ helm install minio-instance chart/
 | tenant.priorityClassName | string | `""` |  |
 | tenant.additionalVolumes | list | `[]` |  |
 | tenant.additionalVolumeMounts | list | `[]` |  |
-| tenant.podLabels | object | `{}` | Labels for tenant pod(s) |
 | tenant.prometheus.disabled | bool | `true` |  |
 | tenant.prometheus.image | string | `""` |  |
 | tenant.prometheus.env | list | `[]` |  |

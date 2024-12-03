@@ -83,13 +83,23 @@ app.kubernetes.io/name: {{ include "minio-operator.name" . }}
 app.kubernetes.io/instance: {{ printf "%s-%s" .Release.Name "console" }}
 {{- end -}}
 
+{{/*
+Minio Tenant Labels
+*/}}
+{{- define "minio.tenantLabels" -}}
+{{ include "minio.labels" . }}
+{{- if .Chart.AppVersion }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- end}}
+{{- end -}}
 
 {{/*
 Minio Labels
 */}}
 {{- define "minio.labels" -}}
 app: minio
-{{- end }}
+app.kubernetes.io/name: minio
+{{- end -}}
 
 {{/*
 Renders a value that contains template.
