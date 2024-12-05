@@ -4,6 +4,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [6.0.4-bb.4] - 2024-12-03
+
+### Changed
+
+- registry1.dso.mil/ironbank/opensource/minio/mc RELEASE.2024-10-29T15-34-59Z -> RELEASE.2024-11-17T19-35-25Z
+- gluon from 0.5.10 to 0.5.12
+
 ## [6.0.4-bb.3] - 2024-12-03
 
 ### Changed

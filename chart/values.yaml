@@ -686,7 +686,7 @@ bbtests:
             name: "{{ .Values.tenant.configSecret.name }}"
             key: accesskey
   scripts:
-    image: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2024-10-29T15-34-59Z
+    image: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2024-11-17T19-35-25Z
     envs:
       MINIO_PORT: '80'
       MINIO_HOST: 'http://minio'
