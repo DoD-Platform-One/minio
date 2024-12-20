@@ -4,6 +4,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [6.0.4-bb.5] - 2024-12-19
+
+### Changed
+
+- Updated registry1.dso.mil/ironbank/opensource/minio/mc RELEASE.2024-11-17T19-35-25Z -> RELEASE.2024-11-21T17-21-54Z
+- Updated ironbank/opensource/minio/minio RELEASE.2024-06-04T19-20-08Z -> RELEASE.2024-12-13T22-19-12Z
+
 ## [6.0.4-bb.4] - 2024-12-03
 
 ### Changed
