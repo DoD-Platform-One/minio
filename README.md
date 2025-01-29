@@ -1,14 +1,14 @@
 <!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # minio-instance
 
-![Version: 6.0.4-bb.6](https://img.shields.io/badge/Version-6.0.4--bb.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v6.0.4](https://img.shields.io/badge/AppVersion-v6.0.4-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
+![Version: 7.0.0-bb.0](https://img.shields.io/badge/Version-7.0.0--bb.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v7.0.0](https://img.shields.io/badge/AppVersion-v7.0.0-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
 
 A Helm chart for MinIO Operator
 
 ## Upstream References
-* <https://min.io>
 
-* <https://github.com/minio/operator>
+- <https://min.io>
+- <https://github.com/minio/operator>
 
 ## Upstream Release Notes
 
@@ -23,14 +23,14 @@ annotations:
 
 ## Learn More
 
-* [Application Overview](docs/overview.md)
-* [Other Documentation](docs/)
+- [Application Overview](docs/overview.md)
+- [Other Documentation](docs/)
 
 ## Pre-Requisites
 
-* Kubernetes Cluster deployed
-* Kubernetes config installed in `~/.kube/config`
-* Helm installed
+- Kubernetes Cluster deployed
+- Kubernetes config installed in `~/.kube/config`
+- Helm installed
 
 Install Helm
 
@@ -38,8 +38,8 @@ https://helm.sh/docs/intro/install/
 
 ## Deployment
 
-* Clone down the repository
-* cd into directory
+- Clone down the repository
+- cd into directory
 
 ```bash
 helm install minio-instance chart/
@@ -101,20 +101,23 @@ helm install minio-instance chart/
 | apiVersion | string | `"minio.min.io/v2"` |  |
 | tenant.name | string | `"myminio"` |  |
 | tenant.image.repository | string | `"registry1.dso.mil/ironbank/opensource/minio/minio"` |  |
-| tenant.image.tag | string | `"RELEASE.2024-06-04T19-20-08Z"` |  |
+| tenant.image.tag | string | `"RELEASE.2025-01-20T14-49-07Z"` |  |
 | tenant.image.pullPolicy | string | `"IfNotPresent"` |  |
 | tenant.imagePullSecret.name | string | `"private-registry"` |  |
+| tenant.initContainers | list | `[]` |  |
 | tenant.scheduler | object | `{}` |  |
 | tenant.configuration.name | string | `"myminio-env-configuration"` |  |
 | tenant.configSecret.name | string | `"minio-creds-secret"` |  |
 | tenant.configSecret.accessKey | string | `"minio"` |  |
 | tenant.configSecret.secretKey | string | `"minio123"` |  |
+| tenant.poolsMetadata.annotations | object | `{}` |  |
+| tenant.poolsMetadata.labels | object | `{}` |  |
 | tenant.pools[0].servers | int | `4` |  |
 | tenant.pools[0].name | string | `"pool-0"` |  |
 | tenant.pools[0].volumesPerServer | int | `4` |  |
 | tenant.pools[0].size | string | `"10Gi"` |  |
-| tenant.pools[0].storageClassName | string | `""` |  |
 | tenant.pools[0].storageAnnotations | object | `{}` |  |
+| tenant.pools[0].storageLabels | object | `{}` |  |
 | tenant.pools[0].annotations | object | `{}` |  |
 | tenant.pools[0].labels | object | `{}` |  |
 | tenant.pools[0].tolerations | list | `[]` |  |
@@ -251,7 +254,7 @@ helm install minio-instance chart/
 | bbtests.cypress.secretEnvs[1].name | string | `"cypress_accesskey"` |  |
 | bbtests.cypress.secretEnvs[1].valueFrom.secretKeyRef.name | string | `"{{ .Values.tenant.configSecret.name }}"` |  |
 | bbtests.cypress.secretEnvs[1].valueFrom.secretKeyRef.key | string | `"accesskey"` |  |
-| bbtests.scripts.image | string | `"registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2024-11-17T19-35-25Z"` |  |
+| bbtests.scripts.image | string | `"registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2025-01-17T23-25-50Z"` |  |
 | bbtests.scripts.envs.MINIO_PORT | string | `"80"` |  |
 | bbtests.scripts.envs.MINIO_HOST | string | `"http://minio"` |  |
 | bbtests.scripts.secretEnvs[0].name | string | `"SECRET_KEY"` |  |
