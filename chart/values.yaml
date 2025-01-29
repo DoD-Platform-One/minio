@@ -115,7 +115,7 @@ openshift: false
 
 apiVersion: minio.min.io/v2
 
-## MinIO Tenant Definition
+# Root key for MinIO Tenant Chart
 tenant:
   ###
   # The Tenant name
@@ -125,14 +125,14 @@ tenant:
   ###
   # Specify the Operator container image to use for the deployment.
   # ``image.tag`` 
-  # For example, the following sets the image to the ``quay.io/minio/operator`` repo and the v6.0.4 tag.
+  # For example, the following sets the image to the ``quay.io/minio/operator`` repo and the v7.0.0 tag.
   # The container pulls the image if not already present:
   #
   # .. code-block:: yaml
   # 
   #    image:
   #       repository: quay.io/minio/minio
-  #       tag: RELEASE.2024-10-02T17-50-41Z
+  #       tag: RELEASE.2024-11-07T00-52-20Z
   #       pullPolicy: IfNotPresent
   #
   # The chart also supports specifying an image based on digest value:
@@ -147,17 +147,45 @@ tenant:
   #
   image:
     repository: registry1.dso.mil/ironbank/opensource/minio/minio
-    tag: RELEASE.2024-12-13T22-19-12Z
+    tag: RELEASE.2025-01-20T14-49-07Z
     pullPolicy: IfNotPresent
 
   ## Customize namespace for tenant deployment
   #namespace: default
-  ## Customize any private registry image pull secret.
-  ## currently only one secret registry is supported
+  ###
+  #
+  # An array of Kubernetes secrets to use for pulling images from a private ``image.repository``.
+  # Only one array element is supported at this time.
   imagePullSecret:
     name: private-registry
-  ## If a scheduler is specified here, Tenant pods will be dispatched by specified scheduler.
-  ## If not specified, the Tenant pods will be dispatched by default scheduler.
+  ###
+  #
+  # Specify `initContainers <https://kubernetes.io/docs/concepts/workloads/pods/init-containers/>`__ to perform setup or configuration tasks before the main Tenant pods starts.
+  #
+  # Example of init container which waits for idenity provider to be reachable before starting MinIO Tenant:
+  # 
+  # .. code-block:: yaml
+  #
+  # initContainers:
+  #  - name: wait-for-idp
+  #    image: busybox
+  #    command:
+  #      - sh
+  #      - -c
+  #      - |
+  #        URL="https://idp-url"
+  #        echo "Checking IdP reachability (${URL})"
+  #        until $(wget -q -O "/dev/null" ${URL}) ; do
+  #          echo "IdP (${URL}) not reachable. Waiting to be reachable..."
+  #          sleep 5
+  #        done
+  #        echo "IdP (${URL}) reachable. Starting MinIO..."
+  #
+  initContainers: [ ]
+  ###
+  # The Kubernetes `Scheduler <https://kubernetes.io/docs/concepts/scheduling-eviction/kube-scheduler/>`__ to use for dispatching Tenant pods.
+  #
+  # Specify an empty dictionary ``{}`` to dispatch pods with the default scheduler.
   scheduler: { }
   ###
   # The Kubernetes secret name that contains MinIO environment variable configurations.
@@ -186,6 +214,16 @@ tenant:
     accessKey: minio
     secretKey: minio123
     #existingSecret: true
+
+  ###
+  # Metadata that will be added to the statefulset and pods of all pools
+  poolsMetadata:
+    ###
+    # Specify `annotations <https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/>`__ to associate to Tenant pods.
+    annotations: { }
+    ###
+    # Specify `labels <https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/>`__ to associate to Tenant pods.
+    labels: { }
 
   ###
   # If this variable is set to true, then enable the usage of an existing Kubernetes secret to set environment variables for the Tenant.
@@ -227,10 +265,13 @@ tenant:
       # If using Amazon Elastic Block Store (EBS) CSI driver
       # Please make sure to set xfs for "csi.storage.k8s.io/fstype" parameter under StorageClass.parameters.
       # Docs: https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/docs/parameters.md
-      storageClassName: ""
+      # storageClassName: standard
       ###
       # Specify `storageAnnotations <https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/>`__ to associate to PVCs.
       storageAnnotations: { }
+      ###
+      # Specify `storageLabels <https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/>`__ to associate to PVCs.
+      storageLabels: { }
       ###
       # Specify `annotations <https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/>`__ to associate to Tenant pods.
       annotations: { }
@@ -256,7 +297,12 @@ tenant:
       #
       # These settings determine the distribution of pods across worker nodes and can help prevent or allow colocating pods onto the same worker nodes.
       affinity: { }
-      ## Configure resource requests and limits for MinIO containers
+      ###
+      # 
+      # The `Requests or Limits <https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/>`__ for resources to associate to Tenant pods.
+      #
+      # These settings can control the minimum and maximum resources requested for each pod.
+      # If no worker nodes can meet the specified requests, the Operator may fail to deploy.
       resources:
         requests:
           memory: 2Gi
@@ -264,11 +310,13 @@ tenant:
         limits:
           memory: 2Gi
           cpu: 1000m
-      ## Configure Pod's security context
-      ## We recommend to skip the recursive permission change by using
-      ## fsGroupChangePolicy as OnRootMismatch because it can be pretty
-      ## expensive for larger volumes with lots of small files.
-      ## BB Note: Defaults for Ironbank image are 1001 for user, group, and fsGroup
+      ###
+      # The Kubernetes `SecurityContext <https://kubernetes.io/docs/tasks/configure-pod-container/security-context/>`__ to use for deploying Tenant resources.
+      #
+      # You may need to modify these values to meet your cluster's security and access settings.
+      #
+      # We recommend disabling recursive permission changes by setting ``fsGroupChangePolicy`` to ``OnRootMismatch`` as those operations can be expensive for certain workloads (e.g. large volumes with many small files).
+      # BB Note: Defaults for Ironbank image are 1001 for user, group, and fsGroup
       securityContext:
         runAsUser: 1001
         runAsGroup: 1001
@@ -333,7 +381,7 @@ tenant:
     # Specify an array of Kubernetes secrets, where each entry corresponds to a secret contains the TLS private key and public certificate pair.
     #
     # Omit this to use only the MinIO Operator autogenerated certificates.
-    #
+    # 
     # If you omit this field *and* set ``requestAutoCert`` to false, the Tenant starts without TLS.
     #
     # See `Operator CRD: TenantSpec <https://min.io/docs/minio/kubernetes/upstream/reference/operator-crd.html#tenantspec>`__.
@@ -346,12 +394,20 @@ tenant:
     #    See `Self-Signed, Internal, and Private Certificates <https://min.io/docs/minio/kubernetes/upstream/operations/network-encryption.html#self-signed-internal-and-private-certificates>`__ for more information.
     #    This step may also be necessary for globally trusted CAs where you must provide intermediate certificates to the Operator to help build the full chain of trust.
     externalCertSecret: [ ]
-    ## Enable automatic Kubernetes based certificate generation and signing as explained in
-    ## https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster
+    ###
+    # Enable automatic Kubernetes based `certificate generation and signing <https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster>`__
     requestAutoCert: false
-    ## This field is used only when "requestAutoCert" is set to true. Use this field to set CommonName
-    ## for the auto-generated certificate. Internal DNS name for the pod will be used if CommonName is
-    ## not provided. DNS name format is *.minio.default.svc.cluster.local
+    ###
+    # The minimum number of days to expiry before an alert for an expiring certificate is fired.
+    # In the below example, if a given certificate will expire in 7 days then expiration events will only be triggered 1 day before expiry
+    # certExpiryAlertThreshold: 1
+    ###
+    # This field is used only when ``requestAutoCert: true``.
+    # Use this field to set CommonName for the auto-generated certificate. 
+    # MinIO defaults to using the internal Kubernetes DNS name for the pod
+    # The default DNS name format is typically ``*.minio.default.svc.cluster.local``.
+    #
+    # See `Operator CRD: CertificateConfig <https://min.io/docs/minio/kubernetes/upstream/reference/operator-crd.html#certificateconfig>`__
     certConfig: { }
   ###
   # MinIO features to enable or disable in the MinIO Tenant
@@ -363,7 +419,7 @@ tenant:
   ###
   # Array of objects describing one or more buckets to create during tenant provisioning.
   # Example:
-  #
+  # 
   # .. code-block:: yaml
   #
   #    - name: my-minio-bucket
@@ -376,10 +432,10 @@ tenant:
   # Each secret should specify the ``CONSOLE_ACCESS_KEY`` and ``CONSOLE_SECRET_KEY`` as the access key and secret key for that user.
   users: [ ]
   ###
-  # The `PodManagement <https://kubernetes.io/docs/tutorials/stateful-application/basic-stateful-set/#pod-management-policy>`__ policy for MinIO Tenant Pods.
+  # The `PodManagement <https://kubernetes.io/docs/tutorials/stateful-application/basic-stateful-set/#pod-management-policy>`__ policy for MinIO Tenant Pods. 
   # Can be "OrderedReady" or "Parallel"
   podManagementPolicy: Parallel
-  # The `Liveness Probe <https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes>`__ for monitoring Tenant pod liveness.
+  # The `Liveness Probe <https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes>`__ for monitoring Tenant pod liveness. 
   # Tenant pods will be restarted if the probe fails.
   liveness: { }
   ###
@@ -387,9 +443,9 @@ tenant:
   # Tenant pods will be removed from service endpoints if the probe fails.
   readiness: { }
   ###
-  # `Startup Probe <https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/>`__ for monitoring container startup.
+  # `Startup Probe <https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/>`__ for monitoring container startup. 
   # Tenant pods will be restarted if the probe fails.
-  # Refer
+  # Refer 
   startup: { }
   ###
   # The `Lifecycle hooks <https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/>`__ for container.
@@ -443,7 +499,7 @@ tenant:
   additionalVolumes: [ ]
   ###
   # An array of volume mount points associated to each Tenant container.
-  #
+  # 
   # Specify each item in the array as follows:
   #
   # .. code-block:: yaml
@@ -461,14 +517,14 @@ tenant:
   #  # Image from tag (original behavior), for example:
   #  # image:
   #  #   repository: quay.io/minio/kes
-  #  #   tag: 2024-09-11T07-22-50Z
+  #  #   tag: 2024-11-25T13-44-31Z
   #  # Image from digest (added after original behavior), for example:
   #  # image:
   #  #   repository: quay.io/minio/kes@sha256
   #  #   digest: fb15af611149892f357a8a99d1bcd8bf5dae713bd64c15e6eb27fbdb88fc208b
   #  image:
   #    repository: quay.io/minio/kes
-  #    tag: 2024-09-11T07-22-50Z
+  #    tag: 2024-11-25T13-44-31Z
   #    pullPolicy: IfNotPresent
   #  env: [ ]
   #  replicas: 2
@@ -541,6 +597,16 @@ tenant:
   #    runAsGroup: 1000
   #    runAsNonRoot: true
   #    fsGroup: 1000
+  #  containerSecurityContext:
+  #    runAsUser: 1000
+  #    runAsGroup: 1000
+  #    runAsNonRoot: true
+  #    allowPrivilegeEscalation: false
+  #    capabilities:
+  #      drop:
+  #        - ALL
+  #    seccompProfile:
+  #      type: RuntimeDefault
 
   ## Prometheus setup for MinIO Tenant.
   prometheus:
@@ -628,6 +694,10 @@ tenant:
       runAsNonRoot: true
       fsGroup: 1001
 
+###
+# Configures `Ingress <https://kubernetes.io/docs/concepts/services-networking/ingress/>`__ for the Tenant S3 API and Console.
+#
+# Set the keys to conform to the Ingress controller and configuration of your choice.
 ingress:
   api:
     enabled: false
@@ -686,7 +756,7 @@ bbtests:
             name: "{{ .Values.tenant.configSecret.name }}"
             key: accesskey
   scripts:
-    image: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2024-11-21T17-21-54Z
+    image: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2025-01-17T23-25-50Z
     envs:
       MINIO_PORT: '80'
       MINIO_HOST: 'http://minio'
