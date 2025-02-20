@@ -1,10 +1,27 @@
-{{- include "gluon.wait.wait-job-configmap.overrides" (list . "minio-wait.wait-configmap") }}
+---
+{{ if not .Values.waitJob.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata: 
+  name: empty-map0
+  labels:
+    {{- include "minio-operator.labels" . | nindent 4 }}
+{{ end }}
+{{ include "gluon.wait.wait-job-configmap.overrides" (list . "minio-wait.wait-configmap") }}
 {{- define "minio-wait.wait-configmap" }}
 metadata:
   labels:
     {{- include "minio-operator.labels" . | nindent 4 }}
 {{- end }}
 ---
+{{ if not .Values.waitJob.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata: 
+  name: empty-map1
+  labels: 
+    {{- include "minio-operator.labels" . | nindent 4 }}
+{{ end }}
 {{ include "gluon.wait.wait-job.overrides" (list . "minio-wait.wait-job") }}
 {{- define "minio-wait.wait-job" }}
 metadata:
@@ -12,6 +29,14 @@ metadata:
     {{- include "minio-operator.labels" . | nindent 4 }}
 {{- end }}
 ---
+{{ if not .Values.waitJob.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata: 
+  name: empty-map2
+  labels: 
+    {{- include "minio-operator.labels" . | nindent 4 }}
+{{ end }}
 {{ include "gluon.wait.wait-job-sa.overrides" (list . "minio-wait.wait-job-sa") }}
 {{- define "minio-wait.wait-job-sa" }}
 metadata:
@@ -19,6 +44,14 @@ metadata:
     {{- include "minio-operator.labels" . | nindent 4 }}
 {{- end }}
 ---
+{{ if not .Values.waitJob.enabled }}
+apiVersion: v1
+kind: ConfigMap 
+metadata: 
+  name: empty-map3
+  labels: 
+    {{- include "minio-operator.labels" . | nindent 4 }}
+{{ end }}
 {{ include "gluon.wait.wait-job-role.overrides" (list . "minio-wait.wait-job-role") }}
 {{- define "minio-wait.wait-job-role" }}
 metadata:
@@ -26,6 +59,14 @@ metadata:
     {{- include "minio-operator.labels" . | nindent 4 }}
 {{- end }}
 ---
+{{ if not .Values.waitJob.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata: 
+  name: empty-map4
+  labels: 
+    {{- include "minio-operator.labels" . | nindent 4 }}
+{{ end }}
 {{ include "gluon.wait.wait-job-rolebinding.overrides" (list . "minio-wait.wait-job-rolebinding") }}
 {{- define "minio-wait.wait-job-rolebinding" }}
 metadata:
