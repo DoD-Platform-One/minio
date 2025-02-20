@@ -4,6 +4,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [7.0.0-bb.2] - 2025-02-07
+
+### Changed
+
+- Add filler value to test-wait-job
+
 ## [7.0.0-bb.1] - 2025-02-05
 
 ### Changed
