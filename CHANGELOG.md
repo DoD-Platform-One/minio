@@ -4,6 +4,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [7.0.0-bb.3] - 2025-03-17
+
+### Changed
+
+- remove pools.securityContext.capabilites is not supported and cause error when enabling drift detection
+
 ## [7.0.0-bb.2] - 2025-02-07
 
 ### Changed

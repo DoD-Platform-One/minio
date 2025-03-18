@@ -1,7 +1,7 @@
 <!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # minio-instance
 
-![Version: 7.0.0-bb.2](https://img.shields.io/badge/Version-7.0.0--bb.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v7.0.0](https://img.shields.io/badge/AppVersion-v7.0.0-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
+![Version: 7.0.0-bb.3](https://img.shields.io/badge/Version-7.0.0--bb.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v7.0.0](https://img.shields.io/badge/AppVersion-v7.0.0-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
 
 A Helm chart for MinIO Operator
 
@@ -132,7 +132,6 @@ helm install minio-instance chart/
 | tenant.pools[0].securityContext.fsGroup | int | `1001` |  |
 | tenant.pools[0].securityContext.fsGroupChangePolicy | string | `"OnRootMismatch"` |  |
 | tenant.pools[0].securityContext.runAsNonRoot | bool | `true` |  |
-| tenant.pools[0].securityContext.capabilities.drop[0] | string | `"ALL"` |  |
 | tenant.pools[0].containerSecurityContext.runAsUser | int | `1001` |  |
 | tenant.pools[0].containerSecurityContext.runAsGroup | int | `1001` |  |
 | tenant.pools[0].containerSecurityContext.runAsNonRoot | bool | `true` |  |
