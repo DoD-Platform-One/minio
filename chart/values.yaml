@@ -323,9 +323,6 @@ tenant:
         fsGroup: 1001
         fsGroupChangePolicy: "OnRootMismatch"
         runAsNonRoot: true
-        capabilities:
-          drop:
-            - ALL
       ###
       # The Kubernetes `SecurityContext <https://kubernetes.io/docs/tasks/configure-pod-container/security-context/>`__ to use for deploying Tenant containers.
       # You may need to modify these values to meet your cluster's security and access settings.
