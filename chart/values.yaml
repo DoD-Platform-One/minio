@@ -772,7 +772,7 @@ bbtests:
 waitJob:
   enabled: true
   scripts:
-    image: registry1.dso.mil/ironbank/opensource/kubernetes/kubectl:v1.29.6
+    image: registry1.dso.mil/ironbank/opensource/kubernetes/kubectl:v1.30.11
   permissions:
     apiGroups:
      - minio.min.io

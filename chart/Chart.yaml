@@ -1,7 +1,7 @@
 apiVersion: v2
 description: A Helm chart for MinIO Operator
 name: minio-instance
-version: '7.0.0-bb.3'
+version: '7.0.0-bb.4'
 appVersion: v7.0.0
 keywords:
   - storage
@@ -29,4 +29,4 @@ annotations:
     - name: operator-sidecar
       image: registry1.dso.mil/ironbank/opensource/minio/operator-sidecar:v7.0.0
     - name: kubectl
-      image: registry1.dso.mil/ironbank/opensource/kubernetes/kubectl:v1.29.6
+      image: registry1.dso.mil/ironbank/opensource/kubernetes/kubectl:v1.30.11
