@@ -1,7 +1,7 @@
 apiVersion: v2
 description: A Helm chart for MinIO Operator
 name: minio-instance
-version: '7.0.0-bb.5'
+version: '7.0.0-bb.6'
 appVersion: v7.0.0
 keywords:
   - storage
@@ -17,7 +17,7 @@ maintainers:
 type: application
 dependencies:
 - name: gluon
-  version: "0.5.14"
+  version: "0.5.15"
   repository: "oci://registry1.dso.mil/bigbang"
 annotations:
   bigbang.dev/maintenanceTrack: bb_integrated
