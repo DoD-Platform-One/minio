@@ -12,6 +12,9 @@ describe('Minio Login', function() {
       
       // Verify the page title is "Home"
       cy.title().should('eq', 'MinIO Console');
+      
+      //Assert that the Buckets section is visible (verifying login succeeded)
+      cy.contains('Buckets').should('be.visible');
     
   })
 })
