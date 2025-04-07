@@ -4,6 +4,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [7.0.0-bb.7] - 2025-04-04
+
+### Changed
+
+- Updated cypress minio test login
+
 ## [7.0.0-bb.6] - 2025-04-01
 
 ### Changed
