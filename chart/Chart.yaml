@@ -1,8 +1,8 @@
 apiVersion: v2
 description: A Helm chart for MinIO Operator
 name: minio-instance
-version: '7.0.0-bb.7'
-appVersion: v7.0.0
+version: '7.0.1-bb.0'
+appVersion: v7.0.1
 keywords:
   - storage
   - object-storage
@@ -22,11 +22,11 @@ dependencies:
 annotations:
   bigbang.dev/maintenanceTrack: bb_integrated
   bigbang.dev/applicationVersions: |
-    - Minio: RELEASE.2025-01-20T14-49-07Z
+    - Minio: RELEASE.2025-04-03T14-56-28Z
   helm.sh/images: |
     - name: minio
-      image: registry1.dso.mil/ironbank/opensource/minio/minio:RELEASE.2025-01-20T14-49-07Z
+      image: registry1.dso.mil/ironbank/opensource/minio/minio:RELEASE.2025-04-03T14-56-28Z
     - name: operator-sidecar
-      image: registry1.dso.mil/ironbank/opensource/minio/operator-sidecar:v7.0.0
+      image: registry1.dso.mil/ironbank/opensource/minio/operator-sidecar:v7.0.1
     - name: kubectl
       image: registry1.dso.mil/ironbank/opensource/kubernetes/kubectl:v1.30.11

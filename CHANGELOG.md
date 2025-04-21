@@ -4,6 +4,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [7.0.1-bb.0] - 2025-04-21
+
+### Changed
+
+- Updated ironbank/opensource/minio/minio (source) RELEASE.2025-01-20T14-49-07Z -> RELEASE.2025-04-03T14-56-28Z
+- Updated minio-instance to 7.0.1
+- Updated operator-sidecar to v7.0.1
+
 ## [7.0.0-bb.7] - 2025-04-04
 
 ### Changed
