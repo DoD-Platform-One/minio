@@ -125,14 +125,14 @@ tenant:
   ###
   # Specify the Operator container image to use for the deployment.
   # ``image.tag`` 
-  # For example, the following sets the image to the ``quay.io/minio/operator`` repo and the v7.0.0 tag.
+  # For example, the following sets the image to the ``quay.io/minio/operator`` repo and the v7.0.1 tag.
   # The container pulls the image if not already present:
   #
   # .. code-block:: yaml
   # 
   #    image:
   #       repository: quay.io/minio/minio
-  #       tag: RELEASE.2024-11-07T00-52-20Z
+  #       tag: RELEASE.2025-03-12T18-04-18Z
   #       pullPolicy: IfNotPresent
   #
   # The chart also supports specifying an image based on digest value:
@@ -147,7 +147,7 @@ tenant:
   #
   image:
     repository: registry1.dso.mil/ironbank/opensource/minio/minio
-    tag: RELEASE.2025-01-20T14-49-07Z
+    tag: RELEASE.2025-04-03T14-56-28Z
     pullPolicy: IfNotPresent
 
   ## Customize namespace for tenant deployment
@@ -166,20 +166,20 @@ tenant:
   # 
   # .. code-block:: yaml
   #
-  # initContainers:
-  #  - name: wait-for-idp
-  #    image: busybox
-  #    command:
-  #      - sh
-  #      - -c
-  #      - |
-  #        URL="https://idp-url"
-  #        echo "Checking IdP reachability (${URL})"
-  #        until $(wget -q -O "/dev/null" ${URL}) ; do
-  #          echo "IdP (${URL}) not reachable. Waiting to be reachable..."
-  #          sleep 5
-  #        done
-  #        echo "IdP (${URL}) reachable. Starting MinIO..."
+  #    initContainers:
+  #     - name: wait-for-idp
+  #       image: busybox
+  #       command:
+  #         - sh
+  #         - -c
+  #         - |
+  #           URL="https://idp-url"
+  #           echo "Checking IdP reachability (${URL})"
+  #           until $(wget -q -O "/dev/null" ${URL}) ; do
+  #             echo "IdP (${URL}) not reachable. Waiting to be reachable..."
+  #             sleep 5
+  #           done
+  #           echo "IdP (${URL}) reachable. Starting MinIO..."
   #
   initContainers: [ ]
   ###
@@ -420,8 +420,8 @@ tenant:
   # .. code-block:: yaml
   #
   #    - name: my-minio-bucket
-  #         objectLock: false        # optional
-  #         region: us-east-1        # optional
+  #      objectLock: false        # optional
+  #      region: us-east-1        # optional
   buckets: [ ]
   ###
   # Array of Kubernetes secrets from which the Operator generates MinIO users during tenant provisioning.
@@ -514,14 +514,14 @@ tenant:
   #  # Image from tag (original behavior), for example:
   #  # image:
   #  #   repository: quay.io/minio/kes
-  #  #   tag: 2024-11-25T13-44-31Z
+  #  #   tag: 2025-03-12T09-35-18Z
   #  # Image from digest (added after original behavior), for example:
   #  # image:
   #  #   repository: quay.io/minio/kes@sha256
   #  #   digest: fb15af611149892f357a8a99d1bcd8bf5dae713bd64c15e6eb27fbdb88fc208b
   #  image:
   #    repository: quay.io/minio/kes
-  #    tag: 2024-11-25T13-44-31Z
+  #    tag: 2025-03-12T09-35-18Z
   #    pullPolicy: IfNotPresent
   #  env: [ ]
   #  replicas: 2
