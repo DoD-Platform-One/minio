@@ -125,14 +125,14 @@ tenant:
   ###
   # Specify the Operator container image to use for the deployment.
   # ``image.tag`` 
-  # For example, the following sets the image to the ``quay.io/minio/operator`` repo and the v7.0.1 tag.
+  # For example, the following sets the image to the ``quay.io/minio/operator`` repo and the v7.1.1 tag.
   # The container pulls the image if not already present:
   #
   # .. code-block:: yaml
   # 
   #    image:
   #       repository: quay.io/minio/minio
-  #       tag: RELEASE.2025-03-12T18-04-18Z
+  #       tag: RELEASE.2025-04-08T15-41-24Z
   #       pullPolicy: IfNotPresent
   #
   # The chart also supports specifying an image based on digest value:
@@ -147,7 +147,7 @@ tenant:
   #
   image:
     repository: registry1.dso.mil/ironbank/opensource/minio/minio
-    tag: RELEASE.2025-04-03T14-56-28Z
+    tag: RELEASE.2025-04-22T22-12-26Z
     pullPolicy: IfNotPresent
 
   ## Customize namespace for tenant deployment
@@ -187,11 +187,6 @@ tenant:
   #
   # Specify an empty dictionary ``{}`` to dispatch pods with the default scheduler.
   scheduler: { }
-  ###
-  # The Kubernetes secret name that contains MinIO environment variable configurations.
-  # The secret is expected to have a key named config.env containing environment variables exports.
-  configuration:
-    name: myminio-env-configuration
   ###
   # Root key for dynamically creating a secret for use with configuring root MinIO User
   # Specify the ``name`` and then a list of environment variables.
@@ -753,7 +748,7 @@ bbtests:
             name: "{{ .Values.tenant.configSecret.name }}"
             key: accesskey
   scripts:
-    image: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2025-01-17T23-25-50Z
+    image: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2025-04-16T18-13-26Z
     envs:
       MINIO_PORT: '80'
       MINIO_HOST: 'http://minio'

@@ -4,6 +4,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [7.1.1-bb.0] - 2025-05-09
+
+### Changed
+
+- Updated minio-instance to 7.1.1
+- Updated gluon from 0.5.16 -> 0.5.17
+- Updated ironbank/opensource/minio/minio (source) RELEASE.2025-04-03T14-56-28Z -> RELEASE.2025-04-22T22-12-26Z
+- Updated registry1.dso.mil/ironbank/opensource/minio/mc (source) RELEASE.2025-01-17T23-25-50Z -> RELEASE.2025-04-16T18-13-26Z
+- Updated registry1.dso.mil/ironbank/opensource/minio/minio (source) RELEASE.2025-04-03T14-56-28Z -> RELEASE.2025-04-22T22-12-26Z
+
 ## [7.0.1-bb.1] - 2025-04-29
 
 ### Changed
