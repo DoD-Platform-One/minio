@@ -748,6 +748,16 @@ bbtests:
             name: "{{ .Values.tenant.configSecret.name }}"
             key: accesskey
   scripts:
+    permissions:
+      apiGroups:
+        - ""
+      resources:
+        - configmaps
+      verbs:
+        - create
+        - delete
+        - list
+        - get
     image: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2025-04-16T18-13-26Z
     envs:
       MINIO_PORT: '80'

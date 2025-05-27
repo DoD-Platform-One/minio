@@ -1,3 +1,7 @@
+{{- include "gluon.tests.script-configmap.base" .}}
+---
+{{- include "gluon.tests.script-runner.base" .}}
+---
 {{- include "gluon.tests.script-configmap.overrides" (list . "minio-test.script-configmap") }}
 {{- define "minio-test.script-configmap" }}
 metadata:
