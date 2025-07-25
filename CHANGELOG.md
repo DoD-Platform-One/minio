@@ -4,6 +4,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [7.1.1-bb.6] - 2025-07-23
+
+### Updated
+
+- Updated registry1.dso.mil/ironbank/opensource/minio/minio (source) RELEASE.2025-06-13T11-33-47Z -> RELEASE.2025-07-18T21-56-31Z
+- Updated gluon from 0.6.3 -> 0.7.0
+- Cypress console login test removed due to Admin UI fully removed
+
 ## [7.1.1-bb.5] - 2025-07-08
 
 ### Updated
