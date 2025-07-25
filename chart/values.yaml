@@ -147,7 +147,7 @@ tenant:
   #
   image:
     repository: registry1.dso.mil/ironbank/opensource/minio/minio
-    tag: RELEASE.2025-06-13T11-33-47Z
+    tag: RELEASE.2025-07-18T21-56-31Z
     pullPolicy: IfNotPresent
 
   ## Customize namespace for tenant deployment
@@ -725,28 +725,6 @@ ingress:
 
 bbtests:
   enabled: false
-  cypress:
-    artifacts: true
-    resources:
-      requests:
-        cpu: "2"
-        memory: "4Gi"
-      limits:
-        cpu: "2"
-        memory: "4Gi"
-    envs:
-      cypress_url: 'http://{{ include "minio-operator.fullname" . | trim }}-console:{{ include "minio-operator.servicePort" . | trim }}/login'
-    secretEnvs:
-      - name: cypress_secretkey
-        valueFrom:
-          secretKeyRef:
-            name: "{{ .Values.tenant.configSecret.name }}"
-            key: secretkey
-      - name: cypress_accesskey
-        valueFrom:
-          secretKeyRef:
-            name: "{{ .Values.tenant.configSecret.name }}"
-            key: accesskey
   scripts:
     permissions:
       apiGroups:
