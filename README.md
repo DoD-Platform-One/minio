@@ -1,7 +1,7 @@
 <!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # minio-instance
 
-![Version: 7.1.1-bb.6](https://img.shields.io/badge/Version-7.1.1--bb.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v7.1.1](https://img.shields.io/badge/AppVersion-v7.1.1-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
+![Version: 7.1.1-bb.7](https://img.shields.io/badge/Version-7.1.1--bb.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v7.1.1](https://img.shields.io/badge/AppVersion-v7.1.1-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
 
 A Helm chart for MinIO Operator
 
@@ -101,7 +101,7 @@ helm install minio-instance chart/
 | apiVersion | string | `"minio.min.io/v2"` |  |
 | tenant.name | string | `"myminio"` |  |
 | tenant.image.repository | string | `"registry1.dso.mil/ironbank/opensource/minio/minio"` |  |
-| tenant.image.tag | string | `"RELEASE.2025-07-18T21-56-31Z"` |  |
+| tenant.image.tag | string | `"RELEASE.2025-07-23T15-54-02Z"` |  |
 | tenant.image.pullPolicy | string | `"IfNotPresent"` |  |
 | tenant.imagePullSecret.name | string | `"private-registry"` |  |
 | tenant.initContainers | list | `[]` |  |
@@ -240,18 +240,6 @@ helm install minio-instance chart/
 | ingress.console.path | string | `"/"` |  |
 | ingress.console.pathType | string | `"Prefix"` |  |
 | bbtests.enabled | bool | `false` |  |
-| bbtests.cypress.artifacts | bool | `true` |  |
-| bbtests.cypress.resources.requests.cpu | string | `"2"` |  |
-| bbtests.cypress.resources.requests.memory | string | `"4Gi"` |  |
-| bbtests.cypress.resources.limits.cpu | string | `"2"` |  |
-| bbtests.cypress.resources.limits.memory | string | `"4Gi"` |  |
-| bbtests.cypress.envs.cypress_url | string | `"http://{{ include \"minio-operator.fullname\" . \| trim }}-console:{{ include \"minio-operator.servicePort\" . \| trim }}/login"` |  |
-| bbtests.cypress.secretEnvs[0].name | string | `"cypress_secretkey"` |  |
-| bbtests.cypress.secretEnvs[0].valueFrom.secretKeyRef.name | string | `"{{ .Values.tenant.configSecret.name }}"` |  |
-| bbtests.cypress.secretEnvs[0].valueFrom.secretKeyRef.key | string | `"secretkey"` |  |
-| bbtests.cypress.secretEnvs[1].name | string | `"cypress_accesskey"` |  |
-| bbtests.cypress.secretEnvs[1].valueFrom.secretKeyRef.name | string | `"{{ .Values.tenant.configSecret.name }}"` |  |
-| bbtests.cypress.secretEnvs[1].valueFrom.secretKeyRef.key | string | `"accesskey"` |  |
 | bbtests.scripts.permissions.apiGroups[0] | string | `""` |  |
 | bbtests.scripts.permissions.resources[0] | string | `"configmaps"` |  |
 | bbtests.scripts.permissions.verbs[0] | string | `"create"` |  |

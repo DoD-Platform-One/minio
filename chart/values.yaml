@@ -147,7 +147,7 @@ tenant:
   #
   image:
     repository: registry1.dso.mil/ironbank/opensource/minio/minio
-    tag: RELEASE.2025-07-18T21-56-31Z
+    tag: RELEASE.2025-07-23T15-54-02Z
     pullPolicy: IfNotPresent
 
   ## Customize namespace for tenant deployment
