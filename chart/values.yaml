@@ -738,7 +738,6 @@ bbtests:
         - get
     image: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2025-04-16T18-13-26Z
     envs:
-      MINIO_PORT: '80'
       MINIO_HOST: 'http://minio'
     secretEnvs:
       - name: SECRET_KEY

@@ -1,32 +1,3 @@
-#########################
-# Disable Core Packages #
-#########################
-bbctl:
-  enabled: false
-monitoring:
-  enabled: false
-grafana:
-  enabled: false
-neuvector:
-  enabled: false
-loki:
-  enabled: false
-tempo:
-  enabled: false
-kyvernoReporter:
-  enabled: false
-kiali:
-  enabled: false
-addons:
-  # minioOperator:
-  #   enabled: false
-########################
-# Required for package #
-########################
-  minioOperator:
-    enabled: true
-  minio:
-    enabled: true
 kyvernoPolicies:
   values:
     bbtests:
@@ -35,3 +6,12 @@ kyverno:
   values:
     bbtests:
       enabled: false
+
+addons:
+########################
+# Required for package #
+########################
+  minioOperator:
+    enabled: true
+  minio:
+    enabled: true

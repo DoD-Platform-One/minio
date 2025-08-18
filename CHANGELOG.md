@@ -4,6 +4,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [7.1.1-bb.8] - 2025-08-15
+
+### Updated
+
+- update the test-write.sh script to fail fast and a few other re-factorings
+
 ## [7.1.1-bb.7] - 2025-07-31
 
 ### Updated
