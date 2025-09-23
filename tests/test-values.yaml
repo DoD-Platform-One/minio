@@ -1,12 +1,3 @@
-kyvernoPolicies:
-  values:
-    bbtests:
-      enabled: false
-kyverno:
-  values:
-    bbtests:
-      enabled: false
-
 addons:
 ########################
 # Required for package #
@@ -15,3 +6,11 @@ addons:
     enabled: true
   minio:
     enabled: true
+kyvernoPolicies:
+  values:
+    bbtests:
+      enabled: false
+kyverno:
+  values:
+    bbtests:
+      enabled: false

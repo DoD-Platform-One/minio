@@ -6,12 +6,12 @@
 {{- define "minio-test.script-configmap" }}
 metadata:
   labels:
-    {{- include "minio-operator.labels" . | nindent 4 }}
+    {{- include "minio.labels" . | nindent 4 }}
 {{- end }}
 ---
 {{ include "gluon.tests.script-runner.overrides" (list . "minio-test.script-runner") -}}
 {{- define "minio-test.script-runner" -}}
 metadata:
   labels:
-    {{- include "minio-operator.labels" . | nindent 4 }}
+    {{- include "minio.labels" . | nindent 4 }}
 {{- end }}

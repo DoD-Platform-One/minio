@@ -1,32 +1,34 @@
 apiVersion: v2
-description: A Helm chart for MinIO Operator
+description: A Helm chart for MinIO
 name: minio-instance
-version: "7.1.1-bb.8"
+version: "7.1.1-bb.9"
 appVersion: v7.1.1
 keywords:
   - storage
   - object-storage
   - S3
 home: https://min.io
-icon: https://min.io/resources/img/logo/MINIO_wordmark.png
 sources:
   - https://github.com/minio/operator
-maintainers:
-  - name: MinIO, Inc
-    email: dev@minio.io
 type: application
 dependencies:
+- name: tenant
+  version: v7.1.1
+  repository: https://operator.min.io/
+  alias: upstream
 - name: gluon
-  version: "0.7.0"
+  version: "0.9.0"
   repository: "oci://registry1.dso.mil/bigbang"
 annotations:
   bigbang.dev/maintenanceTrack: bb_integrated
   bigbang.dev/applicationVersions: |
-    - Minio: RELEASE.2025-07-23T15-54-02Z
+    - Minio: RELEASE.2025-09-07T16-13-09Z
   helm.sh/images: |
     - name: minio
-      image: registry1.dso.mil/ironbank/opensource/minio/minio:RELEASE.2025-07-23T15-54-02Z
+      image: registry1.dso.mil/ironbank/opensource/minio/minio:RELEASE.2025-09-07T16-13-09Z
     - name: operator-sidecar
       image: registry1.dso.mil/ironbank/opensource/minio/operator-sidecar:v7.0.1
     - name: kubectl
-      image: registry1.dso.mil/ironbank/opensource/kubernetes/kubectl:v1.30.11
+      image: registry1.dso.mil/ironbank/opensource/kubernetes/kubectl:v1.33.5
+    - name: minio-mc
+      image: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2025-08-13T08-35-41Z

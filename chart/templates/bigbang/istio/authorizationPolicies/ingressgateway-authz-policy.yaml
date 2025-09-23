@@ -1,4 +1,5 @@
 {{- if and .Values.istio.enabled .Values.istio.hardened.enabled .Values.istio.console.enabled -}}
+{{- $dot := . }}
 {{- range .Values.istio.console.gateways -}}
 {{- $namespace := "istio-system" -}}
 {{- $name := . -}}
@@ -7,7 +8,7 @@
 {{- $namespace = $gatewayParts._0 -}}
 {{- $name = $gatewayParts._1 -}}
 {{- end -}}
-apiVersion: security.istio.io/v1beta1
+apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
   name: {{ $name }}-ingressgateway-authz-policy
@@ -15,7 +16,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      {{- include "minio.labels" . | nindent 6 }}
+      {{- include "minio.selectorLabels" $dot | nindent 6 }}
   action: ALLOW
   rules:
   - from:

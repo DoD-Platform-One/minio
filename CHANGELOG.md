@@ -4,6 +4,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [7.1.1-bb.9] - 2025-09-18
+
+### Changed
+
+- Reconfigured package for passthrough pattern
+- Fixed older image being pulled in with passthrough values
+- Removed duplicate upstream helpers
+- Updated registry1.dso.mil/ironbank/opensource/minio/mc (source) RELEASE.2025-04-16T18-13-26Z -> RELEASE.2025-08-13T08-35-41Z
+- Updated registry1.dso.mil/ironbank/opensource/kubernetes/kubectl 1.30.11 -> 1.33.5
+- Updated gluon from 0.7.0 -> 0.9.0
+
 ## [7.1.1-bb.8] - 2025-08-15
 
 ### Updated
