@@ -38,7 +38,7 @@ else
   exit 1
 fi
 
-retry_cmd mc --config-dir /test config host add bigbang ${MINIO_HOST} ${ACCESS_KEY} ${SECRET_KEY}
+retry_cmd mc --config-dir /test alias set bigbang ${MINIO_HOST} ${ACCESS_KEY} ${SECRET_KEY}
 retry_cmd mc --config-dir /test ls bigbang
 retry_cmd mc --config-dir /test admin info bigbang
 

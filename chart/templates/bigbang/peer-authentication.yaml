@@ -9,5 +9,5 @@ spec:
     mode: {{ .Values.istio.mtls.mode }}
   selector:
     matchLabels:
-      {{- include "minio-operator.selectorLabels" . | nindent 6 }}
+      {{- include "minio.selectorLabels" . | nindent 6 }}
 {{- end }}
