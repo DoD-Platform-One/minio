@@ -10,21 +10,8 @@
 # -f docs/dev-overrides/minimal.yaml \
 # -f docs/dev-overrides/istio-testing-local-keycloak.yaml
 
-istio:
+istioGateway:
   enabled: true
-  # Add git branch or tag information to test against a specific branch or tag instead of using `main`
-  # Must set the unused label to null
-  # git:
-  #   tag: null
-  #   branch: "renovate/ironbank"
-
-istioOperator:
-  enabled: true
-  # Add git branch or tag information to test against a specific branch or tag instead of using `main`
-  # Must set the unused label to null
-  # git:
-  #   tag: null
-  #   branch: "renovate/ironbank"
 
 kyverno:
   enabled: true
@@ -34,11 +21,6 @@ kyvernoPolicies:
 
 kyvernoReporter:
   enabled: true
-
-jaeger:
-  enabled: true
-  sso:
-    enabled: true
 
 monitoring:
   enabled: true
@@ -55,27 +37,27 @@ kiali:
   sso:
     enabled: true
   values:
-    cr:
-      spec:
-        auth:
-          strategy: "openid"
+    upstream:
+      cr:
+        spec:
+          auth:
+            strategy: "openid"
 
 addons:
   keycloak:
     enabled: true
-
   authservice:
     enabled: true
   minio:
     enabled: true
     git:
-      tag: ""
-      branch: "renovate/ironbank"   
+      tag: null
+      branch: "main"   
   minioOperator:
     enabled: true
-    # git:
-      # tag: ""
-      # branch: "renovate/ironbank"
+    git:
+      tag: null
+      branch: "main"
     values:
       console:
         enabled: true

@@ -5,25 +5,12 @@ You can not simply do a kpt pull and replace since there are unique changes that
 in the upstream minio operator charts.
 
 1. Checkout the branch that renovate created. This branch will have the image tag updates and typically some other necessary version changes that you will want. You can either work off of this branch or branch off of it.
-
- 1. Sync with new chart. This can be done with kpt or meld:  Be careful not to overwrite the Big Bang specific changes.
- `kpt pkg update chart/@{TAG} --strategy alpha-git-patch`
- or
- `kpt pkg update chart/@{TAG} --strategy force-delete-replace`
- or
- Meld UI
- 1a. Move `minio.min.io_tenants.yaml` to `minio-operator-crds/templates/`
- 1b. Update `minio-operator-crds/Chart.yaml` with new version
- 1c. Update `chart/Chart.yaml` dependency version
- 1d. Rebuild dependency .tgz:
- `export HELM_EXPERIMENTAL_OCI=1`
- `helm dependency update chart`
- 2. Update version references for the Chart in chart/Chart.yaml. versionshould be-bb.0(ex:1.14.3-bb.0) and appVersionshould be(ex:1.14.3`). Also validate that the BB annotation for the main Minio version is updated (leave the Tetrate version as-is unless you are updating those images).
- 3.Verify that chart/values.yaml tag and tidTAG have been updated to the new version.
- 4.Add a changelog entry for the update. At minimum mention updating the image versions.
- 5. Generate the `README.md` updates by following the [guide in gluon](https://repo1.dso.mil/platform-one/big-bang/apps/library-charts/gluon/-/blob/master/docs/bb-package-readme.md).
- 6.Open an MR in "Draft" status (or check the one that Renovate creates for the issue) and validate that CI passes. This will perform a number of smoke tests against the package, but it is good to manually deploy to test some things that CI doesn't. Follow the steps below for manual testing.
- 7.Once all manual testing is complete take your MR out of "Draft" status, add the review label, add any necessary upgrade notices (if none you will need to put N/A), add any screenshots/logs/etc. as proof that your changes work (these are required), assign yourself as the assignee, and add reviewers.
+2. Update version references for the Chart in chart/Chart.yaml. version should be-bb.0(ex:1.14.3-bb.0) and appVersionshould be(ex:1.14.3`). Also validate that the BB annotation for the main Minio version is updated (leave the Tetrate version as-is unless you are updating those images).
+3.Verify that chart/values.yaml tag and tidTAG have been updated to the new version.
+4.Add a changelog entry for the update. At minimum mention updating the image versions.
+5. Generate the `README.md` updates by following the [guide in gluon](https://repo1.dso.mil/platform-one/big-bang/apps/library-charts/gluon/-/blob/master/docs/bb-package-readme.md).
+6.Open an MR in "Draft" status (or check the one that Renovate creates for the issue) and validate that CI passes. This will perform a number of smoke tests against the package, but it is good to manually deploy to test some things that CI doesn't. Follow the steps below for manual testing.
+7.Once all manual testing is complete take your MR out of "Draft" status, add the review label, add any necessary upgrade notices (if none you will need to put N/A), add any screenshots/logs/etc. as proof that your changes work (these are required), assign yourself as the assignee, and add reviewers.
 
  # Testing new Minio version
 
@@ -115,28 +102,28 @@ From the root of this repo, run one of the following deploy commands depending o
 For `login.dso.mil` Keycloak:
 
 ```
-  helm upgrade -i bigbang ${BIGBANG_REPO_DIR}/chart/ -n bigbang --create-namespace \
-  --set registryCredentials.username=${REGISTRY_USERNAME} --set registryCredentials.password=${REGISTRY_PASSWORD} \
-  -f https://repo1.dso.mil/big-bang/bigbang/-/raw/master/tests/test-values.yaml \
-  -f https://repo1.dso.mil/big-bang/bigbang/-/raw/master/chart/ingress-certs.yaml \
-  -f https://repo1.dso.mil/big-bang/bigbang/-/raw/master/docs/assets/configs/example/dev-sso-values.yaml \
-  -f docs/dev-overrides/minimal.yaml \
-  -f docs/dev-overrides/minio-testing.yaml
-  ```
+helm upgrade -i bigbang ${BIGBANG_REPO_DIR}/chart/ -n bigbang --create-namespace \
+--set registryCredentials.username=${REGISTRY_USERNAME} --set registryCredentials.password=${REGISTRY_PASSWORD} \
+-f https://repo1.dso.mil/big-bang/bigbang/-/raw/master/tests/test-values.yaml \
+-f https://repo1.dso.mil/big-bang/bigbang/-/raw/master/chart/ingress-certs.yaml \
+-f https://repo1.dso.mil/big-bang/bigbang/-/raw/master/docs/assets/configs/example/dev-sso-values.yaml \
+-f docs/dev-overrides/minimal.yaml \
+-f docs/dev-overrides/minio-testing.yaml
+```
 
-  For local `keycloak.dev.bigbang.mil` Keycloak:
+For local `keycloak.dev.bigbang.mil` Keycloak:
 
-  ```
-  helm upgrade -i bigbang ${BIGBANG_REPO_DIR}/chart/ -n bigbang --create-namespace \
-  --set registryCredentials.username=${REGISTRY_USERNAME} --set registryCredentials.password=${REGISTRY_PASSWORD} \
-  -f https://repo1.dso.mil/big-bang/bigbang/-/raw/master/tests/test-values.yaml \
-  -f https://repo1.dso.mil/big-bang/bigbang/-/raw/master/chart/ingress-certs.yaml \
-  -f docs/dev-overrides/minimal.yaml \
-  -f docs/dev-overrides/minio-testing-local-keycloak.yaml
-  ```
+```
+helm upgrade -i bigbang ${BIGBANG_REPO_DIR}/chart/ -n bigbang --create-namespace \
+--set registryCredentials.username=${REGISTRY_USERNAME} --set registryCredentials.password=${REGISTRY_PASSWORD} \
+-f https://repo1.dso.mil/big-bang/bigbang/-/raw/master/tests/test-values.yaml \
+-f https://repo1.dso.mil/big-bang/bigbang/-/raw/master/chart/ingress-certs.yaml \
+-f docs/dev-overrides/minimal.yaml \
+-f docs/dev-overrides/minio-testing-local-keycloak.yaml
+```
 
 - Authservice (with minio Dependency), Keycloak
-- Jaeger, Kiali and Monitoring (including Grafana), all with SSO enabled
+- Kiali and Monitoring (including Grafana), all with SSO enabled
 
 ## Validation/Testing Steps
 
@@ -156,8 +143,6 @@ modify [MinIO](https://repo1.dso.mil/platform-one/big-bang/apps/application-util
 If you modify any of these things, you should perform an integration test with your branch against the rest of bigbang. Some of these files have automatic tests already defined, but those automatic tests may not model corner cases found in full integration scenarios.
 
 * `./chart/templates/bigbang/*`
-* `./chart/templates/api-ingress.yaml`
-* `./chart/templates/peer-authentication.yaml`
 * `./chart/values.yaml` if it involves any of:
   * monitoring changes
   * network policy changes
@@ -208,67 +193,3 @@ At this time, tenant definitions are replaced by the last array provided in the 
 To resolve this issue, when modifying or applying new tenant pool definitions, all values must be duplicated in the user override chart (ex: `securityContext`, `containerSecurityContext`, `automountServceAccountToken`, etc.).
 
 Initial basic values for a single minio tenant pool can be found in `chart/values.yaml`.
-
-# Modifications made to upstream chart
-This is a high-level list of modifications that Big Bang has made to the upstream helm chart. You can use this as as cross-check to make sure that no modifications were lost during the upgrade process.
-
-## When performing the helm update the following items should be maintained.
-- in chart/templates/_helpers.tpl: keep the BB specific _helpers
-```
-{{/* Big Bang Added Helpers Start Here */}}
-
-{{/*
-Create the name of the service used to access the Minio object UI.
-Note: the Minio operator has a fixed name of "minio" for the service it creates.
-*/}}
-{{- define "minio-operator.serviceName" }}
-{{- if .Values.upgradeTenants.enabled -}}
-minio
-{{- else -}}
-{{- default (include "minio.fullname" .) .Values.service.nameOverride }}
-{{- end }}
-{{- end }}
-
-```
-- in chart/templates/tenant-configuration.yaml:  keep the secrets data access key changes._helpers
-```r
-{{- if dig "secrets" true (.Values | merge (dict)) }}
-apiVersion: v1
-kind: Secret
-metadata:
-  name: {{ dig "secrets" "name" "" (.Values | merge (dict)) }}
-type: Opaque
-stringData:
-  config.env: |-
-    export MINIO_ROOT_USER={{ .Values.secrets.accessKey | quote }}
-    export MINIO_ROOT_PASSWORD={{ .Values.secrets.secretKey | quote }}
-data:
-  ## Access Key for MinIO Tenant
-  accesskey: {{ dig "secrets" "accessKey" "" (.Values | merge (dict)) | b64enc }}
-  ## Secret Key for MinIO Tenant
-  secretkey: {{ dig "secrets" "secretKey" "" (.Values | merge (dict)) | b64enc }}
-  {{- end }}
-```
-- in charts/templates/tenant.yaml:  keep the changes associated with..._helpers
-    - assigning the metadata/name
-    - spec/image name
-    - spec/configuration secret and name
-    - metadata/annotations
-    - ensure `{{- with .Values.tenant }}` occurs after the labels are assigned; Otherwise, the context is changed and the helper will fail
-
-##  chart/values.yaml
-- Bigbang additions at the end of the file
-- images to ironbank
-
-## chart/templates/bigbang/*
-- networkpolicies/*
-- minio-operaotor-exception.yaml
-- peer-authentication.yaml
-- tenant-patch-job.yaml
-
-##  chart/charts/*.tgz
-- run ```helm dependency update ./chart``` and commit the downloaded archives
-
-- commit the tar archives that were downloaded from the helm dependency update command. And also commit the requirements.lock that was generated.
-
-

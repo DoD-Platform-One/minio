@@ -1,10 +1,6 @@
 # Many of these are disabled by default, but for clarity turn them off explicitly
 # Notably, the following have not been disabled
 # - networkPolicies - not disabled due to ease of use when deploying via k3d_dev
-
-clusterAuditor:
-  enabled: false
-
 eckOperator:
   enabled: false
 
@@ -18,15 +14,6 @@ gatekeeper:
   enabled: false
 
 grafana:
-  enabled: false
-
-istio:
-  enabled: false
-
-istioOperator:
-  enabled: false
-
-jaeger:
   enabled: false
 
 kiali:
@@ -48,9 +35,6 @@ monitoring:
   enabled: false
 
 neuvector:
-  enabled: false
-
-promtail:
   enabled: false
 
 tempo:
@@ -109,9 +93,6 @@ addons:
     enabled: false
 
   sonarqube:
-    enabled: false
-
-  thanos:
     enabled: false
 
   vault:

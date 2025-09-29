@@ -15,27 +15,11 @@ sso:
   # This is needed because test-values.yaml overrides it to reference the internal keycloak
   url: https://login.dso.mil/auth/realms/baby-yoda
 
-istio:
+istioGateway:
   enabled: true
-  ingressGateways:
-    passthrough-ingressgateway:
-      enabled: false
-  gateways:
-    passthrough:
-      enabled: false
-  # Add git branch or tag information to test against a specific branch or tag instead of using `main`
-  # Must set the unused label to null
-  # git:
-  #   tag: null
-  #   branch: "renovate/ironbank"
-
-istioOperator:
-  enabled: true
-  # Add git branch or tag information to test against a specific branch or tag instead of using `main`
-  # Must set the unused label to null
-  # git:
-  #   tag: null
-  #   branch: "renovate/ironbank"
+  values:
+    gateways:
+      passthrough: {}
 
 kyverno:
   enabled: true
@@ -44,9 +28,6 @@ kyvernoPolicies:
   enabled: true
 
 kyvernoReporter:
-  enabled: true
-
-jaeger:
   enabled: true
 
 monitoring:
@@ -58,10 +39,11 @@ grafana:
 kiali:
   enabled: true
   values:
-    cr:
-      spec:
-        auth:
-          strategy: "openid"
+    upstream:
+      cr:
+        spec:
+          auth:
+            strategy: "openid"
 
 addons:
   authservice:
@@ -70,13 +52,10 @@ addons:
     enabled: true
     git:
       tag: ""
-      branch: "renovate/ironbank"   
+      branch: "main"   
   minioOperator:
     enabled: true
-    # git:
-      # tag: ""
-      # branch: "renovate/ironbank"
-    values:
-      console:
-        enabled: true
+    git:
+      tag: null
+      branch: "main"
    
