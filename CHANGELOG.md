@@ -4,6 +4,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [7.1.1-bb.10] - 2025-09-30
+
+### Changed
+
+- Updated gluon from 0.9.0 -> 0.9.2
+- Updated registry1.dso.mil/ironbank/opensource/minio/operator-sidecar (source) v7.0.1 -> v7.1.0
+
 ## [7.1.1-bb.9] - 2025-09-18
 
 ### Changed
