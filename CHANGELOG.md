@@ -3,6 +3,13 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [7.1.1-bb.12] - 2025-10-16
+
+### Updated
+
+- Updated gluon from 0.9.3 -> 0.9.5
+- Change Kubectl to not use patch version v1.33.5 -> v1.33
+
 ## [7.1.1-bb.11] - 2025-10-07
 
 ### Updated
