@@ -3,6 +3,12 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [7.1.1-bb.15] - 2025-11-10
+
+### Updated
+
+- Updated gluon from 0.9.5 -> 0.9.6
+- Updated bbtest.scripts.image -> registry1.dso.mil/ironbank/big-bang/devops-tester:1.0
 
 ## [7.1.1-bb.14] - 2025-11-10
 
