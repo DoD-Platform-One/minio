@@ -160,7 +160,7 @@ bbtests:
         - delete
         - list
         - get
-    image: registry1.dso.mil/ironbank/opensource/minio/mc:RELEASE.2025-08-13T08-35-41Z
+    image: registry1.dso.mil/ironbank/big-bang/devops-tester:1.0
     envs:
       MINIO_HOST: 'http://minio'
     secretEnvs:
