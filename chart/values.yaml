@@ -1,3 +1,45 @@
+# -- Network Policy configuration; see bb-common network policy docs for details: https://repo1.dso.mil/big-bang/product/packages/bb-common/-/tree/main/docs/network-policies?ref_type=heads
+# @default -- Basic configuration for minio to run and allow cluster-wide access to minio's S3 API on port 9000
+networkPolicies:
+  enabled: false
+  egress:
+    from:
+      minio-instance:
+        to:
+          definition:
+            kubeAPI: true
+  ingress:
+    to:
+      minio-instance:9000:
+        from:
+          k8s:
+            # allows any service in the cluster to consume minio's API for s3 storage
+            '*': true
+
+# -- Routes configuration; see bb-common routes docs for details: https://repo1.dso.mil/big-bang/product/packages/bb-common/-/tree/main/docs/routes?ref_type=heads
+# @default -- Route skeletons configured for minio API and console; no gateways or hosts defined and routes disabled
+routes:
+  inbound:
+    api:
+      service: minio
+      port: 80
+      containerPort: 9000
+      selector:
+        app.kubernetes.io/name: minio-instance
+    console:
+      service: minio-minio-minio-instance-console
+      port: 9090
+      selector:
+        app.kubernetes.io/name: minio-instance
+
+# -- Istio configuration; see bb-common istio docs for details: https://repo1.dso.mil/big-bang/product/packages/bb-common/-/tree/main/docs/istio?ref_type=heads
+# @default -- Istio disabled
+istio:
+  enabled: false
+
+monitoring:
+  enabled: false
+
 apiVersion: minio.min.io/v2
 # -- Values to pass to [the upstream minio chart](https://github.com/minio/operator/blob/master/helm/tenant/values.yaml)
 # @default -- Upstream chart values
@@ -60,90 +102,6 @@ upstream:
       host: minio-console.local
       path: /
       pathType: Prefix
-
-domain: dev.bigbang.mil
-
-istio:
-  enabled: false
-  hardened:
-    enabled: false
-    customAuthorizationPolicies: []
-    # - name: "allow-nothing"
-    #   enabled: true
-    #   spec: {}
-    outboundTrafficPolicyMode: "REGISTRY_ONLY"
-    customServiceEntries: []
-      # - name: "allow-google"
-      #   enabled: true
-      #   spec:
-      #     hosts:
-      #       - google.com
-      #     location: MESH_EXTERNAL
-      #     ports:
-      #       - number: 443
-      #         protocol: TLS
-      #         name: https
-      #     resolution: DNS
-    tempo:
-      enabled: false
-      namespaces:
-      - tempo
-      principals:
-      - cluster.local/ns/tempo/sa/tempo-tempo
-    minio:
-      enabled: true
-      namespaces:
-      - minio
-      principals:
-      - cluster.local/ns/minio/sa/minio-minio-minio-instance-sa
-    minioOperator:
-      enabled: true
-      namespaces:
-      - minio-operator
-      principals:
-      - cluster.local/ns/minio-operator/sa/minio-operator
-    velero:
-      enabled: true
-      namespaces:
-      - velero
-      principals:
-      - cluster.local/ns/velero/sa/velero
-  mtls:
-    # STRICT = Allow only mutual TLS traffic
-    # PERMISSIVE = Allow both plain text and mutual TLS traffic
-    mode: STRICT
-  console:
-    enabled: true
-    annotations: {}
-    labels: {}
-    gateways:
-      - istio-system/main
-    hosts:
-      -  minio.{{ .Values.domain }}
-    service: ""
-    port: ""
-  api:
-    enabled: true
-    annotations: {}
-    labels: {}
-    gateways:
-      - istio-system/main
-    hosts:
-      -  minio-api.{{ .Values.domain }}
-    service: ""
-    port: ""
-
-monitoring:
-  enabled: false
-  namespace: monitoring
-
-networkPolicies:
-  enabled: false
-  controlPlaneCidr: 0.0.0.0/0
-  ingressLabels:
-    app: istio-ingressgateway
-    istio: ingressgateway
-  additionalPolicies: []
 
 openshift: false
 
