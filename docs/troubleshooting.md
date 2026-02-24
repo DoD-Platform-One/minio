@@ -6,10 +6,10 @@ MinIO consists of a configurable number of Pods in the `minio` namespace. The Po
 
 ### Check Pod status
 
-`kubectl get pod -l app.kubernetes.io/instance=minio-minio -n minio`
+`kubectl get pod -l app.kubernetes.io/name=minio-instance -n minio`
 
-`kubectl describe pod -l app.kubernetes.io/instance=minio-minio -n minio`
+`kubectl describe pod -l app.kubernetes.io/name=minio-instance -n minio`
 
 ### Get Pod logs
 
-`kubectl logs -l app.kubernetes.io/instance=minio-minio -n minio`
+`kubectl logs -l app.kubernetes.io/name=minio-instance -n minio`

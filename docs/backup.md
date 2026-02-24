@@ -13,7 +13,7 @@ Bucket replication has two different modes of operation: server-side and client-
 
 Bucket Replication by itself will not automatically back up your MinIO server's configuration data! This data is stored in the backend volume and you should have another way of storing this data externally, perhaps by storing it in git and applying it via IaC.
 
-For more detailed information on the options available for backing up MinIO, see the [official documentation](https://docs.min.io/minio/baremetal/replication/replication-overview.html).
+For more detailed information on the options available for backing up MinIO, see the [official documentation](https://min.io/docs/minio/linux/administration/bucket-replication.html).
 
 ### Volume Backups
 

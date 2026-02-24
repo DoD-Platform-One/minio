@@ -6,4 +6,4 @@ MinIO exports Prometheus compatible data by default as an authorized endpoint at
 
 A list of all metrics reported by MinIO can be seen [here](https://github.com/minio/minio/blob/master/docs/metrics/prometheus/list.md).
 
-For more information about using Prometheus to monitor MinIO, see the [official documentation](https://docs.min.io/community/minio-object-store/operations/monitoring/collect-minio-metrics-using-prometheus.html).
+For more information about using Prometheus to monitor MinIO, see the [official documentation](https://min.io/docs/minio/linux/operations/monitoring/collect-minio-metrics-using-prometheus.html).
