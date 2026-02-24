@@ -23,40 +23,46 @@ If you'd like to learn more about the MinIO application and its features, see th
 
 ## Granting Egress to Blocked Services
 
-When Istio hardening is enabled through the settings `istio.enabled` and `istio.enabled.hardened`, a sidecar is injected into the Minio namespace. This sidecar limits network traffic to 'REGISTRY_ONLY', effectively blocking access to external services.
+When Istio is enabled with a restrictive outbound traffic policy, a sidecar is injected into the MinIO namespace. This sidecar can limit network traffic to `REGISTRY_ONLY`, effectively blocking access to external services.
 
-> **Note:** Access to external services will be blocked.
+> **Note:** Access to external services will be blocked when using `REGISTRY_ONLY` mode.
 
-This restriction commonly affects cloud provider object stores configured in the Minio UI. To resolve this, you'll need to identify the hosts blocked by Istio and add a `customServiceEntry` for each one to your Big Bang `values.yaml` file.
+This restriction commonly affects cloud provider object stores configured in the MinIO UI. To resolve this, you'll need to identify the hosts blocked by Istio and add a ServiceEntry for each one to your values.
 
 ### Discovering Blocked Hosts
 
-To find out which hosts are being blocked, inspect the `istio-proxy` logs from the 'minio' pod using the following commands:
+To find out which hosts are being blocked, inspect the `istio-proxy` logs from the MinIO pod using the following commands:
 
 ```bash
-export SOURCE_POD=$(kubectl -n minio get pod -l name=minio -o jsonpath={.items..metadata.name})
+export SOURCE_POD=$(kubectl -n minio get pod -l app.kubernetes.io/name=minio-instance -o jsonpath={.items..metadata.name})
 kubectl -n minio logs "$SOURCE_POD" -c istio-proxy | grep -i "BlackHoleCluster"
 ```
 
-Here is an example of a `customServiceEntry` that can be added to your Big Bang `values.yaml`
+### Configuring Istio with bb-common
+
+This chart uses `bb-common` for Istio resource rendering. Here is an example configuration to enable Istio with a custom ServiceEntry:
+
 ```yaml
 istio:
   enabled: true
-  hardened:
+  sidecar:
     enabled: true
-    customServiceEntries:
-     - name: "allow-amazonaws"
-       enabled: true
-       spec:
-         hosts:
-           - "<bucket-name>.s3.us-gov-west-1.amazonaws.com"
-         location: MESH_EXTERNAL
-         exportTo:
-         - "."
-         ports:
-         - name: https
-           number: 443
-           protocol: TLS
-         resolution: DNS
+    outboundTrafficPolicyMode: REGISTRY_ONLY
+  serviceEntries:
+    custom:
+      - name: "allow-amazonaws"
+        spec:
+          hosts:
+            - "<bucket-name>.s3.us-gov-west-1.amazonaws.com"
+          location: MESH_EXTERNAL
+          exportTo:
+            - "."
+          ports:
+            - name: https
+              number: 443
+              protocol: TLS
+          resolution: DNS
 ```
+
+See the [bb-common Istio documentation](https://repo1.dso.mil/big-bang/product/packages/bb-common/-/tree/main/docs/istio) for full configuration options.
 
