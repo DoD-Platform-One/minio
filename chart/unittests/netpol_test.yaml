@@ -1,0 +1,39 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/helm-unittest/helm-unittest/main/schema/helm-testsuite.json
+suite: test network policies
+templates:
+  - templates/bigbang/network-policies.yaml
+release:
+  name: minio
+  namespace: minio
+tests:
+  - it: should create egress network policy with exactly one label (v1.min.io/tenant)
+    set:
+      networkPolicies.enabled: true
+    documentSelector:
+      path: metadata.name
+      value: allow-egress-from-minio-instance-to-kubeapi
+    asserts:
+      - isKind:
+          of: NetworkPolicy
+      # Exact match ensures matchLabels contains ONLY this single key/value pair
+      # Any additional keys would cause this assertion to fail
+      - equal:
+          path: spec.podSelector.matchLabels
+          value:
+            v1.min.io/tenant: minio-minio-minio-instance
+
+  - it: should create ingress network policy with exactly one label (v1.min.io/tenant)
+    set:
+      networkPolicies.enabled: true
+    documentSelector:
+      path: metadata.name
+      value: allow-ingress-to-minio-instance-tcp-port-9000-from-any-ns-any-pod
+    asserts:
+      - isKind:
+          of: NetworkPolicy
+      # Exact match ensures matchLabels contains ONLY this single key/value pair
+      # Any additional keys would cause this assertion to fail
+      - equal:
+          path: spec.podSelector.matchLabels
+          value:
+            v1.min.io/tenant: minio-minio-minio-instance
