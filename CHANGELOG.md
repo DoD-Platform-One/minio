@@ -3,6 +3,12 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [7.1.1-bb.17] - 2025-03-10
+
+### Changed
+
+- Fixed pod selectors in network policies and routes to use `v1.min.io/tenant` label
+
 ## [7.1.1-bb.16] - 2025-01-13
 
 ### Changed

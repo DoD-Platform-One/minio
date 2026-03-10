@@ -1,0 +1,53 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/helm-unittest/helm-unittest/main/schema/helm-testsuite.json
+suite: test routes network policies
+templates:
+  - templates/bigbang/routes.yaml
+release:
+  name: minio
+  namespace: minio
+capabilities:
+  apiVersions:
+    - networking.istio.io/v1
+    - security.istio.io/v1
+tests:
+  - it: should create console route network policy with exactly one label (v1.min.io/tenant)
+    set:
+      networkPolicies.enabled: true
+      istio.enabled: true
+      domain: bigbang.dev
+      routes.inbound.console.enabled: true
+      routes.inbound.console.gateways[0]: istio-gateway/public-ingressgateway
+      routes.inbound.console.hosts[0]: minio-console.bigbang.dev
+    documentSelector:
+      path: metadata.name
+      value: allow-ingress-to-console-9090-from-ns-istio-gateway-pod-public-ingressgateway
+    asserts:
+      - isKind:
+          of: NetworkPolicy
+      # Exact match ensures matchLabels contains ONLY this single key/value pair
+      # Any additional keys would cause this assertion to fail
+      - equal:
+          path: spec.podSelector.matchLabels
+          value:
+            v1.min.io/tenant: minio-minio-minio-instance
+
+  - it: should create api route network policy with exactly one label (v1.min.io/tenant)
+    set:
+      networkPolicies.enabled: true
+      istio.enabled: true
+      domain: bigbang.dev
+      routes.inbound.api.enabled: true
+      routes.inbound.api.gateways[0]: istio-gateway/public-ingressgateway
+      routes.inbound.api.hosts[0]: minio.bigbang.dev
+    documentSelector:
+      path: metadata.name
+      value: allow-ingress-to-api-9000-from-ns-istio-gateway-pod-public-ingressgateway
+    asserts:
+      - isKind:
+          of: NetworkPolicy
+      # Exact match ensures matchLabels contains ONLY this single key/value pair
+      # Any additional keys would cause this assertion to fail
+      - equal:
+          path: spec.podSelector.matchLabels
+          value:
+            v1.min.io/tenant: minio-minio-minio-instance
